@@ -24,6 +24,11 @@ public class BattleController : NetworkBehaviour
     public override void OnStartServer() {
         HCDebug.Log("BC - OnStartServer", HcColor.Violet);
         SpawnPlayerInBattle();
+        
+    }
+
+    private void Start()
+    {
         PlayScreen.Show();
     }
 

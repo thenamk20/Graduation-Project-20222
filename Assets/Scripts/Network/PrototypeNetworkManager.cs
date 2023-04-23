@@ -138,7 +138,7 @@ public class PrototypeNetworkManager : NetworkManager
     /// <param name="conn">Connection from client.</param>
     public override void OnServerConnect(NetworkConnectionToClient conn) {
         OnlinePlayerConnections.Add(conn);
-        if(OnlinePlayerConnections.Count == 1)
+        if(OnlinePlayerConnections.Count == 2)
         {
             //ServerChangeScene(GameConst.BattleSceneName);
             ChangeSceneForPlayers(OnlinePlayerConnections, GameConst.BattleSceneName);
