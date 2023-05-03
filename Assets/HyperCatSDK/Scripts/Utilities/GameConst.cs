@@ -18,4 +18,8 @@ public class GameConst
     public const string HallSceneName = "Hall";
     public const string BattleSceneName = "Battle";
 
+    public const string SkillJoystickHoz = "Horizontal_Skill_";
+
+    public const string SkillJoystickVer = "Vertical_Skill_";
+
 }

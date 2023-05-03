@@ -15,6 +15,8 @@ public class MainScreen : UIPanel
 
     [SerializeField] private GameObject startClientButton;
 
+    [SerializeField] private GameObject startServerButton;
+
     public override UiPanelType GetId()
     {
         return UiPanelType.MainScreen;
@@ -76,10 +78,19 @@ public class MainScreen : UIPanel
         StartGame();
     }
 
+    public void StartServer()
+    {
+        NetworkManager.singleton.StartServer();
+        HCDebug.Log("Start Server");
+        ToggleButtons(false);
+        StartGame();
+    }
+
     void ToggleButtons(bool isEnable)
     {
         startHostButton.SetActive(isEnable);
         startClientButton.SetActive(isEnable);
+        startServerButton.SetActive(isEnable);
     }
 
     protected override void RegisterEvent()

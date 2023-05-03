@@ -24,12 +24,11 @@ public class BattleController : NetworkBehaviour
     public override void OnStartServer() {
         HCDebug.Log("BC - OnStartServer", HcColor.Violet);
         SpawnPlayerInBattle();
-        
     }
 
     private void Start()
     {
-        PlayScreen.Show();
+        
     }
 
     /// <summary>
@@ -48,6 +47,7 @@ public class BattleController : NetworkBehaviour
         HCDebug.Log("BC - OnStartClient", HcColor.Green);
         var connection = NetworkClient.connection.connectionId;
         HCDebug.Log("connectionID:" + connection, HcColor.Blue);
+        PlayScreen.Show();
     }
 
     /// <summary>
@@ -88,11 +88,10 @@ public class BattleController : NetworkBehaviour
     {
         GameObject player = Instantiate(playerPrefab);
         player.transform.position = new Vector3(Random.Range(-5,5), 0, Random.Range(-5, 5));
+        NetworkServer.Spawn(player);
         NetworkServer.AddPlayerForConnection(conn, player);
         HCDebug.Log("Add player for connection: " + conn.connectionId);
 
-        var connection = NetworkClient.connection.connectionId;
-        HCDebug.Log("spawn player at connection:" + connection, HcColor.Blue);
     }
 
     [Server]

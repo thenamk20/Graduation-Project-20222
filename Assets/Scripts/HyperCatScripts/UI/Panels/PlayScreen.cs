@@ -1,10 +1,13 @@
 ﻿using Mirror;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayScreen : UIPanel
 {
-    public static PlayScreen Instance { get; private set; }
+    [SerializeField]
+    private List<SkillItemUI> skillItemUIList;
 
+    public static PlayScreen Instance { get; private set; }
 
     public override UiPanelType GetId()
     {
@@ -26,6 +29,10 @@ public class PlayScreen : UIPanel
 
     private void Init()
     {
+        foreach(var item in skillItemUIList)
+        {
+            item.Init();
+        }
     }
 
     public override void OnDisappear()

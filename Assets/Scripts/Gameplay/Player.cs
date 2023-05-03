@@ -8,7 +8,11 @@ public class Player : NetworkBehaviour
 {
     [SerializeField] private CharacterController characterController;
 
+    [SerializeField] private SkillsManager skillManager;
+
     public float speed = 2f;
+
+    public SkillsManager SkillsManager => skillManager;
 
     // Start is called before the first frame update
     void Start()

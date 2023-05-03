@@ -168,7 +168,6 @@ public class PrototypeNetworkManager : NetworkManager
             {
                 sceneName = newSceneName
             });
-           
         }
     }
 
