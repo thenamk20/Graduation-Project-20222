@@ -13,4 +13,7 @@ public class GameConfig : ScriptableObject
 
     [TabGroup("Other")]
     public int maxOfflineRemindMinute = 720;
+
+    [TabGroup("Gameplay")]
+    public int numberOfPlayerRequire = 2;
 }

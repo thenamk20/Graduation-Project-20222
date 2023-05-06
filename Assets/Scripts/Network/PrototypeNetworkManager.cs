@@ -25,7 +25,8 @@ public class PrototypeNetworkManager : NetworkManager
         singleton = this;
     }
 
-    public List<NetworkConnectionToClient> OnlinePlayerConnections = new List<NetworkConnectionToClient>();
+    [SerializeField]
+    public List<NetworkConnectionToClient> OnlinePlayerConnections;
 
     #region Unity Callbacks
 
@@ -138,10 +139,11 @@ public class PrototypeNetworkManager : NetworkManager
     /// <param name="conn">Connection from client.</param>
     public override void OnServerConnect(NetworkConnectionToClient conn) {
         OnlinePlayerConnections.Add(conn);
-        if(OnlinePlayerConnections.Count == 2)
+        HCDebug.Log("Client with con: " + conn + " connect to server", HcColor.Green);
+        if(OnlinePlayerConnections.Count == ConfigManager.Instance.gameCfg.numberOfPlayerRequire)
         {
-            //ServerChangeScene(GameConst.BattleSceneName);
-            ChangeSceneForPlayers(OnlinePlayerConnections, GameConst.BattleSceneName);
+            ServerChangeScene(GameConst.BattleSceneName);
+            //ChangeSceneForPlayers(OnlinePlayerConnections, GameConst.BattleSceneName);
         }
     }
 
@@ -269,7 +271,10 @@ public class PrototypeNetworkManager : NetworkManager
     /// This is invoked when a server is started - including when a host is started.
     /// <para>StartServer has multiple signatures, but they all cause this hook to be called.</para>
     /// </summary>
-    public override void OnStartServer() { }
+    public override void OnStartServer() {
+        OnlinePlayerConnections = new List<NetworkConnectionToClient>();
+        HCDebug.Log("Server start", HcColor.Green);
+    }
 
     /// <summary>
     /// This is invoked when the client is started.

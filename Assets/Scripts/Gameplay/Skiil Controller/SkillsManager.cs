@@ -27,15 +27,4 @@ public class SkillsManager : MonoBehaviour
     {
         
     }
-
-    void ToggleVisual(int skillIndex, bool isEnable)
-    {
-
-    }
-
-    public void ExecuteSkill(int skillIndex, Vector3 direction)
-    {
-
-    }
-
 }

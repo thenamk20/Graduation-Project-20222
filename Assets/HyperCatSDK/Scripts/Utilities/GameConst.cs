@@ -22,4 +22,6 @@ public class GameConst
 
     public const string SkillJoystickVer = "Vertical_Skill_";
 
+    public const string PlayerTag = "Player";
+
 }
