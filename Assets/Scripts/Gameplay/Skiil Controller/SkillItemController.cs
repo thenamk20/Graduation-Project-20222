@@ -26,7 +26,7 @@ public abstract class SkillItemController : MonoBehaviour
     }
 
     public abstract void PrepareSkillDirection();
- 
+
     public abstract void Execute(SkillMessage skillMessage);
 
     public abstract SkillMessage GetSkillMessage();

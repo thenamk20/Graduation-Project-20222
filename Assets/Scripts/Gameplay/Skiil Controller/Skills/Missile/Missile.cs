@@ -36,5 +36,17 @@ public class Missile : NetworkBehaviour
     // ServerCallback because we don't want a warning
     // if OnTriggerEnter is called on the client
     [ServerCallback]
-    void OnTriggerEnter(Collider co) => DestroySelf();
+    void OnTriggerEnter(Collider co)
+    {
+        if (co.CompareTag(GameConst.PlayerTag))
+        {
+            Player player;
+            if(co.TryGetComponent<Player>(out player))
+            {
+                HCDebug.Log("Receive damage");
+                player.ReceiveDamage(10);
+            }
+        }
+       
+    }
 }

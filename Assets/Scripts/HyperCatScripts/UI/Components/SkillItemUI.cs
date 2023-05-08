@@ -28,7 +28,7 @@ public class SkillItemUI : HCMonoBehaviour, IPointerUpHandler, IPointerDownHandl
     {
         SkillMessage skillMessage = myPlayer.SkillsManager.Skills[skillIndex].GetSkillMessage();
         HCDebug.Log(skillMessage, HcColor.Orange);
-        myPlayer.CmdExecuteASkill(skillIndex, skillMessage);
+        myPlayer.CheckToCastSkill(skillIndex, skillMessage);
     }
 
     public void OnPointerDown(PointerEventData eventData)

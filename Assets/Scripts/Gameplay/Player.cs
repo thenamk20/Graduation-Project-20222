@@ -16,25 +16,31 @@ public class Player : NetworkBehaviour, IDamageable
 
     [SerializeField] private GameObject characterModel;
 
+    [SerializeField] private Transform missileMount;
+
     public GameObject VisualModel => characterModel;
 
     public SkillsManager SkillsManager => skillManager;
 
-    //[SyncVar(hook = nameof(UpdateHealthBar))]
+    public Transform MissileMount => missileMount;
+
+    [SyncVar(hook = nameof(UpdateHealthBar))]
     public int healthAmount;
 
     //[SyncVar]
     public bool isDamageAble;
 
-    //[SyncVar]
+    [SyncVar]
     public bool isFreeMoving;
 
-    //[SyncVar]
+    [SyncVar]
     public bool isFreeRotating;
 
+    [SyncVar]
     private CharacterStats stats;
 
     // Start is called before the first frame update
+
     void Start()
     {
         stats = new CharacterStats
@@ -44,7 +50,6 @@ public class Player : NetworkBehaviour, IDamageable
         };
 
         healthAmount = 100;
-        UpdateHealthBar(healthAmount, healthAmount);
 
         if (isLocalPlayer)
         {
@@ -61,6 +66,7 @@ public class Player : NetworkBehaviour, IDamageable
         {
             Vector3 dir = new Vector3(CnInputManager.GetAxis("Horizontal"), 0, CnInputManager.GetAxis("Vertical"));
             if(dir != Vector3.zero && Vector3.SqrMagnitude(dir) > 0.05f)
+                //MovePlayerTest(dir * stats.moveSpeed);
                 CmdMovePlayer(dir * stats.moveSpeed);
         }
     }
@@ -76,17 +82,22 @@ public class Player : NetworkBehaviour, IDamageable
     public void RPCMovePlayer(Vector3 dir)
     {
         if(isFreeMoving) characterController.SimpleMove(dir);
-        if(isFreeRotating) characterModel.transform.rotation = Quaternion.Lerp(characterModel.transform.rotation, Quaternion.LookRotation(dir), 0.2f);
+        if(isFreeRotating) transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.LookRotation(dir), 0.2f);
     }
 
     public void MovePlayerTest(Vector3 dir)
     {
         if (isFreeMoving) characterController.SimpleMove(dir);
-        if (isFreeRotating) characterModel.transform.rotation = Quaternion.Lerp(characterModel.transform.rotation, Quaternion.LookRotation(dir), 0.2f);
+        if (isFreeRotating) transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.LookRotation(dir), 0.2f);
+    }
+
+    public void CheckToCastSkill(int skillIndex, SkillMessage message)
+    {
+        CmdExecuteASkill(skillIndex, (MissileMessage)message);
     }
 
     [Command]
-    public void CmdExecuteASkill(int skillIndex, SkillMessage message)
+    public void CmdExecuteASkill(int skillIndex, MissileMessage message)
     {
         skillManager.Skills[skillIndex].Execute(message);
         HCDebug.Log(message, HcColor.Violet);
@@ -99,21 +110,31 @@ public class Player : NetworkBehaviour, IDamageable
         HCDebug.Log("use skill");
     }
 
-
     public void LookDirection(Vector3 direction)
     {
         var rot = Quaternion.LookRotation(direction).eulerAngles;
-        characterModel.transform.rotation = Quaternion.Euler(0, rot.y, 0);
+        transform.rotation = Quaternion.Euler(0, rot.y, 0);
+    }
+
+    [TargetRpc]
+    public void RPCLookDirection(Vector3 direction)
+    {
+        LookDirection(direction);
     }
 
     public void ReceiveDamage(int amount)
     {
+        HCDebug.Log("Recei damage with amount: " + amount);
         healthAmount -= amount;
     }
 
+    [ClientCallback]
     void UpdateHealthBar(int oldAmount, int newAmount)
     {
         healthBar.SetDirectProgressValue(newAmount * 1.0f / stats.maxHealth);
+        HCDebug.Log(oldAmount);
+        HCDebug.Log(newAmount);
+        //healthBar.SetDirectProgressValue(0.3f);
     }
 }
 

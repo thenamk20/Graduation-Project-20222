@@ -54,9 +54,9 @@ public class SingleMissileSkill : SkillItemController
     {
         MissileMessage missileMessage = (MissileMessage)message;
 
-        myPlayer.LookDirection(missileMessage.animDirection);
-        if(missileMessage.isLockMoving) myPlayer.isFreeMoving = false;
-        if (missileMessage.isLockRotating) myPlayer.isFreeRotating = false;
+        missileMessage.myPlayer.RPCLookDirection(missileMessage.animDirection);
+        if(missileMessage.isLockMoving) missileMessage.myPlayer.isFreeMoving = false;
+        if (missileMessage.isLockRotating) missileMessage.myPlayer.isFreeRotating = false;
 
         StartCoroutine(AttackAction(missileMessage));
     }
@@ -65,24 +65,29 @@ public class SingleMissileSkill : SkillItemController
     {
         yield return new WaitForSeconds(missileMessage.delayTime);
 
-        GameObject missile = Instantiate(missilePrefab, missileMount, missileMount);
+        var rot = Quaternion.LookRotation(missileMessage.animDirection).eulerAngles;
+        Vector3 spawnPoint = myPlayer.MissileMount.position;
+        HCDebug.Log("offset: " + missileMessage.spawnPointOffset);
+
+        GameObject missile = Instantiate(missilePrefab, spawnPoint, Quaternion.Euler(0, rot.y, 0));
         NetworkServer.Spawn(missile);
 
         yield return new WaitForSeconds(missileMessage.attackTime);
-        if (missileMessage.isLockMoving) myPlayer.isFreeMoving = true;
-        if (missileMessage.isLockRotating) myPlayer.isFreeRotating = true;
+        if (missileMessage.isLockMoving) missileMessage.myPlayer.isFreeMoving = true;
+        if (missileMessage.isLockRotating) missileMessage.myPlayer.isFreeRotating = true;
     }
 
     public override SkillMessage GetSkillMessage()
     {
         return new MissileMessage
         {
-            skillAimType = SKILL_AIM_TYPE.DIRECTION,
             animDirection = skillAimDir,
             isLockMoving = lockMoving,
             isLockRotating = lockRotating,
             attackTime = attackTime,
             delayTime = delayAttack,
+            spawnPointOffset = missileMount.localPosition,
+            myPlayer = myPlayer
         };
     }
 }
@@ -95,4 +100,6 @@ public class MissileMessage : SkillMessage
     public Vector3 animDirection;
     public float attackTime;
     public float delayTime;
+    public Vector3 spawnPointOffset;
+    public Player myPlayer;
 }
