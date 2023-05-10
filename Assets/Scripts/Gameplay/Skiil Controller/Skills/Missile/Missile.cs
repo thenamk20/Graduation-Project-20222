@@ -38,15 +38,15 @@ public class Missile : NetworkBehaviour
     [ServerCallback]
     void OnTriggerEnter(Collider co)
     {
-        if (co.CompareTag(GameConst.PlayerTag))
+        if (co.CompareTag(GameConst.DamageableObject))
         {
-            Player player;
-            if(co.TryGetComponent<Player>(out player))
+            IDamageable damageableObject;
+            if(co.TryGetComponent<IDamageable>(out damageableObject))
             {
                 HCDebug.Log("Receive damage");
-                player.ReceiveDamage(10);
+                damageableObject.ReceiveDamage(10);
+                Destroy(gameObject);
             }
         }
-       
     }
 }

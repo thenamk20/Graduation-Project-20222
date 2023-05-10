@@ -1,3 +1,4 @@
+using Sirenix.OdinInspector;
 using System.Collections;
 #if UNITY_EDITOR
 using UnityEditor;
@@ -83,5 +84,26 @@ public class ProgressBar : MonoBehaviour
     {
         ProgressImage.fillAmount = Progress;
         ProgressImage.color = ColorGradient.Evaluate(1 - ProgressImage.fillAmount);
+    }
+
+    [Title("Health Bar")]
+
+    [SerializeField]
+    private Color myPlayerColor;
+
+    [SerializeField]
+    private Color enemyColor;
+
+    [SerializeField]
+    private Image healthFill;
+
+    public void SetMyPlayerHealthColor()
+    {
+        healthFill.color = myPlayerColor;
+    }
+
+    public void SetEnemyHealthColor()
+    {
+        healthFill.color = enemyColor;
     }
 }

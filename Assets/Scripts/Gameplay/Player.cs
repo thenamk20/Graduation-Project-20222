@@ -4,7 +4,9 @@ using Sirenix.OdinInspector;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro.Examples;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class Player : NetworkBehaviour, IDamageable
 {
@@ -13,6 +15,8 @@ public class Player : NetworkBehaviour, IDamageable
     [SerializeField] private SkillsManager skillManager;
 
     [SerializeField] private ProgressBar healthBar;
+
+    [SerializeField] private ProgressBar chakraBar;
 
     [SerializeField] private GameObject characterModel;
 
@@ -24,8 +28,7 @@ public class Player : NetworkBehaviour, IDamageable
 
     public Transform MissileMount => missileMount;
 
-    [SyncVar(hook = nameof(UpdateHealthBar))]
-    public int healthAmount;
+    public bool AvailableToUseSkill => (chakra >= stats.CharkaRequirePerSkill);
 
     //[SyncVar]
     public bool isDamageAble;
@@ -36,27 +39,55 @@ public class Player : NetworkBehaviour, IDamageable
     [SyncVar]
     public bool isFreeRotating;
 
+    [SyncVar(hook = nameof(UpdateHealthBar))]
+    public int healthAmount;
+
+    [SyncVar(hook = nameof(UpdateChakraBar))]
+    public float chakra;
+
     [SyncVar]
-    private CharacterStats stats;
+    public CharacterStats stats;
 
     // Start is called before the first frame update
 
     void Start()
     {
-        stats = new CharacterStats
-        {
-            moveSpeed = 2f,
-            maxHealth = 100
-        };
-
-        healthAmount = 100;
-
         if (isLocalPlayer)
         {
             LocalBattleController.Instance.SetCamWatchMyPlayer(transform);
             isFreeMoving = true;
             isFreeRotating = true;
         }
+    }
+
+  
+
+    public override void OnStartClient()
+    {
+        healthAmount = stats.maxHealth;
+        chakra = stats.maxChakra;
+        chakraBar.gameObject.SetActive(isLocalPlayer);
+
+
+        if (isLocalPlayer)
+        {
+            healthBar.SetMyPlayerHealthColor();
+        }
+        else
+        {
+            healthBar.SetEnemyHealthColor();
+        }
+    }
+
+    public override void OnStartServer()
+    {
+        stats = new CharacterStats
+        {
+            moveSpeed = 2f,
+            maxHealth = 100,
+            maxChakra = 99,
+            restoreChakraSpeed = 20
+        };
     }
 
     // Update is called once per frame
@@ -68,6 +99,15 @@ public class Player : NetworkBehaviour, IDamageable
             if(dir != Vector3.zero && Vector3.SqrMagnitude(dir) > 0.05f)
                 //MovePlayerTest(dir * stats.moveSpeed);
                 CmdMovePlayer(dir * stats.moveSpeed);
+        }
+        RestoreChakra();
+    }
+
+    void RestoreChakra()
+    {
+        if (chakra < stats.maxChakra)
+        {
+            chakra += stats.restoreChakraSpeed * Time.deltaTime;
         }
     }
 
@@ -93,12 +133,16 @@ public class Player : NetworkBehaviour, IDamageable
 
     public void CheckToCastSkill(int skillIndex, SkillMessage message)
     {
-        CmdExecuteASkill(skillIndex, (MissileMessage)message);
+        if (AvailableToUseSkill)
+        {
+            CmdExecuteASkill(skillIndex, (MissileMessage)message);
+        }
     }
 
     [Command]
     public void CmdExecuteASkill(int skillIndex, MissileMessage message)
     {
+        ComsumingCharka();
         skillManager.Skills[skillIndex].Execute(message);
         HCDebug.Log(message, HcColor.Violet);
         RPCUseSkill();
@@ -132,14 +176,29 @@ public class Player : NetworkBehaviour, IDamageable
     void UpdateHealthBar(int oldAmount, int newAmount)
     {
         healthBar.SetDirectProgressValue(newAmount * 1.0f / stats.maxHealth);
-        HCDebug.Log(oldAmount);
-        HCDebug.Log(newAmount);
-        //healthBar.SetDirectProgressValue(0.3f);
+    }
+
+    [ClientCallback]
+    void UpdateChakraBar(float oldAmount, float newAmount)
+    {
+        chakraBar.SetDirectProgressValue(newAmount * 1.0f / stats.maxChakra);
+    }
+
+    public void ComsumingCharka()
+    {
+        chakra -= stats.CharkaRequirePerSkill;
     }
 }
 
+[Serializable]
 public class CharacterStats
 {
     public float moveSpeed;
     public int maxHealth;
+    
+    public float restoreChakraSpeed = 2f;
+    public float maxChakra;
+    public int charkaSlots = 3;
+
+    public float CharkaRequirePerSkill => maxChakra / charkaSlots;
 }
