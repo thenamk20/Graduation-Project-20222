@@ -1,4 +1,3 @@
-using Mirror;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -21,14 +20,12 @@ public class SkillItemUI : HCMonoBehaviour, IPointerUpHandler, IPointerDownHandl
 
     private void Start()
     {
-        myPlayer = NetworkClient.localPlayer.gameObject.GetComponent<Player>();
+       
     }
 
     public void OnPointerUp(PointerEventData eventData)
     {
-        SkillMessage skillMessage = myPlayer.SkillsManager.Skills[skillIndex].GetSkillMessage();
-        HCDebug.Log(skillMessage, HcColor.Orange);
-        myPlayer.CheckToCastSkill(skillIndex, skillMessage);
+        
     }
 
     public void OnPointerDown(PointerEventData eventData)

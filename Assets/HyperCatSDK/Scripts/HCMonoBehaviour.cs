@@ -1,10 +1,11 @@
 ﻿#region
 
+using Photon.Pun;
 using UnityEngine;
 
 #endregion
 
-public class HCMonoBehaviour : MonoBehaviour
+public class HCMonoBehaviour : MonoBehaviourPunCallbacks
 {
     private ConfigManager _cfg;
     private GameManager _gameManager;

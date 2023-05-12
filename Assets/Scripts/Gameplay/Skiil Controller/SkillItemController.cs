@@ -1,5 +1,4 @@
 using CnControls;
-using Mirror;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -27,13 +26,8 @@ public abstract class SkillItemController : MonoBehaviour
 
     public abstract void PrepareSkillDirection();
 
-    public abstract void Execute(SkillMessage skillMessage);
+    public abstract void Execute();
 
-    public abstract SkillMessage GetSkillMessage();
-}
-
-public class SkillMessage { 
-    
 }
 
 

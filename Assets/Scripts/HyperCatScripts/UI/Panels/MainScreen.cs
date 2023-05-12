@@ -1,6 +1,6 @@
 ﻿#region
 
-using Mirror;
+using Photon.Pun;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -10,12 +10,6 @@ using UnityEngine.SceneManagement;
 public class MainScreen : UIPanel
 {
     public static MainScreen Instance { get; private set; }
-
-    [SerializeField] private GameObject startHostButton;
-
-    [SerializeField] private GameObject startClientButton;
-
-    [SerializeField] private GameObject startServerButton;
 
     public override UiPanelType GetId()
     {
@@ -41,7 +35,7 @@ public class MainScreen : UIPanel
 
     private void Init()
     {
-        ToggleButtons(true);
+
     }
 
     public void ShowSetting()
@@ -59,38 +53,6 @@ public class MainScreen : UIPanel
             PopupNoInternet.Show();
             return;
         }
-    }
-
-
-    public void StartHost()
-    {
-        NetworkManager.singleton.StartHost();
-        HCDebug.Log("Start Host");
-        ToggleButtons(false);
-        StartGame();
-    }
-
-    public void StartClient()
-    {
-        NetworkManager.singleton.StartClient();
-        HCDebug.Log("Start Client");
-        ToggleButtons(false);
-        StartGame();
-    }
-
-    public void StartServer()
-    {
-        NetworkManager.singleton.StartServer();
-        HCDebug.Log("Start Server");
-        ToggleButtons(false);
-        StartGame();
-    }
-
-    void ToggleButtons(bool isEnable)
-    {
-        startHostButton.SetActive(isEnable);
-        startClientButton.SetActive(isEnable);
-        startServerButton.SetActive(isEnable);
     }
 
     protected override void RegisterEvent()
