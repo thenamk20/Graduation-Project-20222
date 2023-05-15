@@ -27,6 +27,8 @@ public class EventGlobalManager : Singleton<EventGlobalManager>
 
     public Relay<Vector3> OnCollectKey = new Relay<Vector3>();
 
+    public Relay OnEnterARoom = new Relay();
+
     private void Start()
     {
         StartCoroutine(EverySecondTick());

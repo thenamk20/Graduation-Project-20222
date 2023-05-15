@@ -15,7 +15,7 @@ public abstract class SkillItemController : MonoBehaviour
     protected SKILL_AIM_TYPE aimType;
 
     [SerializeField]
-    protected Player myPlayer;
+    protected PlayerController myPlayer;
 
     protected bool isPrepare;
 

@@ -71,4 +71,16 @@ public class MainScreen : UIPanel
         base.OnDisappear();
         Instance = null;
     }
+
+    public void OpenFindRoom()
+    {
+        PopupRoom.Show();
+        PopupRoom.Instance.ShowRoomState(ROOM_PANEL_STATE.FINDING);
+    }
+
+    public void OpenCreateRoom()
+    {
+        PopupRoom.Show();
+        PopupRoom.Instance.ShowRoomState(ROOM_PANEL_STATE.CREATING);
+    }
 }

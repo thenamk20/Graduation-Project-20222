@@ -19,5 +19,6 @@ public enum UiPanelType
     PopupDailyReward,
     PopupLeaderboard,
     PopupTest,
+    PopupRoom,
     SdkPlaceHolder
 }

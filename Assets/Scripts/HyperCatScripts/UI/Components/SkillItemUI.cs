@@ -11,7 +11,7 @@ public class SkillItemUI : HCMonoBehaviour, IPointerUpHandler, IPointerDownHandl
     [SerializeField]
     private int skillIndex;
 
-    private Player myPlayer;
+    private PlayerController myPlayer;
 
     public void Init()
     {
