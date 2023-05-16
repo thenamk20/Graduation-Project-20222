@@ -26,7 +26,8 @@ public class PopupRoom : UIPanel
 
     [SerializeField] private RoomListController roomListController;
 
-
+    [SerializeField] private GameObject startGameButton;
+    
     public static PopupRoom Instance { get; private set; }
 
     public override UiPanelType GetId()
@@ -118,6 +119,10 @@ public class PopupRoom : UIPanel
 
     }
 
+    public void StartTheGame()
+    {
+        NetworkManager.Instance.StartGame();
+    }
     
 
     #region PUn callbacks
@@ -132,6 +137,13 @@ public class PopupRoom : UIPanel
         Player[] players = PhotonNetwork.PlayerList;
 
         playerListController.Init(players);
+
+        startGameButton.SetActive(PhotonNetwork.IsMasterClient);
+    }
+
+    public override void OnMasterClientSwitched(Player newMasterClient)
+    {
+        startGameButton.SetActive(PhotonNetwork.IsMasterClient);
     }
 
     public override void OnLeftRoom()

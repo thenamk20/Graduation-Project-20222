@@ -32,6 +32,7 @@ public class Launcher : MonoBehaviourPunCallbacks
         HCDebug.Log($"Game Version: {PhotonNetwork.GameVersion}", HcColor.Green);
 
         PhotonNetwork.JoinLobby();
+        PhotonNetwork.AutomaticallySyncScene = true;
     }
 
     public override void OnJoinedLobby()

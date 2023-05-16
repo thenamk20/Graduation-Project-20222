@@ -28,4 +28,11 @@ public class GameConst
 
     public const string DamageableObject = "DamObject";
 
+    // resources path, file name
+
+    public const string PhotonPrefabs = "PhotonPrefabs";
+
+    public const string PlayerManager = "PlayerManager";
+
+    public const string PlayerController = "PlayerController";
 }

@@ -11,8 +11,6 @@ public class SkillItemUI : HCMonoBehaviour, IPointerUpHandler, IPointerDownHandl
     [SerializeField]
     private int skillIndex;
 
-    private PlayerController myPlayer;
-
     public void Init()
     {
        
@@ -31,7 +29,6 @@ public class SkillItemUI : HCMonoBehaviour, IPointerUpHandler, IPointerDownHandl
     public void OnPointerDown(PointerEventData eventData)
     {
         HCDebug.Log("Pointer down");
-        myPlayer.SkillsManager.Skills[skillIndex].PrepareSkillDirection();
     }
 }
 

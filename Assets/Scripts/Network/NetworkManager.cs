@@ -42,4 +42,9 @@ public class NetworkManager : Singleton<NetworkManager>
     {
         AllRoomList.Clear();
     }
+
+    public void StartGame()
+    {
+        PhotonNetwork.LoadLevel((int)SceneIndex.Battle);
+    }
 }
