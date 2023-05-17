@@ -20,5 +20,6 @@ public enum UiPanelType
     PopupLeaderboard,
     PopupTest,
     PopupRoom,
+    PopupChangeNickname,
     SdkPlaceHolder
 }

@@ -5,6 +5,7 @@ using Photon;
 using Photon.Pun;
 using Photon.Realtime;
 using System.Linq;
+using System.Runtime.CompilerServices;
 
 public class Launcher : MonoBehaviourPunCallbacks
 {
@@ -14,9 +15,9 @@ public class Launcher : MonoBehaviourPunCallbacks
         //PhotonNetwork.NickName = MasterManager.GameSettings.NickName;
         //PhotonNetwork.GameVersion = MasterManager.GameSettings.GameVerion;
 
-        PhotonNetwork.NickName = $"Player{Random.Range(0, 1000)}";
+        string nickName = GameManager.Instance.data.user.name;
         PhotonNetwork.GameVersion = "0.0.0";
-        PhotonNetwork.ConnectUsingSettings();
+        ConnectToPhoton(nickName);
     }
 
     // Update is called once per frame
@@ -33,6 +34,14 @@ public class Launcher : MonoBehaviourPunCallbacks
 
         PhotonNetwork.JoinLobby();
         PhotonNetwork.AutomaticallySyncScene = true;
+    }
+
+    public void ConnectToPhoton(string nickName)
+    {
+        Debug.Log($"Connect to Photon as {nickName}");
+        PhotonNetwork.AuthValues = new AuthenticationValues(nickName);
+        PhotonNetwork.NickName = nickName;
+        PhotonNetwork.ConnectUsingSettings();
     }
 
     public override void OnJoinedLobby()

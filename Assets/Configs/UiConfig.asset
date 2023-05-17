@@ -15,6 +15,7 @@ MonoBehaviour:
   panelInstances:
   - {fileID: 4376277840728500120, guid: d11b98902fec28e4d88e412e8d64ae9c, type: 3}
   - {fileID: 3954823013641808223, guid: b7a0abbf25bf52042be96cd0ea387317, type: 3}
+  - {fileID: 4338522651471195676, guid: 7f9e85fa192345d4e931f4bc7ca0e6ce, type: 3}
   - {fileID: 92526893789430412, guid: 80d7c7ed0a89fef4b9da556d00e36f0a, type: 3}
   - {fileID: 5629657266680520599, guid: db5eece97b76f3042a52241a8c43d11e, type: 3}
   - {fileID: 1818727273283026048, guid: 0a6119594d4833c42abb48601f6ef5a3, type: 3}

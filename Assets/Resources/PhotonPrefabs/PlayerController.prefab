@@ -1220,6 +1220,7 @@ MonoBehaviour:
     restoreChakraSpeed: 2
     maxChakra: 100
     charkaSlots: 3
+  playerManager: {fileID: 0}
 --- !u!114 &3867898241984792747
 MonoBehaviour:
   m_ObjectHideFlags: 0

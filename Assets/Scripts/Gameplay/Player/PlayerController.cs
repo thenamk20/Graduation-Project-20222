@@ -23,12 +23,11 @@ public class PlayerController : MonoBehaviour
 
     PhotonView PV;
 
-    PlayerManager playerManager;
+    public PlayerManager playerManager;
 
     private void Awake()
     {
         PV = GetComponent<PhotonView>();
-        playerManager = PhotonView.Find((int)PV.InstantiationData[0]).GetComponent<PlayerManager>();
     }
 
     void Start()
@@ -39,6 +38,11 @@ public class PlayerController : MonoBehaviour
         }
 
         stats = new CharacterStats();
+    }
+
+    public void Init(PlayerManager _playerManager)
+    {
+        playerManager = _playerManager;
     }
 
     // Update is called once per frame

@@ -23,7 +23,7 @@ public class GameData
         //Progress Data
         public int money;
         public int score;
-        public string name = "Player";
+        public string name = "";
         public int luckyWheelProgress;
         public bool isConsentUpdated;
         public DateTime lastFreeSpinTime = DateTime.MinValue;
