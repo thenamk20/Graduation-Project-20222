@@ -23,12 +23,12 @@ public class SkillItemUI : HCMonoBehaviour, IPointerUpHandler, IPointerDownHandl
 
     public void OnPointerUp(PointerEventData eventData)
     {
-        
+        MyPlayer.Instance.Controller.SkillsManager.Skills[skillIndex].Execute();
     }
 
     public void OnPointerDown(PointerEventData eventData)
     {
-        HCDebug.Log("Pointer down");
+        MyPlayer.Instance.Controller.SkillsManager.Skills[skillIndex].PrepareSkillDirection();
     }
 }
 

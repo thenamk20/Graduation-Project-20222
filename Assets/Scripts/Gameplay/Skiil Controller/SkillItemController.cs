@@ -32,7 +32,6 @@ public abstract class SkillItemController : MonoBehaviour
 
 
 
-
 public enum SKILL_AIM_TYPE
 {
     DIRECTION = 0,

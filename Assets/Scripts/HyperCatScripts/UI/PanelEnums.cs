@@ -21,5 +21,8 @@ public enum UiPanelType
     PopupTest,
     PopupRoom,
     PopupChangeNickname,
+    ScreenVictory,
+    ScreenDefeat,
+    PopupQuickMatch,
     SdkPlaceHolder
 }

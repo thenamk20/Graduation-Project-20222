@@ -1,6 +1,8 @@
 using CnControls;
+using Photon.Pun;
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using TMPro.Examples;
 using UnityEngine;
 
@@ -51,7 +53,29 @@ public class SingleMissileSkill : SkillItemController
 
     public override void Execute()
     {
-        
+        if(lockRotating)
+            MyPlayer.Instance.Controller.rotateable = false;
+        if(lockMoving)
+            MyPlayer.Instance.Controller.moveable = false;
+
+        var rot = Quaternion.LookRotation(skillAimDir).eulerAngles;
+        MyPlayer.Instance.Controller.transform.rotation = Quaternion.Euler(0, rot.y, 0);
+
+        HCDebug.Log("Skill aim dir: " + skillAimDir);
+
+        StartCoroutine(FireSequence());
+    }
+
+    IEnumerator FireSequence()
+    {
+        yield return new WaitForSecondsRealtime(delayAttack);
+        Missile missile = PhotonNetwork.Instantiate(Path.Combine(GameConst.PhotonPrefabs, GameConst.MissileName), missileMount.position, missileMount.rotation).GetComponent<Missile>();
+        yield return new WaitForSecondsRealtime(attackTime);
+
+        if (lockRotating)
+            MyPlayer.Instance.Controller.rotateable = true;
+        if (lockMoving)
+            MyPlayer.Instance.Controller.moveable = true;
     }
 }
 

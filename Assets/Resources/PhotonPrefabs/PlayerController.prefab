@@ -1169,7 +1169,7 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.4
+  m_Radius: 0.5
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 1, z: 0}
@@ -1192,6 +1192,7 @@ MonoBehaviour:
   OwnershipTransfer: 0
   observableSearch: 2
   ObservedComponents:
+  - {fileID: 1897759513882573551}
   - {fileID: 3867898241984792747}
   sceneViewId: 0
   InstantiationId: 0
@@ -1215,12 +1216,16 @@ MonoBehaviour:
   characterModel: {fileID: 7777030996356324668}
   missileMount: {fileID: 1579568886501681605}
   stats:
+    currentHealth: 100
+    currentChakra: 100
     moveSpeed: 2
     maxHealth: 100
     restoreChakraSpeed: 2
     maxChakra: 100
     charkaSlots: 3
   playerManager: {fileID: 0}
+  moveable: 0
+  rotateable: 0
 --- !u!114 &3867898241984792747
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1287,8 +1292,8 @@ MonoBehaviour:
   missilePrefab: {fileID: 4283234162332271623, guid: 1727e033e2e86424b893db494178b093,
     type: 3}
   missileMount: {fileID: 1579568886501681605}
-  delayAttack: 0.2
-  attackTime: 0.3
+  delayAttack: 0.1
+  attackTime: 0.2
   lockMoving: 0
   lockRotating: 1
 --- !u!1 &7843421192634717370

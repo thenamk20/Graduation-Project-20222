@@ -36,9 +36,14 @@ public class RoomManager : MonoBehaviourPunCallbacks
     {
         if (scene.buildIndex == (int)SceneIndex.Battle) // We're in the game scene
         {
-            GUIManager.Instance.ClearGui();
             PlayScreen.Show();
             PhotonNetwork.Instantiate(Path.Combine(GameConst.PhotonPrefabs, GameConst.PlayerManager), Vector3.zero, Quaternion.identity);
+            PopupRoom.Instance?.Close();
+        }
+
+        if(scene.buildIndex == (int)SceneIndex.Hall)
+        {
+            MainScreen.Show();
         }
     }
 }

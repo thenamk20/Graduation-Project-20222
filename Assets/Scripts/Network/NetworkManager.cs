@@ -3,6 +3,7 @@ using Photon.Realtime;
 using Sigtrap.Relays;
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using UnityEngine;
 
 public class NetworkManager : Singleton<NetworkManager>
@@ -46,5 +47,10 @@ public class NetworkManager : Singleton<NetworkManager>
     public void StartGame()
     {
         PhotonNetwork.LoadLevel((int)SceneIndex.Battle);
+    }
+
+    public GameObject InstantiateObject(GameObject item, Vector3 position, Quaternion rotation)
+    {
+        return PhotonNetwork.Instantiate(Path.Combine(GameConst.PhotonPrefabs, item.name), position, rotation);
     }
 }

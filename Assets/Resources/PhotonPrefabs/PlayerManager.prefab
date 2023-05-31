@@ -66,3 +66,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 86b54464e36e7ce40a33d9b8189dd80c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isAlive: 0

@@ -35,4 +35,6 @@ public class GameConst
     public const string PlayerManager = "PlayerManager";
 
     public const string PlayerController = "PlayerController";
+
+    public const string MissileName = "Missile";
 }

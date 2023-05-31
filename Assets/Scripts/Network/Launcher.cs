@@ -15,7 +15,7 @@ public class Launcher : MonoBehaviourPunCallbacks
         //PhotonNetwork.NickName = MasterManager.GameSettings.NickName;
         //PhotonNetwork.GameVersion = MasterManager.GameSettings.GameVerion;
 
-        string nickName = GameManager.Instance.data.user.name;
+        string nickName = $"{GameManager.Instance.data.user.name}#{Random.Range(1000, 9999).ToString()}";
         PhotonNetwork.GameVersion = "0.0.0";
         ConnectToPhoton(nickName);
     }
