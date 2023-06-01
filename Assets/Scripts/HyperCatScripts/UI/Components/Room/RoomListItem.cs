@@ -28,5 +28,6 @@ public class RoomListItem : MonoBehaviour
     {
         Debug.Log("Click join room");
         NetworkManager.Instance.JoinRoom(_roomInfo);
+        PopupRoom.Instance.SetLoadingMessage("Joining room...");
     }
 }

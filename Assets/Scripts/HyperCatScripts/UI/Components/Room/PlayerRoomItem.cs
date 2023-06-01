@@ -1,5 +1,6 @@
 using Photon.Pun;
 using Photon.Realtime;
+using PlayFab;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -28,5 +29,6 @@ public class PlayerRoomItem : MonoBehaviourPunCallbacks
     public override void OnLeftRoom()
     {
         Destroy(gameObject);
+        
     }
 }

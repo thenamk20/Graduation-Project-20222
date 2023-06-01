@@ -1,4 +1,9 @@
 using Photon.Pun;
+using Photon.Realtime;
+using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
+using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class ScreenVictory : UIPanel
@@ -49,8 +54,28 @@ public class ScreenVictory : UIPanel
 
     public void GoBack()
     {
-        //NetworkManager.Instance.LeaveRoom();
-        PhotonNetwork.LoadLevel((int)SceneIndex.Hall);
-        //SceneManager.LoadSceneAsync((int)SceneIndex.Hall);
+        if (PhotonNetwork.IsMasterClient)
+        {
+            List<Player> players = PhotonNetwork.PlayerList.ToList();
+
+            List<Player> others = players.FindAll(x => !x.IsLocal);
+
+            if (others.Count > 0)
+            {
+                Player randomPlayer = others.GetRandom();
+                PhotonNetwork.SetMasterClient(randomPlayer);
+            }
+        }
+
+        PopupTransition.Show();
+        StartCoroutine(DelayLeaveRoom());
     }
+
+    IEnumerator DelayLeaveRoom()
+    {
+        yield return new WaitForSecondsRealtime(1f);
+        PhotonNetwork.LoadLevel((int)SceneIndex.Hall);
+        PhotonNetwork.LeaveRoom();
+    }
+
 }

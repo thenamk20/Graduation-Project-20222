@@ -87,23 +87,23 @@ public class ProgressBar : MonoBehaviour
     }
 
     [Title("Health Bar")]
-
-    [SerializeField]
-    private Color myPlayerColor;
-
-    [SerializeField]
-    private Color enemyColor;
-
     [SerializeField]
     private Image healthFill;
 
+    [SerializeField]
+    private Sprite greenBar;
+
+    [SerializeField]
+    private Sprite redBar;
+
+
     public void SetMyPlayerHealthColor()
     {
-        healthFill.color = myPlayerColor;
+        healthFill.sprite = greenBar;
     }
 
     public void SetEnemyHealthColor()
     {
-        healthFill.color = enemyColor;
+        healthFill.sprite = redBar;
     }
 }

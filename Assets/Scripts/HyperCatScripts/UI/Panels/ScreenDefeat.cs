@@ -1,5 +1,6 @@
 using Photon.Pun;
 using Photon.Realtime;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -57,11 +58,23 @@ public class ScreenDefeat : UIPanel
         {
             List<Player> players = PhotonNetwork.PlayerList.ToList();
 
-            Player randomPlayer = players.FindAll(x => !x.IsLocal).GetRandom();
+            List<Player> others = players.FindAll(x => !x.IsLocal);
 
-            PhotonNetwork.SetMasterClient(randomPlayer);
+            if(others.Count > 0)
+            {
+                Player randomPlayer = others.GetRandom();
+                PhotonNetwork.SetMasterClient(randomPlayer);
+            }
         }
 
+        PopupTransition.Show();
+        StartCoroutine(DelayLeaveRoom());
+    }
+
+    IEnumerator DelayLeaveRoom()
+    {
+        yield return new WaitForSecondsRealtime(1f);
         PhotonNetwork.LoadLevel((int)SceneIndex.Hall);
+        PhotonNetwork.LeaveRoom();
     }
 }

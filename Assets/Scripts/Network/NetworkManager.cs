@@ -53,4 +53,9 @@ public class NetworkManager : Singleton<NetworkManager>
     {
         return PhotonNetwork.Instantiate(Path.Combine(GameConst.PhotonPrefabs, item.name), position, rotation);
     }
+
+    public GameObject InstantiateRoomObject(GameObject item, Vector3 position, Quaternion rotation)
+    {
+        return PhotonNetwork.InstantiateRoomObject(Path.Combine(GameConst.PhotonPrefabs, item.name), position, rotation);
+    }
 }

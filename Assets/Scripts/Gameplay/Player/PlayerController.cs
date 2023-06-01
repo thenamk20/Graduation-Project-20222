@@ -5,7 +5,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerController : MonoBehaviour, IDamageable, IPunObservable
+public class PlayerController : MonoBehaviour, IDamageable
 {
     [SerializeField] private CharacterController characterController;
 
@@ -41,6 +41,11 @@ public class PlayerController : MonoBehaviour, IDamageable, IPunObservable
         if (PV.IsMine)
         {
             BattleController.Instance.SetCamWatchMyPlayer(gameObject.transform);
+            healthBar.SetMyPlayerHealthColor();
+        }
+        else
+        {
+            healthBar.SetEnemyHealthColor();
         }
 
         stats = new CharacterStats();
@@ -79,19 +84,19 @@ public class PlayerController : MonoBehaviour, IDamageable, IPunObservable
     [PunRPC]
     void RPC_ReceiveDamage(int amount)
     {
-        if (PV.IsMine)
+        HCDebug.Log("Me receive damage", HcColor.Red);
+        stats.currentHealth -= amount;
+
+        float healthPercent = stats.currentHealth * 1.0f / stats.maxHealth;
+        healthBar.SetDirectProgressValue(healthPercent);
+
+        if (stats.currentHealth <= 0)
         {
-            HCDebug.Log("Me receive damage", HcColor.Red);
-            stats.currentHealth -= amount;
-
-            UpdateHealthToOthers();
-
-            float healthPercent = stats.currentHealth * 1.0f / stats.maxHealth;
-            healthBar.SetDirectProgressValue(healthPercent);
-
-            if(stats.currentHealth <= 0)
-            {
+            if(PV.IsMine)
                 OnDied();
+            else
+            {
+                HCDebug.Log("this other player die");
             }
         }
     }
@@ -99,36 +104,6 @@ public class PlayerController : MonoBehaviour, IDamageable, IPunObservable
     void OnDied()
     {
         playerManager.Die();
-    }
-
-    void UpdateHealthToOthers()
-    {
-        PV.RPC(nameof(UpdateHealth), RpcTarget.AllViaServer, stats.currentHealth);
-    }
-
-    [PunRPC]
-    void UpdateHealth(int health)
-    {
-        if (PV.IsMine) return;
-        HCDebug.Log("update other: " + health.ToString());
-        stats.currentHealth = health;
-        healthBar.SetDirectProgressValue(health  * 1.0f/ stats.maxHealth);
-    }
-
-    public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
-    {
-        //HCDebug.Log("Serialzie View", HcColor.Green);
-        //if (stream.IsWriting)
-        //{
-        //    // Sending data to other clients
-        //    stream.SendNext(stats.currentHealth);
-        //}
-        //else if (stream.IsReading)
-        //{
-        //    // Receiving data from the server
-        //    stats.currentHealth = (int)stream.ReceiveNext();
-        //    healthBar.SetDirectProgressValue(stats.currentHealth / stats.maxHealth);
-        //}
     }
 }
 

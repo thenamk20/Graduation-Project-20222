@@ -18,7 +18,7 @@ public class ObjectSpawner : MonoBehaviourPunCallbacks
         {
             foreach(var item in chestInitPoints)
             {
-                NetworkManager.Instance.InstantiateObject(chestPrefab, item.position, Quaternion.identity);
+                NetworkManager.Instance.InstantiateRoomObject(chestPrefab, item.position, Quaternion.identity);
             }
         }
     }

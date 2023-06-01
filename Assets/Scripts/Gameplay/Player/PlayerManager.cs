@@ -19,9 +19,9 @@ public class PlayerManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        isAlive = true;
         if (PV.IsMine)
         {
-            isAlive = true;
             CreateController();
         }
         BattleController.Instance.AddPlayer(this);
@@ -57,12 +57,13 @@ public class PlayerManager : MonoBehaviour
     void RPC_Die()
     {
         isAlive = false;
+        BattleController.Instance.RemovePlayer(this);
         BattleController.Instance.CheckEndBattle();
     }
 
     void HandleBattleEnd()
     {
-        if (isAlive)
+        if (PV.IsMine && isAlive)
         {
             ScreenVictory.Show();
         }

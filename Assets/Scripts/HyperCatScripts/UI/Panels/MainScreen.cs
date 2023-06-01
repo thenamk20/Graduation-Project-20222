@@ -1,6 +1,7 @@
 ﻿#region
 
 using Photon.Pun;
+using PlayFab;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -103,6 +104,7 @@ public class MainScreen : UIPanel
         PhotonNetwork.NickName = inputFieldNickName.text;
         Gm.data.user.name = inputFieldNickName.text;
         EventGlobalManager.Instance.OnChangeName.Dispatch();
+
     }
 
     void UpdateNickNameUI()

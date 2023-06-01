@@ -6,6 +6,12 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/PreloadData.unity
+    guid: 1687aa38fbc3384408441b23158edf21
+  - enabled: 1
+    path: Assets/Scenes/Login.unity
+    guid: a1d55e2ca8fa97e41855f13f970521d9
+  - enabled: 1
     path: Assets/Scenes/Splash.unity
     guid: fa1eaf760a9d5254f8dedcb9d37aa997
   - enabled: 1
@@ -14,7 +20,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Battle.unity
     guid: f766025039ddd8740950b14aaf2782ae
-  - enabled: 1
-    path: Assets/Photon/PhotonUnityNetworking/Demos/DemoAsteroids/Scenes/DemoAsteroids-GameScene.unity
-    guid: 98efc37d6307844488eb3e4247dde7e9
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
   m_configObjects: {}

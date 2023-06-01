@@ -49,7 +49,11 @@ public class PlayfabLogIn : MonoBehaviour
         LoginWithEmailAddressRequest request = new LoginWithEmailAddressRequest
         {
             Email = usernameOrEmail,
-            Password = password
+            Password = password,
+            InfoRequestParameters = new GetPlayerCombinedInfoRequestParams
+            {
+                GetPlayerProfile = true
+            }
         };
 
         PlayFabClientAPI.LoginWithEmailAddress(request, OnLoginEmailSuccess, OnLoginEmailFailure);
@@ -96,6 +100,13 @@ public class PlayfabLogIn : MonoBehaviour
     private void OnLoginEmailSuccess(LoginResult result)
     {
         Debug.Log("You have logged into Playfab");
+        string name = null;
+        if(result.InfoResultPayload.PlayerProfile != null)
+        {
+            name = result.InfoResultPayload.PlayerProfile.DisplayName;
+            PreloadData.Instance.gameData.user.name = name;
+            HCDebug.Log("name:"+ name);
+        }
 
         SceneManager.LoadScene((int)SceneIndex.Splash);
     }

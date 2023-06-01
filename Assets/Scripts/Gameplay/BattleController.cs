@@ -56,7 +56,7 @@ public class BattleController : MonoBehaviourPunCallbacks
             if (player != null && player.isAlive) countPlayers++;
         }
 
-        HCDebug.Log("Check battle end: " + countPlayers);
+        HCDebug.Log("Check battle end: " + countPlayers, HcColor.Green);
 
         if(countPlayers <= 1)
         {

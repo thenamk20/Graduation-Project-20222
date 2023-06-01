@@ -24,5 +24,7 @@ public enum UiPanelType
     ScreenVictory,
     ScreenDefeat,
     PopupQuickMatch,
+    PopupTransition,
+    PopupProfile,
     SdkPlaceHolder
 }

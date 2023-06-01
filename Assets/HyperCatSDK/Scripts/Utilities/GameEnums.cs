@@ -1,7 +1,9 @@
 ﻿public enum SceneIndex
 {
     None = -1,
-    Splash = 0,
+    PreloadData = 0,
+    Login ,
+    Splash,
     Hall,
     Battle
 }

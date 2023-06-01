@@ -78,6 +78,7 @@ public class PopupRoom : UIPanel
 
     public void SetLoadingMessage(string message)
     {
+        ShowRoomState(ROOM_PANEL_STATE.LOADING);
         loadingMessage.text = message;
     }
 
@@ -105,7 +106,6 @@ public class PopupRoom : UIPanel
     public void CreateRoom()
     {
         NetworkManager.Instance.CreateRoom(creatingRoomNameInput.text);
-        ShowRoomState(ROOM_PANEL_STATE.LOADING);
         SetLoadingMessage("Creating room, please wait...");
     }
 
@@ -121,6 +121,7 @@ public class PopupRoom : UIPanel
 
     public void StartTheGame()
     {
+        PhotonNetwork.CurrentRoom.IsVisible = false;
         NetworkManager.Instance.StartGame();
     }
     
