@@ -245,6 +245,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 74e97b361548f5c418a60e8e170838df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameData:
+    setting:
+      enablePn: 0
+      requestedPn: 0
+      haptic: 1
+      soundVolume: 1
+      musicVolume: 1
+      highPerformance: 1
+      iOsTrackingRequested: 0
+    user:
+      level: 1
+      money: 0
+      score: 0
+      name: 
+      luckyWheelProgress: 0
+      isConsentUpdated: 0
+      dailyRewardClaimedCount: 0
+      purchasedNoAds: 0
+      rated: 0
+      totalScoreOffset: 0
+      sessionPlayed: 0
 --- !u!4 &2038975181
 Transform:
   m_ObjectHideFlags: 0
