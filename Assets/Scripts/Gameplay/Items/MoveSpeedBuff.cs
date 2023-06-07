@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class MoveSpeedBuff : BuffItem
 {
-    public override void ClaimBuff()
+    public override void ClaimBuff(PlayerController player)
     {
       
     }

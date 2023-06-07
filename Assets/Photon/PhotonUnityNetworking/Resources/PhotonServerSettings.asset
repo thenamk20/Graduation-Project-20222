@@ -43,6 +43,9 @@ MonoBehaviour:
   - UpdateHealth
   - RPC_Die
   - RPC_UpdateHealth
+  - UpdateState
+  - UpdateGotBuff
+  - RPC_IncreaseDam
   DisableAutoOpenWizard: 1
   ShowSettings: 1
   DevRegionSetOnce: 1

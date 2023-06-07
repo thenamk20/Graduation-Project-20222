@@ -4,8 +4,10 @@ using UnityEngine;
 
 public class DamageBuff : BuffItem
 {
-    public override void ClaimBuff()
+    [SerializeField] private float buffAmount = 0.1f;
+
+    public override void ClaimBuff(PlayerController player)
     {
-        throw new System.NotImplementedException();
+        player.IncreaseDam(buffAmount);
     }
 }

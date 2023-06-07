@@ -17,6 +17,8 @@ public class BattleController : MonoBehaviourPunCallbacks
 
     public Relay OnEndBattle = new Relay();
 
+    public bool ended = false;
+
     private void Start()
     {
         Instance = this;
@@ -50,17 +52,21 @@ public class BattleController : MonoBehaviourPunCallbacks
 
     public void CheckEndBattle()
     {
-        int countPlayers = 0;
-        foreach(var player in Players)
+        if (!ended)
         {
-            if (player != null && player.isAlive) countPlayers++;
-        }
+            int countPlayers = 0;
+            foreach (var player in Players)
+            {
+                if (player != null && player.isAlive) countPlayers++;
+            }
 
-        HCDebug.Log("Check battle end: " + countPlayers, HcColor.Green);
+            HCDebug.Log("Check battle end: " + countPlayers, HcColor.Green);
 
-        if(countPlayers <= 1)
-        {
-            OnEndBattle.Dispatch();
+            if (countPlayers <= 1)
+            {
+                ended = true;
+                OnEndBattle.Dispatch();
+            }
         }
     }
 

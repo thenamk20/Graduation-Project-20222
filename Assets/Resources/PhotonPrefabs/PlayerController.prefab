@@ -632,6 +632,7 @@ MonoBehaviour:
     restoreChakraSpeed: 2
     maxChakra: 100
     charkaSlots: 3
+    damMultiply: 1
   playerManager: {fileID: 0}
   moveable: 0
   rotateable: 0

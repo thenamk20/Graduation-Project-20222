@@ -48,6 +48,8 @@ public class PlayerController : MonoBehaviour, IDamageable
             healthBar.SetEnemyHealthColor();
         }
 
+        chakraBar.gameObject.SetActive(PV.IsMine);
+
         stats = new CharacterStats();
         healthBar.SetDirectProgressValue(1);
 
@@ -82,7 +84,7 @@ public class PlayerController : MonoBehaviour, IDamageable
     }
 
     [PunRPC]
-    void RPC_ReceiveDamage(int amount)
+    void RPC_ReceiveDamage(int amount, PhotonMessageInfo info)
     {
         HCDebug.Log("Me receive damage", HcColor.Red);
         stats.currentHealth -= amount;
@@ -93,7 +95,7 @@ public class PlayerController : MonoBehaviour, IDamageable
         if (stats.currentHealth <= 0)
         {
             if(PV.IsMine)
-                OnDied();
+                OnDied(info);
             else
             {
                 HCDebug.Log("this other player die");
@@ -101,10 +103,23 @@ public class PlayerController : MonoBehaviour, IDamageable
         }
     }
 
-    void OnDied()
+    void OnDied(PhotonMessageInfo info)
     {
-        playerManager.Die();
+        playerManager.Die(PhotonNetwork.LocalPlayer.NickName, info.Sender.NickName);
     }
+
+    //buff managing
+    public void IncreaseDam(float gain)
+    {
+        PV.RPC(nameof(RPC_IncreaseDam), RpcTarget.All, gain);
+    }
+
+    [PunRPC]
+    void RPC_IncreaseDam(float gain)
+    {
+        stats.damMultiply += gain;
+    }
+
 }
 
 [Serializable]
@@ -119,6 +134,7 @@ public class CharacterStats
     public float restoreChakraSpeed = 2f;
     public float maxChakra;
     public int charkaSlots = 3;
+    public float damMultiply = 1f;
 
     public float CharkaRequirePerSkill => maxChakra / charkaSlots;
 

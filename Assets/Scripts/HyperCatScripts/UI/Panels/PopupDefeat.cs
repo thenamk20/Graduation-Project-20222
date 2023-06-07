@@ -4,20 +4,19 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
-public class ScreenVictory : UIPanel
+public class PopupDefeat : UIPanel
 {
-    public static ScreenVictory Instance { get; private set; }
+    public static PopupDefeat Instance { get; private set; }
 
     public override UiPanelType GetId()
     {
-        return UiPanelType.ScreenVictory;
+        return UiPanelType.PopupDefeat;
     }
 
     public static void Show()
     {
-        var newInstance = (ScreenVictory) GUIManager.Instance.NewPanel(UiPanelType.ScreenVictory);
+        var newInstance = (PopupDefeat) GUIManager.Instance.NewPanel(UiPanelType.PopupDefeat);
         Instance = newInstance;
         newInstance.OnAppear();
     }
@@ -74,8 +73,8 @@ public class ScreenVictory : UIPanel
     IEnumerator DelayLeaveRoom()
     {
         yield return new WaitForSecondsRealtime(1f);
+        Close();
         PhotonNetwork.LoadLevel((int)SceneIndex.Hall);
         PhotonNetwork.LeaveRoom();
     }
-
 }

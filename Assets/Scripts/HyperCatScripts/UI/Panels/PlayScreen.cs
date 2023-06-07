@@ -40,5 +40,10 @@ public class PlayScreen : UIPanel
         Instance = null;
     }
 
+    public void ForceCheckEndBattle()
+    {
+        BattleController.Instance.RemovePlayer(MyPlayer.Instance.Manager);
+        BattleController.Instance.CheckEndBattle();
+    }
     
 }

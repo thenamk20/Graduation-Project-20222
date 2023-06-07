@@ -18,6 +18,7 @@ MonoBehaviour:
   - {fileID: 4338522651471195676, guid: 7f9e85fa192345d4e931f4bc7ca0e6ce, type: 3}
   - {fileID: 92526893789430412, guid: 80d7c7ed0a89fef4b9da556d00e36f0a, type: 3}
   - {fileID: 5629657266680520599, guid: db5eece97b76f3042a52241a8c43d11e, type: 3}
+  - {fileID: 8696463016628664002, guid: a07f8ebedac1eb546869f60c3c118bd6, type: 3}
   - {fileID: 1818727273283026048, guid: 0a6119594d4833c42abb48601f6ef5a3, type: 3}
   - {fileID: 6866867462230735036, guid: bc6adff3451c2c5498c363d80e70efe8, type: 3}
   - {fileID: 5904893346855732186, guid: 68c7b7afd28f8a64c9d14223998cf015, type: 3}
@@ -32,8 +33,7 @@ MonoBehaviour:
   - {fileID: 1794472831977473774, guid: 2756ad9f8f2eb0f4fb3cfa1ddf6f1a99, type: 3}
   - {fileID: 8422456412867123471, guid: 56ae5031bfbd56045833e1d73a7e0ef3, type: 3}
   - {fileID: 2485260458967520913, guid: 09da70b422fdbb9499953fd8da22b1e2, type: 3}
-  - {fileID: 3671551010802064762, guid: 6cd1df9303392784f900873a221a07b5, type: 3}
-  - {fileID: 4506379599922490918, guid: d348ae63bd6b44146907d7c59552e693, type: 3}
+  - {fileID: 2401152049294593417, guid: f95b2e3e2d7fa814eb7675c5d7584058, type: 3}
   prefabScreen: {fileID: 4707995532972556235, guid: c47dce81ad4845d47b1516bde2af87a3,
     type: 3}
   prefabPopup: {fileID: 1150493129258228202, guid: 515b3bb974d3ee943a509da33eb22b83,
