@@ -23,7 +23,8 @@ public class SkillItemUI : HCMonoBehaviour, IPointerUpHandler, IPointerDownHandl
 
     public void OnPointerUp(PointerEventData eventData)
     {
-        MyPlayer.Instance.Controller.SkillsManager.Skills[skillIndex].Execute();
+        
+        MyPlayer.Instance.Controller.SkillsManager.TryUseSkill(skillIndex);
     }
 
     public void OnPointerDown(PointerEventData eventData)

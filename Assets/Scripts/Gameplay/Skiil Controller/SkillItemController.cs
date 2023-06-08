@@ -24,6 +24,8 @@ public abstract class SkillItemController : MonoBehaviour
         skillVisual.ToggleVisual(false);
     }
 
+    public abstract bool SkillAvailable();
+
     public abstract void PrepareSkillDirection();
 
     public abstract void Execute();

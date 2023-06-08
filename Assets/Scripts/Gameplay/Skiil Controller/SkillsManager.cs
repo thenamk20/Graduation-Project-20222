@@ -24,4 +24,9 @@ public class SkillsManager : MonoBehaviour
     {
         
     }
+
+    public void TryUseSkill(int skillIndex)
+    {
+        skills[skillIndex].Execute();
+    }
 }

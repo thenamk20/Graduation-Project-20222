@@ -77,5 +77,10 @@ public class SingleMissileSkill : SkillItemController
         if (lockMoving)
             MyPlayer.Instance.Controller.moveable = true;
     }
+
+    public override bool SkillAvailable()
+    {
+        
+    }
 }
 
