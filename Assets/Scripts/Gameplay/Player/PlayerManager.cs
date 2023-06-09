@@ -16,17 +16,16 @@ public class PlayerManager : MonoBehaviour
     private void Awake()
     {
         PV = GetComponent<PhotonView>();
-        
+        if (PV.IsMine)
+        {
+            CreateController();
+        }
     }
 
     // Start is called before the first frame update
     void Start()
     {
         isAlive = true;
-        if (PV.IsMine)
-        {
-            CreateController();
-        }
         BattleController.Instance.AddPlayer(this);
         BattleController.Instance.OnEndBattle.AddListener(HandleBattleEnd);
     }

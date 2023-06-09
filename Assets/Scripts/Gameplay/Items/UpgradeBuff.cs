@@ -6,6 +6,6 @@ public class UpgradeBuff : BuffItem
 {
     public override void ClaimBuff(PlayerController player)
     {
-        throw new System.NotImplementedException();
+        player.ClaimAnUpgradePoint();
     }
 }

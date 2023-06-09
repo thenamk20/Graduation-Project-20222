@@ -64,4 +64,8 @@ public class HCMonoBehaviour : MonoBehaviourPunCallbacks
     public virtual void OnDespawned()
     {
     }
+
+    public PlayerController PlayerCtrl => MyPlayer.Instance.Controller;
+
+    public PlayerManager PlayerMng => MyPlayer.Instance.Manager;
 }

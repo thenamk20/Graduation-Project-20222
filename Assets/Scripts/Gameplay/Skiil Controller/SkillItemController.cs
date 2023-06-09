@@ -9,18 +9,25 @@ public abstract class SkillItemController : MonoBehaviour
     protected SkillVisual skillVisual;
 
     [SerializeField]
+    protected SkillConfig skillConfig;
+
+    [SerializeField]
     protected int skillIndex;
 
     [SerializeField]
     protected SKILL_AIM_TYPE aimType;
 
-    [SerializeField]
-    protected PlayerControllerOld myPlayer;
-
     protected bool isPrepare;
+
+    protected PlayerController PlayerCtrl => MyPlayer.Instance.Controller;
+
+    public SkillConfig SkillConfig => skillConfig;
+
+    public bool IsReady;
 
     void Start()
     {
+        IsReady = true;
         skillVisual.ToggleVisual(false);
     }
 
@@ -30,6 +37,7 @@ public abstract class SkillItemController : MonoBehaviour
 
     public abstract void Execute();
 
+    public abstract void Upgrade();
 }
 
 

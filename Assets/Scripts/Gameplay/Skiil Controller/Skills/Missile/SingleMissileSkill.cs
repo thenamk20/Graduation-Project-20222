@@ -1,5 +1,6 @@
 using CnControls;
 using Photon.Pun;
+using Photon.Realtime;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
@@ -53,13 +54,16 @@ public class SingleMissileSkill : SkillItemController
 
     public override void Execute()
     {
-        if(lockRotating)
-            MyPlayer.Instance.Controller.rotateable = false;
+        IsReady = false;
+        PlayerCtrl.ChakraManager.ConsumeChakraForSkill();
+
+        if (lockRotating)
+            PlayerCtrl.rotateable = false;
         if(lockMoving)
-            MyPlayer.Instance.Controller.moveable = false;
+            PlayerCtrl.moveable = false;
 
         var rot = Quaternion.LookRotation(skillAimDir).eulerAngles;
-        MyPlayer.Instance.Controller.transform.rotation = Quaternion.Euler(0, rot.y, 0);
+        PlayerCtrl.transform.rotation = Quaternion.Euler(0, rot.y, 0);
 
         HCDebug.Log("Skill aim dir: " + skillAimDir);
 
@@ -73,14 +77,19 @@ public class SingleMissileSkill : SkillItemController
         yield return new WaitForSecondsRealtime(attackTime);
 
         if (lockRotating)
-            MyPlayer.Instance.Controller.rotateable = true;
+            PlayerCtrl.rotateable = true;
         if (lockMoving)
-            MyPlayer.Instance.Controller.moveable = true;
+            PlayerCtrl.moveable = true;
     }
 
     public override bool SkillAvailable()
     {
-        
+        return IsReady && PlayerCtrl.ChakraManager.CheckChakraRequireForSkill;
+    }
+
+    public override void Upgrade()
+    {
+        HCDebug.Log("Upgrade this skill", HcColor.Red);
     }
 }
 

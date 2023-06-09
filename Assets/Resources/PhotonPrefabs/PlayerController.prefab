@@ -1,5 +1,49 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &222228005976980495
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2271155367464776953}
+  - component: {fileID: 2654505487467209980}
+  m_Layer: 0
+  m_Name: SkillStateMachine
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2271155367464776953
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 222228005976980495}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 5979092254140749529}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2654505487467209980
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 222228005976980495}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 54ec8222949ce604da2b1a3bc653dd54, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  skill: {fileID: 2996899868848204749}
 --- !u!1 &804147454702997117
 GameObject:
   m_ObjectHideFlags: 0
@@ -126,6 +170,51 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
+--- !u!1 &3161969692811191866
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7442318561449899031}
+  - component: {fileID: 6293776407124016813}
+  m_Layer: 0
+  m_Name: ChakraManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7442318561449899031
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3161969692811191866}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 7777030996582183204}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6293776407124016813
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3161969692811191866}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3045c15ecc569404f8f2326b5af42f3b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  controller: {fileID: 1897759513882573551}
+  chakraBar: {fileID: 350955077106085584}
 --- !u!1 &4221942671265119745
 GameObject:
   m_ObjectHideFlags: 0
@@ -532,6 +621,7 @@ Transform:
   - {fileID: 45879792150544782}
   - {fileID: 1287495157190446462}
   - {fileID: 6095219537007474345}
+  - {fileID: 7442318561449899031}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -624,6 +714,7 @@ MonoBehaviour:
   chakraBar: {fileID: 350955077106085584}
   characterModel: {fileID: 7777030996356324668}
   missileMount: {fileID: 1579568886501681605}
+  chakraManager: {fileID: 6293776407124016813}
   stats:
     currentHealth: 100
     currentChakra: 100
@@ -633,6 +724,7 @@ MonoBehaviour:
     maxChakra: 100
     charkaSlots: 3
     damMultiply: 1
+    upgradePoint: 0
   playerManager: {fileID: 0}
   moveable: 0
   rotateable: 0
@@ -679,7 +771,8 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 2271155367464776953}
   m_Father: {fileID: 6095219537007474345}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -696,9 +789,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   skillVisual: {fileID: 2982947705064618340}
+  skillConfig: {fileID: 11400000, guid: 7aecb07757c3cc74c874ea7d8dfa17d7, type: 2}
   skillIndex: 0
   aimType: 0
-  myPlayer: {fileID: 0}
+  IsReady: 0
   missilePrefab: {fileID: 4283234162332271623, guid: 1727e033e2e86424b893db494178b093,
     type: 3}
   missileMount: {fileID: 1579568886501681605}
@@ -903,6 +997,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f0872b0f9f1a50447a3b850e26560368, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  controller: {fileID: 1897759513882573551}
   skills:
   - {fileID: 2996899868848204749}
 --- !u!1001 &1493111666784697778
@@ -1108,12 +1203,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4568a27236cfd904785d1d73a01618e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!224 &45879792150544782 stripped
-RectTransform:
-  m_CorrespondingSourceObject: {fileID: 1448582706306874428, guid: d949b252b8a8638448375468b211c064,
-    type: 3}
-  m_PrefabInstance: {fileID: 1493111666784697778}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &7371849631790328825 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8283961434774541899, guid: d949b252b8a8638448375468b211c064,
@@ -1126,3 +1215,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4568a27236cfd904785d1d73a01618e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!224 &45879792150544782 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 1448582706306874428, guid: d949b252b8a8638448375468b211c064,
+    type: 3}
+  m_PrefabInstance: {fileID: 1493111666784697778}
+  m_PrefabAsset: {fileID: 0}

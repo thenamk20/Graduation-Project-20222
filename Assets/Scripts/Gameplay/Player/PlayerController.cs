@@ -1,4 +1,5 @@
 using CnControls;
+using JetBrains.Annotations;
 using Photon.Pun;
 using System;
 using System.Collections;
@@ -19,6 +20,8 @@ public class PlayerController : MonoBehaviour, IDamageable
 
     [SerializeField] private Transform missileMount;
 
+    [SerializeField] private ChakraManager chakraManager;
+
     public CharacterStats stats;
 
     PhotonView PV;
@@ -26,6 +29,10 @@ public class PlayerController : MonoBehaviour, IDamageable
     public PlayerManager playerManager;
 
     public SkillsManager SkillsManager => skillManager;
+
+    public ChakraManager ChakraManager => chakraManager;
+
+    public PhotonView PhotonView => PV;
 
     public bool moveable = true;
 
@@ -69,10 +76,10 @@ public class PlayerController : MonoBehaviour, IDamageable
 
         Vector3 dir = new Vector3(CnInputManager.GetAxis("Horizontal"), 0, CnInputManager.GetAxis("Vertical"));
         if (dir != Vector3.zero && Vector3.SqrMagnitude(dir) > 0.05f)
-            MovePlaye(dir * stats.moveSpeed);
+            MovePlayer(dir * stats.moveSpeed);
     }
 
-    void MovePlaye(Vector3 dir)
+    void MovePlayer(Vector3 dir)
     {
         if(moveable) characterController.SimpleMove(dir);
         if(rotateable) transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.LookRotation(dir), 0.2f);
@@ -120,21 +127,46 @@ public class PlayerController : MonoBehaviour, IDamageable
         stats.damMultiply += gain;
     }
 
+    public void ClaimAnUpgradePoint()
+    {
+        PV.RPC(nameof(RPC_ClaimAnUpgradePoint), RpcTarget.All);
+        skillManager.OnClaimAnUpgradePoint.Dispatch();
+    }
+
+    [PunRPC]
+    void RPC_ClaimAnUpgradePoint()
+    {
+        stats.upgradePoint += 1;
+    }
+
+    public void ConsumeAnUpgradePoint()
+    {
+        stats.upgradePoint -= 1;
+        PV.RPC(nameof(RPC_ConsumeAnUpgradePoint), RpcTarget.Others);
+    }
+
+    [PunRPC]
+    void RPC_ConsumeAnUpgradePoint()
+    {
+        stats.upgradePoint -= 1;
+    }
 }
 
 [Serializable]
 public class CharacterStats
 {
     public int currentHealth;
-    public int currentChakra;
+    public float currentChakra;
 
     public float moveSpeed;
     public int maxHealth;
 
-    public float restoreChakraSpeed = 2f;
+    public float restoreChakraSpeed = 15f;
     public float maxChakra;
     public int charkaSlots = 3;
     public float damMultiply = 1f;
+
+    public int upgradePoint = 0;
 
     public float CharkaRequirePerSkill => maxChakra / charkaSlots;
 
