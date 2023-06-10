@@ -4,7 +4,9 @@ using UnityEngine;
 public class PlayScreen : UIPanel
 {
     [SerializeField]
-    private List<SkillItemUI> skillItemUIList;
+    private Transform skillCtrlContainer;
+
+    private GameObject skillsPanel;
 
     public static PlayScreen Instance { get; private set; }
 
@@ -28,16 +30,18 @@ public class PlayScreen : UIPanel
 
     private void Init()
     {
-        foreach(var item in skillItemUIList)
-        {
-            item.Init();
-        }
+        GameObject skillsPanelPrefab = Cfg.characters[Gm.data.user.currentCharacter].skillUIController;
+        skillsPanel = Instantiate(skillsPanelPrefab, skillCtrlContainer);
     }
 
     public override void OnDisappear()
     {
         base.OnDisappear();
         Instance = null;
+        if(skillsPanel != null)
+        {
+            Destroy(skillsPanel);
+        }
     }
 
     public void ForceCheckEndBattle()

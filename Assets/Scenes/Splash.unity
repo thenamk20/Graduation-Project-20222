@@ -494,6 +494,9 @@ MonoBehaviour:
   audioCfg: {fileID: 11400000, guid: 695292ae23c85af4ab78115b061896a2, type: 2}
   gameCfg: {fileID: 11400000, guid: 02c31971deef76844b1d3ae3e1cd3048, type: 2}
   uiConfig: {fileID: 11400000, guid: 9603861e899fd6547a860fbed4b69d4c, type: 2}
+  characters:
+  - {fileID: 11400000, guid: 39ef97f18517d4d439c24c5749a3f0d8, type: 2}
+  - {fileID: 11400000, guid: f56752d5d2469bc40a5d3ce93eaf9abd, type: 2}
   serializationData:
     SerializedFormat: 2
     SerializedBytes: 
@@ -666,6 +669,7 @@ MonoBehaviour:
       rated: 0
       totalScoreOffset: 0
       sessionPlayed: 0
+      currentCharacter: 0
   gameInited: 0
   lastClaimOnlineGiftTime: 0
 --- !u!4 &1198852155

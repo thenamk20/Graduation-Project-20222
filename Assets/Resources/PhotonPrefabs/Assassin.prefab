@@ -500,7 +500,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: d6d847ae82bb6ad4da5c9cbd972f6ec6, type: 2}
+  - {fileID: 2100000, guid: 13813d4daf7784b308b918140114056e, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -748,7 +748,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: abab7a08f0dcd464786a47d16b63a2c6, type: 2}
+  - {fileID: 2100000, guid: 41b79a4f95670504488cc9c420ed3616, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -800,7 +800,7 @@ GameObject:
   - component: {fileID: 1897759513882573551}
   - component: {fileID: 3867898241984792747}
   m_Layer: 0
-  m_Name: PlayerController
+  m_Name: Assassin
   m_TagString: DamObject
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

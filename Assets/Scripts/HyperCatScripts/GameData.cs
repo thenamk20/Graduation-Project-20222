@@ -41,6 +41,8 @@ public class GameData
         public int sessionPlayed;
         private int _keyCount;
 
+        public int currentCharacter;
+
         public int KeyCount
         {
             get => _keyCount;

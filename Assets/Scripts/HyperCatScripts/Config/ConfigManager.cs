@@ -19,6 +19,8 @@ public class ConfigManager : Singleton<ConfigManager>, ISerializationCallbackRec
     public GameConfig gameCfg;
     public UiConfig uiConfig;
 
+    public List<CharacterConfig> characters;
+
     #region Odin
 
 #if UNITY_EDITOR
