@@ -3,6 +3,7 @@
 #endif
 
 using Spine.Unity.Examples;
+using UnityEngine;
 
 public class GameConst
 {
@@ -37,4 +38,16 @@ public class GameConst
     public const string PlayerController = "PlayerController";
 
     public const string MissileName = "Missile";
+
+    public static readonly int MovingSpeedHash = Animator.StringToHash("moveSpeed");
+
+    public static readonly int NormalAttackHash = Animator.StringToHash("normalAttack");
+
+    public static readonly int Skill1Hash = Animator.StringToHash("skill1");
+
+    public static readonly int UltimateHash = Animator.StringToHash("ultimate");
+
+    public static readonly int DieHash = Animator.StringToHash("die");
+
+    public static readonly int MovingBoolHash = Animator.StringToHash("isMoving");
 }

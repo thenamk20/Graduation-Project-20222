@@ -22,6 +22,8 @@ public class PlayerController : MonoBehaviour, IDamageable
 
     [SerializeField] private ChakraManager chakraManager;
 
+    [SerializeField] private PlayerAnimationController animController;
+
     public CharacterStats stats;
 
     PhotonView PV;
@@ -76,12 +78,22 @@ public class PlayerController : MonoBehaviour, IDamageable
 
         Vector3 dir = new Vector3(CnInputManager.GetAxis("Horizontal"), 0, CnInputManager.GetAxis("Vertical"));
         if (dir != Vector3.zero && Vector3.SqrMagnitude(dir) > 0.05f)
+        {
             MovePlayer(dir * stats.moveSpeed);
+        }
+        else
+        {
+            animController.PlayIdle();
+        }
     }
 
     void MovePlayer(Vector3 dir)
     {
-        if(moveable) characterController.SimpleMove(dir);
+        if (moveable)
+        {
+            characterController.SimpleMove(dir);
+            animController.PlayMoving();
+        }
         if(rotateable) transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.LookRotation(dir), 0.2f);
     }
 
