@@ -750,6 +750,7 @@ MonoBehaviour:
   missileMount: {fileID: 1579568886501681605}
   chakraManager: {fileID: 6293776407124016813}
   animController: {fileID: 8371682927905352572}
+  hitBoxCollider: {fileID: 6088363015086703974}
   stats:
     currentHealth: 100
     currentChakra: 100
@@ -1377,6 +1378,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2984724424030019366, guid: d949b252b8a8638448375468b211c064,
+        type: 3}
+      propertyPath: m_SortingOrder
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3907578236156192623, guid: d949b252b8a8638448375468b211c064,
         type: 3}

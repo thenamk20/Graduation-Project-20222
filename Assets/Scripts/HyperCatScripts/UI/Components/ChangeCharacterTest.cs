@@ -21,6 +21,8 @@ public class ChangeCharacterTest : HCMonoBehaviour
             Gm.data.user.currentCharacter = 0;
         }
         SetCurrentCharText();
+
+        Evm.OnChangeCharacter.Dispatch();
     }
 
     void SetCurrentCharText() 

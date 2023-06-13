@@ -25,7 +25,7 @@ Transform:
   m_GameObject: {fileID: 5274649382015160771}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.0022753, y: 0, z: -0.00578}
-  m_LocalScale: {x: 1.3749045, y: 1.3749045, z: 1.3749045}
+  m_LocalScale: {x: 1.5, y: 1.3749045, z: 1.5}
   m_Children:
   - {fileID: 4024948465124829152}
   m_Father: {fileID: 7020493957833228884}
@@ -83,6 +83,12 @@ MonoBehaviour:
     type: 3}
   buffUpgradeItemPrefab: {fileID: 2651213197211161665, guid: 2b73963e19b71ad44bb08cc605d47514,
     type: 3}
+  buffHealthItemPrefab: {fileID: 2651213197211161665, guid: ec0e31427d11a1a4abb99351c36bed03,
+    type: 3}
+  restoreHealthItemPrefab: {fileID: 2651213197211161665, guid: 5a7e04366244653448f108246e8c04b7,
+    type: 3}
+  buffMoveSpeedBuffItemPrefab: {fileID: 2651213197211161665, guid: d745d7f6ad17c0b4a913ac58e36c009b,
+    type: 3}
   healthBar: {fileID: 5385304910760342064}
   chestMaxHealth: 50
 --- !u!114 &449003395552178948
@@ -135,7 +141,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.5070565, y: 3.1964, z: 1}
+  m_Size: {x: 1.5070565, y: 3.1964, z: 1.5}
   m_Center: {x: 0.0066610575, y: 1.6167101, z: 0}
 --- !u!1 &6672049914001319676
 GameObject:

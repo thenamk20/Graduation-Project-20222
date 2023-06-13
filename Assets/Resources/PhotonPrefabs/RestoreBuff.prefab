@@ -124,6 +124,7 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   buffPV: {fileID: 629579141569525010}
+  restoreAmount: 20
 --- !u!1001 &1939549646574880442
 PrefabInstance:
   m_ObjectHideFlags: 0

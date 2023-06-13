@@ -24,6 +24,8 @@ public class PlayerController : MonoBehaviour, IDamageable
 
     [SerializeField] private PlayerAnimationController animController;
 
+    [SerializeField] private CapsuleCollider hitBoxCollider;
+
     public CharacterStats stats;
 
     PhotonView PV;
@@ -109,6 +111,7 @@ public class PlayerController : MonoBehaviour, IDamageable
     [PunRPC]
     void RPC_ReceiveDamage(int amount, PhotonMessageInfo info)
     {
+        if (!playerManager.isAlive) return;
         HCDebug.Log("Me receive damage", HcColor.Red);
         stats.currentHealth -= amount;
 
@@ -128,9 +131,18 @@ public class PlayerController : MonoBehaviour, IDamageable
 
     void OnDied(PhotonMessageInfo info)
     {
+        characterController.enabled = false;
+        hitBoxCollider.enabled = false;
+        healthBar.gameObject.SetActive(false);
+        chakraBar.gameObject.SetActive(false);
+
         playerManager.Die(PhotonNetwork.LocalPlayer.NickName, info.Sender.NickName);
+        animController.PlayDie();
     }
 
+    public bool IsFullHealth => (stats.currentHealth >= stats.maxHealth);
+
+    #region buff
     //buff managing
     public void IncreaseDam(float gain)
     {
@@ -141,6 +153,40 @@ public class PlayerController : MonoBehaviour, IDamageable
     void RPC_IncreaseDam(float gain)
     {
         stats.damMultiply += gain;
+    }
+
+    public void IncreaseHealth(float gainPercent)
+    {
+        PV.RPC(nameof(RPC_IncreaseHealth), RpcTarget.All, gainPercent);
+    }
+
+    [PunRPC]
+    void RPC_IncreaseHealth(float gainPercent)
+    {
+        int gain = (int)(gainPercent * stats.maxHealth);
+        stats.maxHealth += gain;
+        stats.currentHealth += gain;
+
+        float healthPercent = stats.currentHealth * 1.0f / stats.maxHealth;
+        healthBar.SetDirectProgressValue(healthPercent);
+    }
+
+    public void RestoreHealth(int amount)
+    {
+        PV.RPC(nameof(RPC_RestoreHealth), RpcTarget.All, amount);
+    }
+
+    [PunRPC]
+    void RPC_RestoreHealth(int amount)
+    {
+        stats.currentHealth += amount;
+        if(stats.currentHealth > stats.maxHealth)
+        {
+            stats.currentHealth = stats.maxHealth;
+        }
+
+        float healthPercent = stats.currentHealth * 1.0f / stats.maxHealth;
+        healthBar.SetDirectProgressValue(healthPercent);
     }
 
     public void ClaimAnUpgradePoint()
@@ -166,6 +212,8 @@ public class PlayerController : MonoBehaviour, IDamageable
     {
         stats.upgradePoint -= 1;
     }
+
+    #endregion
 }
 
 [Serializable]

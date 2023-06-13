@@ -4,8 +4,11 @@ using UnityEngine;
 
 public class RestoreBuff : BuffItem
 {
+    [SerializeField]
+    private int restoreAmount = 20;
+
     public override void ClaimBuff(PlayerController player)
     {
-        throw new System.NotImplementedException();
+        player.RestoreHealth(restoreAmount);
     }
 }

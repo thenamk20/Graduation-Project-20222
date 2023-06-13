@@ -11,6 +11,15 @@ public class Chest : MonoBehaviour, IDamageable
     [SerializeField]
     private GameObject buffUpgradeItemPrefab;
 
+    [SerializeField]
+    private GameObject buffHealthItemPrefab;
+
+    [SerializeField]
+    private GameObject restoreHealthItemPrefab;
+
+    [SerializeField]
+    private GameObject buffMoveSpeedBuffItemPrefab;
+
     [SerializeField] 
     private ProgressBar healthBar;
 
@@ -65,7 +74,7 @@ public class Chest : MonoBehaviour, IDamageable
     {
         HCDebug.Log("Chest explode", HcColor.Red);
         PhotonNetwork.Destroy(gameObject);
-        BuffItem item = NetworkManager.Instance.InstantiateRoomObject(buffUpgradeItemPrefab, transform.position, Quaternion.identity).GetComponent<BuffItem>();
+        BuffItem item = NetworkManager.Instance.InstantiateRoomObject(restoreHealthItemPrefab, transform.position, Quaternion.identity).GetComponent<BuffItem>();
         item.Init();
     }
 }

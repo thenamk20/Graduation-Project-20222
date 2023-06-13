@@ -124,6 +124,7 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   buffPV: {fileID: 629579141569525010}
+  gainPercent: 0.1
 --- !u!1001 &4607437792812757845
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -29,6 +29,8 @@ public class EventGlobalManager : Singleton<EventGlobalManager>
 
     public Relay OnEnterARoom = new Relay();
 
+    public Relay OnChangeCharacter = new Relay();
+
     public Relay<KillItem, KillItem> OnKillNotice = new Relay<KillItem, KillItem>();
 
     private void Start()

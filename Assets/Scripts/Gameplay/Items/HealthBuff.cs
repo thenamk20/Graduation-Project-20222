@@ -4,8 +4,11 @@ using UnityEngine;
 
 public class HealthBuff : BuffItem
 {
+    [SerializeField]
+    private float gainPercent;
+
     public override void ClaimBuff(PlayerController player)
     {
-        throw new System.NotImplementedException();
+        player.IncreaseHealth(gainPercent);
     }
 }

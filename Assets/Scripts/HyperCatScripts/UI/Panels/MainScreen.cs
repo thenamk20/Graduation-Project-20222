@@ -48,6 +48,8 @@ public class MainScreen : UIPanel
         }
 
         currentNickname.text = PhotonNetwork.NickName;
+
+        CharacterPreview.Instance.ToggleCharacterPreview(true);
     }
 
     public void ShowSetting()
@@ -83,6 +85,7 @@ public class MainScreen : UIPanel
     {
         base.OnDisappear();
         Instance = null;
+        CharacterPreview.Instance.ToggleCharacterPreview(false);
     }
 
     public void OpenFindRoom()
