@@ -53,6 +53,8 @@ public class PlayerController : MonoBehaviour, IDamageable
         {
             BattleController.Instance.SetCamWatchMyPlayer(gameObject.transform);
             healthBar.SetMyPlayerHealthColor();
+            transform.position = playerManager.spawnPoint;
+
         }
         else
         {

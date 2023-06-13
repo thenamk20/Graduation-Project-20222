@@ -48,6 +48,8 @@ MonoBehaviour:
   - RPC_IncreaseDam
   - RPC_ClaimAnUpgradePoint
   - RPC_ConsumeAnUpgradePoint
+  - RPC_RemovePosition
+  - RPC_GetSpawnPoint
   DisableAutoOpenWizard: 1
   ShowSettings: 1
   DevRegionSetOnce: 1

@@ -13,6 +13,8 @@ public class PlayerManager : MonoBehaviour
 
     private PhotonView PV;
 
+    public Vector3 spawnPoint;
+
     private void Awake()
     {
         PV = GetComponent<PhotonView>();
@@ -94,5 +96,16 @@ public class PlayerManager : MonoBehaviour
     public void GetKill()
     {
 
+    }
+
+    public void GetAnSpawnPoint(Vector3 pos)
+    {
+        PV.RPC(nameof(RPC_GetSpawnPoint), RpcTarget.All, pos);
+    }
+
+    [PunRPC]
+    void RPC_GetSpawnPoint(Vector3 pos)
+    {
+        spawnPoint = pos;
     }
 }

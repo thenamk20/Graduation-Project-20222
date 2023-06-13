@@ -19,6 +19,8 @@ public class BattleController : MonoBehaviourPunCallbacks
 
     public bool ended = false;
 
+    public ObjectSpawner Spawner;
+
     private void Start()
     {
         Instance = this;
@@ -39,6 +41,11 @@ public class BattleController : MonoBehaviourPunCallbacks
     public void AddPlayer(PlayerManager player)
     {
         Players.Add(player);
+        if(PhotonNetwork.IsMasterClient) {
+
+            Vector3 pos = Spawner.GetAnAvailableSpawnPosition();
+            player.GetAnSpawnPoint(pos);
+        }
     }
 
     public void RemovePlayer(PlayerManager player)
@@ -68,10 +75,5 @@ public class BattleController : MonoBehaviourPunCallbacks
                 OnEndBattle.Dispatch();
             }
         }
-    }
-
-    public void ChangeMasterClient()
-    {
-        
     }
 }
