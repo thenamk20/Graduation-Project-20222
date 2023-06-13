@@ -47,7 +47,10 @@ public class SkillsManager : MonoBehaviour
     public void TryUseSkill(int skillIndex)
     {
         if (skills[skillIndex].SkillAvailable())
+        {
             skills[skillIndex].Execute();
+            controller.AnimationController.SetTriggerAttackAnimation(skillIndex);
+        }
     }
 
     public void UpgradeSkill(int skillIndex)

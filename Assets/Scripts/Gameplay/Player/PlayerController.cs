@@ -34,6 +34,8 @@ public class PlayerController : MonoBehaviour, IDamageable
 
     public ChakraManager ChakraManager => chakraManager;
 
+    public PlayerAnimationController AnimationController => animController;
+
     public PhotonView PhotonView => PV;
 
     public bool moveable = true;
