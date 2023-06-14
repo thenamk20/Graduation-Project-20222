@@ -70,5 +70,13 @@ public class ObjectSpawner : MonoBehaviourPunCallbacks
     {
         DamageArea = NetworkManager.Instance.InstantiateRoomObject(damageAreaPrefab, new Vector3(Random.Range(-3, 3), 0, Random.Range(-3, 3)), Quaternion.identity)
             .GetComponent<DamageArea>();
+
+        PV.RPC(nameof(ShareDamageAreaReference), RpcTarget.Others, DamageArea.gameObject.GetPhotonView().ViewID);
+    }
+
+    [PunRPC]
+    void ShareDamageAreaReference(int viewID)
+    {
+        DamageArea = PhotonView.Find(viewID).gameObject.GetComponent<DamageArea>();
     }
 }

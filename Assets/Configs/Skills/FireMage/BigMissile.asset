@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   skillIndex: 2
   executeTime: 0.6
-  cooldownTime: 8
+  cooldownTime: 1

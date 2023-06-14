@@ -107,5 +107,6 @@ public class PlayerManager : MonoBehaviour
     void RPC_GetSpawnPoint(Vector3 pos)
     {
         spawnPoint = pos;
+        
     }
 }

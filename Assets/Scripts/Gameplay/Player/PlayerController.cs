@@ -44,6 +44,8 @@ public class PlayerController : MonoBehaviour, IDamageable
 
     public bool rotateable = true;
 
+    private bool isAlive;
+
     private void Awake()
     {
         PV = GetComponent<PhotonView>();
@@ -63,6 +65,7 @@ public class PlayerController : MonoBehaviour, IDamageable
             healthBar.SetEnemyHealthColor();
         }
 
+        isAlive = true;
         chakraBar.gameObject.SetActive(PV.IsMine);
 
         stats = new CharacterStats();
@@ -111,7 +114,7 @@ public class PlayerController : MonoBehaviour, IDamageable
     [PunRPC]
     void RPC_ReceiveDamage(int amount, PhotonMessageInfo info)
     {
-        if (!playerManager.isAlive) return;
+        if (!isAlive) return;
         HCDebug.Log("Me receive damage", HcColor.Red);
         stats.currentHealth -= amount;
 
@@ -120,7 +123,8 @@ public class PlayerController : MonoBehaviour, IDamageable
 
         if (stats.currentHealth <= 0)
         {
-            if(PV.IsMine)
+            isAlive = false;
+            if (PV.IsMine)
                 OnDied(info);
             else
             {
@@ -131,6 +135,7 @@ public class PlayerController : MonoBehaviour, IDamageable
 
     void OnDied(PhotonMessageInfo info)
     {
+        isAlive = false;
         characterController.enabled = false;
         hitBoxCollider.enabled = false;
         healthBar.gameObject.SetActive(false);
