@@ -89,6 +89,8 @@ MonoBehaviour:
     type: 3}
   buffMoveSpeedBuffItemPrefab: {fileID: 2651213197211161665, guid: d745d7f6ad17c0b4a913ac58e36c009b,
     type: 3}
+  buffChakraRestore: {fileID: 2651213197211161665, guid: 52e9e3398efb5064bb78d53a5b90abcc,
+    type: 3}
   healthBar: {fileID: 5385304910760342064}
   chestMaxHealth: 50
 --- !u!114 &449003395552178948

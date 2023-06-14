@@ -201,6 +201,28 @@ public class PlayerController : MonoBehaviour, IDamageable
         stats.upgradePoint += 1;
     }
 
+    public void IncreaseMoveSpeed(float gainPercent)
+    {
+        PV.RPC(nameof(RPC_IncreaseMoveSpeed), RpcTarget.All, gainPercent);
+    }
+
+    [PunRPC]
+    void RPC_IncreaseMoveSpeed(float gainPercent)
+    {
+        stats.moveSpeed += stats.moveSpeed * gainPercent;
+    }
+
+    public void IncreaseChakraRestore(float gainPercent)
+    {
+        PV.RPC(nameof(RPC_IncreaseChakraRestore), RpcTarget.All, gainPercent);
+    }
+
+    [PunRPC]
+    void RPC_IncreaseChakraRestore(float gainPercent)
+    {
+        stats.restoreChakraSpeed += stats.restoreChakraSpeed * gainPercent;
+    }
+
     public void ConsumeAnUpgradePoint()
     {
         stats.upgradePoint -= 1;
@@ -212,7 +234,6 @@ public class PlayerController : MonoBehaviour, IDamageable
     {
         stats.upgradePoint -= 1;
     }
-
     #endregion
 }
 
@@ -225,7 +246,7 @@ public class CharacterStats
     public float moveSpeed;
     public int maxHealth;
 
-    public float restoreChakraSpeed = 15f;
+    public float restoreChakraSpeed = 10f;
     public float maxChakra;
     public int charkaSlots = 3;
     public float damMultiply = 1f;
@@ -236,9 +257,10 @@ public class CharacterStats
 
     public CharacterStats()
     {
-        moveSpeed = 2f;
+        moveSpeed = 3f;
         maxHealth = 100;
         maxChakra = 100;
+        restoreChakraSpeed = 10;
 
         currentHealth = 100;
         currentChakra = 100;

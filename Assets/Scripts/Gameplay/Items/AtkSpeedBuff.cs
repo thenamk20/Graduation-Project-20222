@@ -4,8 +4,10 @@ using UnityEngine;
 
 public class AtkSpeedBuff : BuffItem
 {
+    [SerializeField] private float increaseChakraAmount;
+
     public override void ClaimBuff(PlayerController player)
     {
-        throw new System.NotImplementedException();
+        player.IncreaseChakraRestore(increaseChakraAmount);
     }
 }
