@@ -55,6 +55,7 @@ MonoBehaviour:
   - RPC_IncreaseMoveSpeed
   - RPC_IncreaseChakraRestore
   - ShareDamageAreaReference
+  - ShareOwnerViewID
   DisableAutoOpenWizard: 1
   ShowSettings: 1
   DevRegionSetOnce: 1

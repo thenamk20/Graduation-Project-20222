@@ -1241,12 +1241,13 @@ MonoBehaviour:
   skillIndex: 2
   aimType: 1
   IsReady: 0
-  delayAttack: 0.5
   attackTime: 0.5
-  lockMoving: 0
+  lockMoving: 1
   lockRotating: 1
   playerPV: {fileID: 3607826236727327677}
   skillRange: 12
+  explodeItemPrefab: {fileID: 8633456981975597245, guid: 309178622d280d34185d98b3d98f73d9,
+    type: 3}
 --- !u!1001 &1493111666784697778
 PrefabInstance:
   m_ObjectHideFlags: 0

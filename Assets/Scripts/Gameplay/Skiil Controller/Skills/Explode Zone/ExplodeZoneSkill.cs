@@ -7,9 +7,6 @@ using UnityEngine;
 public class ExplodeZoneSkill : SkillItemController
 {
     [SerializeField]
-    private float delayAttack = 0;
-
-    [SerializeField]
     private float attackTime = 0.5f;
 
     [SerializeField]
@@ -23,6 +20,9 @@ public class ExplodeZoneSkill : SkillItemController
 
     [SerializeField]
     private float skillRange;
+
+    [SerializeField]
+    private GameObject explodeItemPrefab;
 
     private IDamageable owner;
 
@@ -39,8 +39,33 @@ public class ExplodeZoneSkill : SkillItemController
 
     public override void Execute()
     {
-       
+        IsReady = false;
+        PlayerCtrl.ChakraManager.ConsumeChakraForSkill();
+
+        if (lockRotating)
+            PlayerCtrl.rotateable = false;
+        if (lockMoving)
+            PlayerCtrl.moveable = false;
+
+        var rot = Quaternion.LookRotation(skillAimDir).eulerAngles;
+        PlayerCtrl.transform.rotation = Quaternion.Euler(0, rot.y, 0);
+
+        ExplodeZoneItem zoneItem = NetworkManager.Instance.InstantiateObject(explodeItemPrefab, skillAimPos, Quaternion.identity).GetComponent<ExplodeZoneItem>();
+        zoneItem.Init(playerPV.ViewID);
+
+        StartCoroutine(RestoreSequence());
     }
+
+    IEnumerator RestoreSequence()
+    {
+        yield return new WaitForSecondsRealtime(attackTime);
+
+        if (lockRotating)
+            PlayerCtrl.rotateable = true;
+        if (lockMoving)
+            PlayerCtrl.moveable = true;
+    }
+
 
     private void Update()
     {

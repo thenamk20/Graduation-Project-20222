@@ -831,7 +831,7 @@ GameObject:
   - component: {fileID: 3607826236727327677}
   - component: {fileID: 1897759513882573551}
   - component: {fileID: 3867898241984792747}
-  m_Layer: 12
+  m_Layer: 11
   m_Name: Assassin
   m_TagString: DamObject
   m_Icon: {fileID: 0}
@@ -905,7 +905,7 @@ CapsuleCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   m_Radius: 0.5
-  m_Height: 2
+  m_Height: 3
   m_Direction: 1
   m_Center: {x: 0, y: 1, z: 0}
 --- !u!114 &3607826236727327677
@@ -1032,7 +1032,7 @@ MonoBehaviour:
   skills:
   - {fileID: 8707749999640061833}
   - {fileID: 754995822680100875}
-  - {fileID: 7294415011378811273}
+  - {fileID: 1942406090795266456}
 --- !u!1 &8549623135276925432
 GameObject:
   m_ObjectHideFlags: 0
@@ -1109,7 +1109,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54ec8222949ce604da2b1a3bc653dd54, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  skill: {fileID: 7294415011378811273}
+  skill: {fileID: 1942406090795266456}
 --- !u!1 &8742833570735569917
 GameObject:
   m_ObjectHideFlags: 0
@@ -1119,7 +1119,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 630744334581258916}
-  - component: {fileID: 7294415011378811273}
+  - component: {fileID: 1942406090795266456}
   m_Layer: 0
   m_Name: Skill2_BigMissile
   m_TagString: Untagged
@@ -1142,7 +1142,7 @@ Transform:
   m_Father: {fileID: 6095219537007474345}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &7294415011378811273
+--- !u!114 &1942406090795266456
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1151,20 +1151,20 @@ MonoBehaviour:
   m_GameObject: {fileID: 8742833570735569917}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 395f511e7c873374dad559ed6435596d, type: 3}
+  m_Script: {fileID: 11500000, guid: 7e256115a04f9774cb667718c62bbe4c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   skillVisual: {fileID: 5589723176842850034}
-  skillConfig: {fileID: 11400000, guid: 4c479c584cc99554792cf510952a454f, type: 2}
+  skillConfig: {fileID: 11400000, guid: 4f8f07a239d97134a913963b67f5d1d2, type: 2}
   skillIndex: 2
   aimType: 0
   IsReady: 0
-  delayAttack: 0
-  attackTime: 0.5
-  lockMoving: 0
+  lockMoving: 1
   lockRotating: 1
   playerPV: {fileID: 3607826236727327677}
   skillRange: 7.5
+  explodeItemPrefab: {fileID: 8633456981975597245, guid: b78305bda7ccc644cac5f570c732f8fa,
+    type: 3}
 --- !u!1 &8752618384951119542
 GameObject:
   m_ObjectHideFlags: 0
