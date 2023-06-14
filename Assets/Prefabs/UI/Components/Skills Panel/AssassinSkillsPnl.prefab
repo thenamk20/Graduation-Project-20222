@@ -3878,6 +3878,7 @@ GameObject:
   - component: {fileID: 4006999386286756854}
   - component: {fileID: 8256345927041236588}
   - component: {fileID: 741104206885466567}
+  - component: {fileID: 4482231066023774870}
   m_Layer: 5
   m_Name: Joystick_Skill1
   m_TagString: Untagged
@@ -3942,13 +3943,35 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e9326f3ddcd138b4fbeb082d41bc6b12, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  triggerType: 1
+  triggerType: 0
   skillIndex: 1
   executeCover: {fileID: 1964095396360743964}
   cooldownCover: {fileID: 2628178663535136734}
   cooldownFill: {fileID: 5765117194638066544}
   timeCoolDownText: {fileID: 8078407817538378102}
   upgradeSkillBtn: {fileID: 7033721208175524496}
+--- !u!114 &4482231066023774870
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8473118066648689334}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eeb64258239543b4db1c80658a0d4f2c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MovementRange: 50
+  HorizontalAxisName: Horizontal_Skill_1
+  VerticalAxisName: Vertical_Skill_1
+  HideOnRelease: 0
+  MoveBase: 0
+  SnapsToFinger: 0
+  JoystickMoveAxis: 3
+  JoystickBase: {fileID: 3353111732859526568}
+  Stick: {fileID: 2104810002171449030}
+  TouchZone: {fileID: 8992457666930237545}
 --- !u!1 &8944644148247410084
 GameObject:
   m_ObjectHideFlags: 0
