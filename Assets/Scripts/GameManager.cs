@@ -94,6 +94,10 @@ public class GameManager : Singleton<GameManager>
         {
             data = new GameData();
 
+            data.user.isRememberMe = PreloadData.Instance.gameData.user.isRememberMe;
+            data.user.cachedEmail = PreloadData.Instance.gameData.user.cachedEmail;
+            data.user.cachedPassword = PreloadData.Instance.gameData.user.cachedPassword;
+
 #if PROTOTYPE
             Data.User.PurchasedNoAds = true;
 #endif

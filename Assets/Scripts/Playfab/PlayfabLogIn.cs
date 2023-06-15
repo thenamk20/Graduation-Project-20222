@@ -14,6 +14,13 @@ public class PlayfabLogIn : MonoBehaviour
 
     [SerializeField] private TextMeshProUGUI errorMessage;
 
+    [SerializeField] private GameObject rememberMeCheckMark;
+
+    [SerializeField] private TMP_InputField emailText;
+    [SerializeField] private TMP_InputField passwordText;
+
+    [SerializeField] private GameObject waitingPanel;
+
     public string userEmail;
 
     public string password;
@@ -25,7 +32,22 @@ public class PlayfabLogIn : MonoBehaviour
         {
             PlayFabSettings.TitleId = "FD124";
         }
+
+        waitingPanel.SetActive(false);
+        CheckRememberMe();
     }
+
+    void CheckRememberMe()
+    {
+        rememberMeCheckMark.SetActive(PreloadData.Instance.gameData.user.isRememberMe);
+
+        emailText.text = PreloadData.Instance.gameData.user.cachedEmail;
+        passwordText.text = PreloadData.Instance.gameData.user.cachedPassword;
+
+        userEmail = PreloadData.Instance.gameData.user.cachedEmail;
+        password = PreloadData.Instance.gameData.user.cachedPassword;
+    }
+
     #endregion
     #region Private Methods
     private bool IsValidUsername()
@@ -83,8 +105,15 @@ public class PlayfabLogIn : MonoBehaviour
     public void Login()
     {
         if (!IsValidUsername()) return;
+        waitingPanel.SetActive(true);
 
         LoginWithPassword(userEmail, password);
+
+        if (PreloadData.Instance.gameData.user.isRememberMe)
+        {
+            PreloadData.Instance.gameData.user.cachedEmail = userEmail;
+            PreloadData.Instance.gameData.user.cachedPassword = password;
+        }
     }
 
     public void ToRegisterPanel()
@@ -93,12 +122,19 @@ public class PlayfabLogIn : MonoBehaviour
         registerPanel.SetActive(true);
     }
 
+    public void UpdateRemember()
+    {
+        PreloadData.Instance.gameData.user.isRememberMe = !PreloadData.Instance.gameData.user.isRememberMe;
+        rememberMeCheckMark.SetActive(PreloadData.Instance.gameData.user.isRememberMe);
+    }
+
     #endregion
     #region Playfab Callbacks
 
     //login email
     private void OnLoginEmailSuccess(LoginResult result)
     {
+        waitingPanel.SetActive(false);
         Debug.Log("You have logged into Playfab");
         string name = null;
         if(result.InfoResultPayload.PlayerProfile != null)
@@ -113,6 +149,7 @@ public class PlayfabLogIn : MonoBehaviour
 
     private void OnLoginEmailFailure(PlayFabError error)
     {
+        waitingPanel.SetActive(false);
         Debug.Log($"There was an issue with your request: {error.GenerateErrorReport()}");
         errorMessage.text = error.GenerateErrorReport();
         errorMessage.gameObject.SetActive(true);
