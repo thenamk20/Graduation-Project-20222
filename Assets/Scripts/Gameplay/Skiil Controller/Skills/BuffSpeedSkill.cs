@@ -1,3 +1,4 @@
+using Photon.Pun;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,6 +6,11 @@ using UnityEngine;
 public class BuffSpeedSkill : SkillItemController
 {
     private float cachedSpeed;
+
+    [SerializeField]
+    private GameObject buffFxObject;
+
+    private GameObject buffVFx;
 
     public override void Execute()
     {
@@ -15,11 +21,20 @@ public class BuffSpeedSkill : SkillItemController
         PlayerCtrl.stats.moveSpeed = cachedSpeed * 2;
 
         StartCoroutine(ResetSpeed());
+        buffVFx = NetworkManager.Instance.InstantiateObject(buffFxObject, transform.position, Quaternion.identity);
     }
 
     public override void PrepareSkillDirection()
     {
        
+    }
+
+    private void Update()
+    {
+        if(buffVFx != null)
+        {
+            buffVFx.transform.position = PlayerCtrl.transform.position;
+        }
     }
 
     public override bool SkillAvailable()
@@ -36,5 +51,6 @@ public class BuffSpeedSkill : SkillItemController
     {
         yield return new WaitForSeconds(4f);
         PlayerCtrl.stats.moveSpeed = cachedSpeed;
+        buffVFx = null;
     }
 }

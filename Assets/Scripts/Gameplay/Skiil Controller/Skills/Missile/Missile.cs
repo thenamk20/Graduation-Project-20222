@@ -20,6 +20,10 @@ public class Missile : MonoBehaviour
     void Start()
     {
         rigidBody.AddForce(transform.forward * force);
+        if (PV.IsMine)
+        {
+            StartCoroutine(DelayDestroy());
+        }
     }
 
     void OnTriggerEnter(Collider co)
@@ -34,5 +38,11 @@ public class Missile : MonoBehaviour
                 PhotonNetwork.Destroy(gameObject);
             }
         }
+    }
+
+    IEnumerator DelayDestroy()
+    {
+        yield return new WaitForSeconds(destroyAfter);
+        PhotonNetwork.Destroy(gameObject);
     }
 }

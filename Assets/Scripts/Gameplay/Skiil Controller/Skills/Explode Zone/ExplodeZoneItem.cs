@@ -18,10 +18,22 @@ public class ExplodeZoneItem : MonoBehaviour
     private float existTime;
 
     [SerializeField]
+    private float delayFxTime;
+
+    [SerializeField]
     private Renderer itemRenderer;
 
     [SerializeField]
     private LayerMask layerMask;
+
+    [SerializeField]
+    private ParticleSystem explodeFx;
+
+    [SerializeField]
+    private GameObject meVisual;
+
+    [SerializeField]
+    private GameObject enemyVisual;
 
     private int ownerViewID;
 
@@ -36,15 +48,22 @@ public class ExplodeZoneItem : MonoBehaviour
     private void Start()
     {
         hitboxCollider.enabled = false;
-        itemRenderer.enabled = false;
         currentTarget = new List<IDamageable>();
         StartCoroutine(ExplodeSequence());
+        StartCoroutine(DelayShowFx());
+        meVisual.SetActive(PV.IsMine);
+        enemyVisual.SetActive(!PV.IsMine);
+    }
+
+    IEnumerator DelayShowFx()
+    {
+        yield return new WaitForSeconds(delayFxTime);
+        explodeFx.Play();
     }
 
     IEnumerator ExplodeSequence(){
         yield return new WaitForSeconds(delayTime);
         hitboxCollider.enabled = true;
-        itemRenderer.enabled = true;
         Collider[] targets = Physics.OverlapSphere(transform.position, hitboxCollider.radius * transform.lossyScale.x, layerMask);
 
         foreach(var item in targets)
@@ -67,6 +86,9 @@ public class ExplodeZoneItem : MonoBehaviour
         }
 
         yield return new WaitForSeconds(existTime);
+        hitboxCollider.enabled = false;
+
+        yield return new WaitForSeconds(0.5f);
 
         if (PV.IsMine)
         {

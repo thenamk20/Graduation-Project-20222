@@ -24,6 +24,12 @@ public class SlashAttack : SkillItemController
     [SerializeField]
     private PhotonView playerPV;
 
+    [SerializeField]
+    private GameObject networkVfx;
+
+    [SerializeField]
+    private float delayForFx;
+
     private IDamageable owner;
 
     private Vector3 skillAimDir;
@@ -69,6 +75,13 @@ public class SlashAttack : SkillItemController
         HCDebug.Log("Skill aim dir: " + skillAimDir);
 
         StartCoroutine(SlashSequence());
+        StartCoroutine(DelayForVFX());
+    }
+
+    IEnumerator DelayForVFX()
+    {
+        yield return new WaitForSeconds(delayForFx);
+        NetworkManager.Instance.InstantiateObject(networkVfx, transform.position, Quaternion.LookRotation(skillAimDir));
     }
 
     IEnumerator SlashSequence()
