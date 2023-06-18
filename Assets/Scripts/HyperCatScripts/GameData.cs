@@ -48,6 +48,12 @@ public class GameData
             get => _keyCount;
             set => _keyCount = Mathf.Clamp(value, 0, 3);
         }
+
+        public bool isRememberMe = false;
+
+        public string cachedEmail;
+
+        public string cachedPassword;
     }
 
     [Serializable]

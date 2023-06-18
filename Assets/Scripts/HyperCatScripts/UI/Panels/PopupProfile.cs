@@ -1,5 +1,11 @@
+using TMPro;
+using UnityEngine;
+
 public class PopupProfile : UIPanel
 {
+    [SerializeField]
+    private TextMeshProUGUI userNameText;
+
     public static PopupProfile Instance { get; private set; }
 
     public override UiPanelType GetId()
@@ -26,16 +32,19 @@ public class PopupProfile : UIPanel
 
     private void Init()
     {
+        userNameText.text = Gm.data.user.name;
     }
 
     protected override void RegisterEvent()
     {
         base.RegisterEvent();
+        Evm.OnChangeName.AddListener(UpdateNickName);
     }
 
     protected override void UnregisterEvent()
     {
         base.UnregisterEvent();
+        Evm.OnChangeName.RemoveListener(UpdateNickName);
     }
 
     public override void OnDisappear()
@@ -47,5 +56,10 @@ public class PopupProfile : UIPanel
     public void ChangeName()
     {
         PopupChangeNickname.Show();
+    }
+
+    void UpdateNickName()
+    {
+        userNameText.text = Gm.data.user.name;
     }
 }

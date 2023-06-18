@@ -11,9 +11,6 @@ using UnityEngine.SceneManagement;
 public class MainScreen : UIPanel
 {
     [SerializeField]
-    private TMP_InputField inputFieldNickName;
-
-    [SerializeField]
     private TextMeshProUGUI currentNickname;
 
     public static MainScreen Instance { get; private set; }
@@ -45,9 +42,13 @@ public class MainScreen : UIPanel
         if (string.IsNullOrEmpty(Gm.data.user.name))
         {
             PopupChangeNickname.Show();
+            currentNickname.text = "";
+        }
+        else
+        {
+            currentNickname.text = Gm.data.user.name;
         }
 
-        currentNickname.text = PhotonNetwork.NickName;
 
         CharacterPreview.Instance.ToggleCharacterPreview(true);
     }
@@ -98,16 +99,6 @@ public class MainScreen : UIPanel
     {
         PopupRoom.Show();
         PopupRoom.Instance.ShowRoomState(ROOM_PANEL_STATE.CREATING);
-    }
-
-    //nick name
-    public void ChangeNickName()
-    {
-        if (string.IsNullOrEmpty(inputFieldNickName.text)) return;
-        PhotonNetwork.NickName = inputFieldNickName.text;
-        Gm.data.user.name = inputFieldNickName.text;
-        EventGlobalManager.Instance.OnChangeName.Dispatch();
-
     }
 
     void UpdateNickNameUI()
