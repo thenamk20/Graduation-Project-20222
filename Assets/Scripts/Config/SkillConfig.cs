@@ -8,4 +8,8 @@ public class SkillConfig : ScriptableObject
     public int skillIndex;
     public float executeTime;
     public float cooldownTime;
+
+    public string title;
+
+    public string description;
 }

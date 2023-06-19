@@ -15,3 +15,5 @@ MonoBehaviour:
   skillIndex: 2
   executeTime: 0.6
   cooldownTime: 1
+  title: 
+  description: 789

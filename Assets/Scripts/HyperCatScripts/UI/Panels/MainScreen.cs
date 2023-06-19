@@ -105,4 +105,9 @@ public class MainScreen : UIPanel
     {
         currentNickname.text = PhotonNetwork.NickName;
     }
+
+    public void ShowChooseCharacters()
+    {
+        PopupCharacters.Show();
+    }
 }
