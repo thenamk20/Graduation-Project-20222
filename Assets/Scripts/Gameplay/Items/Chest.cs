@@ -80,4 +80,9 @@ public class Chest : MonoBehaviour, IDamageable
         BuffItem item = NetworkManager.Instance.InstantiateRoomObject(buffChakraRestore, transform.position, Quaternion.identity).GetComponent<BuffItem>();
         item.Init();
     }
+
+    public PhotonView GetPV()
+    {
+        return chestPV;
+    }
 }

@@ -6,6 +6,9 @@ public class PlayScreen : UIPanel
     [SerializeField]
     private Transform skillCtrlContainer;
 
+    [SerializeField]
+    private Transform controlPanel;
+
     private GameObject skillsPanel;
 
     public static PlayScreen Instance { get; private set; }
@@ -49,5 +52,23 @@ public class PlayScreen : UIPanel
         BattleController.Instance.RemovePlayer(MyPlayer.Instance.Manager);
         BattleController.Instance.CheckEndBattle();
     }
-    
+
+    protected override void RegisterEvent()
+    {
+        base.RegisterEvent();
+        EventGlobalManager.Instance.OnDie.AddListener(HideControlSkillPanels);
+    }
+
+    protected override void UnregisterEvent()
+    {
+        base.UnregisterEvent();
+        EventGlobalManager.Instance.OnDie.RemoveListener(HideControlSkillPanels);
+    }
+
+    void HideControlSkillPanels()
+    {
+        skillsPanel.gameObject.SetActive(false);
+        controlPanel.gameObject.SetActive(false);
+    }
+
 }

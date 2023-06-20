@@ -560,6 +560,7 @@ MonoBehaviour:
   closeSound: 2
   panelAnimator: {fileID: 0}
   skillCtrlContainer: {fileID: 334533687488413160}
+  controlPanel: {fileID: 3855633873010861395}
 --- !u!1 &5143166472482877027
 GameObject:
   m_ObjectHideFlags: 0
@@ -835,6 +836,10 @@ PrefabInstance:
     - target: {fileID: 144978, guid: 943b21e331e945146beb63726ff855df, type: 3}
       propertyPath: m_Name
       value: MoveJoystick
+      objectReference: {fileID: 0}
+    - target: {fileID: 144978, guid: 943b21e331e945146beb63726ff855df, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 11421910, guid: 943b21e331e945146beb63726ff855df, type: 3}
       propertyPath: MoveBase

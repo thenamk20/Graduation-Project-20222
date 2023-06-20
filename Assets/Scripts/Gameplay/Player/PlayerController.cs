@@ -239,7 +239,14 @@ public class PlayerController : MonoBehaviour, IDamageable
     {
         stats.upgradePoint -= 1;
     }
+
+
     #endregion
+
+    public PhotonView GetPV()
+    {
+        return PV;
+    }
 }
 
 [Serializable]

@@ -54,6 +54,7 @@ public class PlayerManager : MonoBehaviour
 
     public void Die(string victimName, string killerName)
     {
+        EventGlobalManager.Instance.OnDie.Dispatch();
         PopupDefeat.Show();
         PV.RPC(nameof(RPC_Die), RpcTarget.All, victimName, killerName);
     }

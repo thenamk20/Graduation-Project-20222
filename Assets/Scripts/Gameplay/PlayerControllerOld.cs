@@ -8,7 +8,7 @@ using TMPro.Examples;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
-public class PlayerControllerOld : MonoBehaviour, IDamageable
+public class PlayerControllerOld : MonoBehaviour
 {
     //serializefield properties
     [SerializeField] private CharacterController characterController;

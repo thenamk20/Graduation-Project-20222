@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 1a6035e6edf06c940916853278ba2768
+guid: f85383fcfcdbced4f8570c3d92af6319
 ModelImporter:
   serializedVersion: 20300
   internalIDToNameTable: []
@@ -7,18 +7,8 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: Gun_tex
-    second: {fileID: 2100000, guid: 111d435432f327d4c972dbc5967ababd, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Material.002
-    second: {fileID: 2100000, guid: 111d435432f327d4c972dbc5967ababd, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Material.005
-    second: {fileID: 2100000, guid: 111d435432f327d4c972dbc5967ababd, type: 2}
+      name: Material.001
+    second: {fileID: 2100000, guid: c86d5bef099ea2f4883562feacb10352, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
@@ -46,10 +36,10 @@ ModelImporter:
     extraExposedTransformPaths: []
     extraUserProperties: []
     clipAnimations: []
-    isReadable: 0
+    isReadable: 1
   meshes:
     lODScreenPercentages: []
-    globalScale: 100
+    globalScale: 1
     meshCompression: 0
     addColliders: 0
     useSRGBMaterialColor: 1
