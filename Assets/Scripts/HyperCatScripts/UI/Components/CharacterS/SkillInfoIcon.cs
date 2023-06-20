@@ -9,6 +9,8 @@ public class SkillInfoIcon : MonoBehaviour
 {
     [SerializeField] private SkillConfig skillConfig;
 
+    [SerializeField] private TextMeshProUGUI titleSkillText;
+
     [SerializeField] private TextMeshProUGUI descriptionText;
 
     [SerializeField] private GameObject activeBorder;
@@ -24,6 +26,7 @@ public class SkillInfoIcon : MonoBehaviour
 
     void SetDescription()
     {
+        titleSkillText.text = skillConfig.title.ToString();
         descriptionText.text = skillConfig.description;
     }
 

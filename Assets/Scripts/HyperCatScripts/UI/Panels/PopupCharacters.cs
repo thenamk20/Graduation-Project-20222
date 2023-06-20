@@ -39,6 +39,8 @@ public class PopupCharacters : UIPanel
         {
             selectBtn.Setup(OpenSlot);
         }
+
+        OpenSlot(Gm.data.user.currentCharacter);
     }
 
     protected override void RegisterEvent()
@@ -72,5 +74,12 @@ public class PopupCharacters : UIPanel
         {
             selectCharacterButtons[i].SetActive(i == slotIndex);
         }
+    }
+
+    public void ChooseCharacter(int characterIndex)
+    {
+        Gm.data.user.currentCharacter = characterIndex;
+        Evm.OnChangeCharacter.Dispatch();
+        Close();
     }
 }

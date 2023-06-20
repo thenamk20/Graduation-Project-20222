@@ -15,5 +15,5 @@ MonoBehaviour:
   skillIndex: 1
   executeTime: 4
   cooldownTime: 12
-  title: 
-  description: 456
+  title: Warm It Up
+  description: Firo burns his own body, doubling her movement speed for 4s.

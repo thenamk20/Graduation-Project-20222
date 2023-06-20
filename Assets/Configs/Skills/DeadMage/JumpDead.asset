@@ -15,3 +15,5 @@ MonoBehaviour:
   skillIndex: 2
   executeTime: 0.1
   cooldownTime: 5
+  title: Biggest Nightmare
+  description: Hammu jump up the selectd area, create strong damage to units inside.

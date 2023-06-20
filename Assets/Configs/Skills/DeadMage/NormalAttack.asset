@@ -15,3 +15,5 @@ MonoBehaviour:
   skillIndex: 0
   executeTime: 0
   cooldownTime: 1
+  title: Mystic Flow
+  description: Hammu launched a beam of dark energy forward in a cone

@@ -12,7 +12,7 @@ public class CharacterSlot : MonoBehaviour
 
     public void Init()
     {
-        
+        OpenCharacterInfo();
     }
 
     // Start is called before the first frame update
@@ -32,8 +32,9 @@ public class CharacterSlot : MonoBehaviour
 
     public void OpenCharacterInfo()
     {
-        characterInfoPanel.SetActive(true);
+        SetSkillsNotActive();
         skillInfoPanel.SetActive(false);
+        characterInfoPanel.SetActive(true);
     }
 
     public void OpenSkillsInfo()
@@ -48,6 +49,14 @@ public class CharacterSlot : MonoBehaviour
         for(int i = 0; i < skillsBtn.Count; i++)
         {
             skillsBtn[i].ShowActive(i == skillIndex);
+        }
+    }
+
+    void SetSkillsNotActive()
+    {
+        for (int i = 0; i < skillsBtn.Count; i++)
+        {
+            skillsBtn[i].ShowActive(false);
         }
     }
 }
