@@ -56,6 +56,7 @@ MonoBehaviour:
   - RPC_IncreaseChakraRestore
   - ShareDamageAreaReference
   - ShareOwnerViewID
+  - RPC_HideOnBush
   DisableAutoOpenWizard: 1
   ShowSettings: 1
   DevRegionSetOnce: 1

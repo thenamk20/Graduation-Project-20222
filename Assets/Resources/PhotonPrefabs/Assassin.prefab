@@ -930,6 +930,8 @@ MonoBehaviour:
   playerManager: {fileID: 0}
   moveable: 0
   rotateable: 0
+  currentBushId: 0
+  isOnBush: 0
 --- !u!114 &3867898241984792747
 MonoBehaviour:
   m_ObjectHideFlags: 0

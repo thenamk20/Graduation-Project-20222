@@ -79,18 +79,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bd20de648554f4a42bfc6c38883570de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buffDamageItemPrefab: {fileID: 2651213197211161665, guid: 1d6891a14f11e5947bfa96d8032433ba,
-    type: 3}
-  buffUpgradeItemPrefab: {fileID: 2651213197211161665, guid: 2b73963e19b71ad44bb08cc605d47514,
-    type: 3}
-  buffHealthItemPrefab: {fileID: 2651213197211161665, guid: ec0e31427d11a1a4abb99351c36bed03,
-    type: 3}
-  restoreHealthItemPrefab: {fileID: 2651213197211161665, guid: 5a7e04366244653448f108246e8c04b7,
-    type: 3}
-  buffMoveSpeedBuffItemPrefab: {fileID: 2651213197211161665, guid: d745d7f6ad17c0b4a913ac58e36c009b,
-    type: 3}
-  buffChakraRestore: {fileID: 2651213197211161665, guid: 52e9e3398efb5064bb78d53a5b90abcc,
-    type: 3}
+  buffItemsList:
+  - {fileID: 2651213197211161665, guid: 52e9e3398efb5064bb78d53a5b90abcc, type: 3}
+  - {fileID: 2651213197211161665, guid: 1d6891a14f11e5947bfa96d8032433ba, type: 3}
+  - {fileID: 2651213197211161665, guid: ec0e31427d11a1a4abb99351c36bed03, type: 3}
+  - {fileID: 2651213197211161665, guid: d745d7f6ad17c0b4a913ac58e36c009b, type: 3}
+  - {fileID: 2651213197211161665, guid: 5a7e04366244653448f108246e8c04b7, type: 3}
   healthBar: {fileID: 5385304910760342064}
   chestMaxHealth: 50
 --- !u!114 &449003395552178948

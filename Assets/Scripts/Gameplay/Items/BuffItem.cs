@@ -29,7 +29,6 @@ public abstract class BuffItem : MonoBehaviour
         inited = false;
         time = 0;
         isReached = false;
-
         transform.DOJump(transform.position + new Vector3(Random.Range(-1, 1f), 0, Random.Range(-1, 1f)), 2, 1, 0.7f).OnComplete(() =>
         {
             inited = true;

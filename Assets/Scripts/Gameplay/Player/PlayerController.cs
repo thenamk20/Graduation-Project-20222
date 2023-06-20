@@ -6,7 +6,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerController : MonoBehaviour, IDamageable
+public class PlayerController : MonoBehaviour, IDamageable, IHideable
 {
     [SerializeField] private CharacterController characterController;
 
@@ -246,6 +246,42 @@ public class PlayerController : MonoBehaviour, IDamageable
     public PhotonView GetPV()
     {
         return PV;
+    }
+
+    public int currentBushId;
+    public bool isOnBush;
+
+    public void Hide(int bushId)
+    {
+        currentBushId = bushId;
+        isOnBush = true;
+        PV.RPC(nameof(RPC_HideOnBush), RpcTarget.All, bushId);
+    }
+
+    public void Appear(int bushId)
+    {
+        currentBushId = -1;
+        isOnBush = false;
+    }
+
+    [PunRPC]
+    void RPC_HideOnBush(int bushId)
+    {
+        if (PV.IsMine)
+        {
+
+        }
+        else
+        {
+            if (isOnBush)
+            {
+
+            }
+            else
+            {
+
+            }
+        }
     }
 }
 

@@ -5,23 +5,7 @@ using UnityEngine;
 
 public class Chest : MonoBehaviour, IDamageable
 {
-    [SerializeField]
-    private GameObject buffDamageItemPrefab;
-
-    [SerializeField]
-    private GameObject buffUpgradeItemPrefab;
-
-    [SerializeField]
-    private GameObject buffHealthItemPrefab;
-
-    [SerializeField]
-    private GameObject restoreHealthItemPrefab;
-
-    [SerializeField]
-    private GameObject buffMoveSpeedBuffItemPrefab;
-
-    [SerializeField]
-    private GameObject buffChakraRestore;
+    [SerializeField] private List<GameObject> buffItemsList;
 
     [SerializeField] 
     private ProgressBar healthBar;
@@ -75,10 +59,33 @@ public class Chest : MonoBehaviour, IDamageable
 
     void Explode()
     {
-        HCDebug.Log("Chest explode", HcColor.Red);
+        int rd = Random.Range(0, 100);
+        int itemCount = 0;
+
+        if(rd < 40)
+        {
+            itemCount = 1;
+        }
+        else if(rd < 70)
+        {
+            itemCount = 2;
+        }
+        else if(rd < 90)
+        {
+            itemCount = 3;
+        }
+        else
+        {
+            itemCount = 4;
+        }
+
         PhotonNetwork.Destroy(gameObject);
-        BuffItem item = NetworkManager.Instance.InstantiateRoomObject(buffChakraRestore, transform.position, Quaternion.identity).GetComponent<BuffItem>();
-        item.Init();
+
+        for(int i=0; i< itemCount; i++)
+        {
+            BuffItem item = NetworkManager.Instance.InstantiateRoomObject(buffItemsList.GetRandom(), transform.position, Quaternion.identity).GetComponent<BuffItem>();
+            item.Init();
+        }
     }
 
     public PhotonView GetPV()
