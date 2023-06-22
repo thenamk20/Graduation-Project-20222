@@ -76,7 +76,6 @@ public class PopupRate : UIPanel
 //#endif
 //        }
 
-        Gm.data.user.rated = true;
         Database.SaveData();
        
     }

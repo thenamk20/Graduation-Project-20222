@@ -26,6 +26,8 @@ public class PlayerController : MonoBehaviour, IDamageable, IHideable
 
     [SerializeField] private CapsuleCollider hitBoxCollider;
 
+    [SerializeField] private BuffEffect buffEffect;
+
     public CharacterStats stats;
 
     PhotonView PV;
@@ -151,6 +153,7 @@ public class PlayerController : MonoBehaviour, IDamageable, IHideable
     //buff managing
     public void IncreaseDam(float gain)
     {
+        buffEffect.ShowBuffEffectUIItem(ItemBuff.Damage, (int)(gain * 100));
         PV.RPC(nameof(RPC_IncreaseDam), RpcTarget.All, gain);
     }
 
@@ -162,6 +165,7 @@ public class PlayerController : MonoBehaviour, IDamageable, IHideable
 
     public void IncreaseHealth(float gainPercent)
     {
+        buffEffect.ShowBuffEffectUIItem(ItemBuff.Health, (int)(gainPercent * 100));
         PV.RPC(nameof(RPC_IncreaseHealth), RpcTarget.All, gainPercent);
     }
 
@@ -178,6 +182,7 @@ public class PlayerController : MonoBehaviour, IDamageable, IHideable
 
     public void RestoreHealth(int amount)
     {
+        buffEffect.ShowBuffEffectUIItem(ItemBuff.Restore, amount);
         PV.RPC(nameof(RPC_RestoreHealth), RpcTarget.All, amount);
     }
 
@@ -208,6 +213,7 @@ public class PlayerController : MonoBehaviour, IDamageable, IHideable
 
     public void IncreaseMoveSpeed(float gainPercent)
     {
+        buffEffect.ShowBuffEffectUIItem(ItemBuff.MoveSpeed, (int)(gainPercent * 100));
         PV.RPC(nameof(RPC_IncreaseMoveSpeed), RpcTarget.All, gainPercent);
     }
 
@@ -219,6 +225,7 @@ public class PlayerController : MonoBehaviour, IDamageable, IHideable
 
     public void IncreaseChakraRestore(float gainPercent)
     {
+        buffEffect.ShowBuffEffectUIItem(ItemBuff.AttackSpeed, (int)(gainPercent * 100));
         PV.RPC(nameof(RPC_IncreaseChakraRestore), RpcTarget.All, gainPercent);
     }
 
@@ -239,6 +246,7 @@ public class PlayerController : MonoBehaviour, IDamageable, IHideable
     {
         stats.upgradePoint -= 1;
     }
+
 
 
     #endregion

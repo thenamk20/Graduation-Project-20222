@@ -30,9 +30,6 @@ public class GameData
         public int dailyRewardClaimedCount;
         public DateTime lastDailyRewardClaimTime = DateTime.MinValue;
 
-        //Purchase Data
-        public bool purchasedNoAds;
-        public bool rated;
 
         //Leaderboard
         public int totalScoreOffset;
@@ -54,7 +51,17 @@ public class GameData
         public string cachedEmail;
 
         public string cachedPassword;
+
+        public UserRemoteData userRemoteData = new UserRemoteData();
     }
+
+    public class UserRemoteData 
+    {
+        public int avatarID;
+        public int winCount;
+        public int matchCount;
+    }
+
 
     [Serializable]
     public class SettingData
