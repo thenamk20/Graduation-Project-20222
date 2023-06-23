@@ -8,6 +8,9 @@ public class PopupChangeNickname : UIPanel
     [SerializeField]
     private GameObject warningText;
 
+    [SerializeField]
+    private GameObject waiting;
+
     private string newNickName;
 
     public static PopupChangeNickname Instance { get; private set; }
@@ -37,6 +40,7 @@ public class PopupChangeNickname : UIPanel
     private void Init()
     {
         warningText.SetActive(false);
+        waiting.SetActive(false);
     }
 
     protected override void RegisterEvent()
@@ -69,7 +73,8 @@ public class PopupChangeNickname : UIPanel
     {
         if (string.IsNullOrEmpty(newNickName)) return;
         SubmitNamePlayfab(newNickName);
-       
+
+        waiting.SetActive(true);
     }
 
     public void SubmitNamePlayfab(string name)
@@ -84,15 +89,17 @@ public class PopupChangeNickname : UIPanel
 
     void OnUpdateSuccess(UpdateUserTitleDisplayNameResult result)
     {
-        HCDebug.Log("Update name successed", HcColor.Green);
+        waiting.SetActive(false);
         Gm.data.user.name = newNickName;
         PhotonNetwork.NickName = newNickName;
         EventGlobalManager.Instance.OnChangeName.Dispatch();
         Close();
+        PopupNotification.Show("Update name successfully!", 2f);
     }
 
     void OnError(PlayFabError error)
     {
+        waiting.SetActive(false);
         HCDebug.Log("Update name failed", HcColor.Red);
         warningText.SetActive(true);
     }

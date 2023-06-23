@@ -33,6 +33,9 @@ public class EventGlobalManager : Singleton<EventGlobalManager>
 
     public Relay OnDie = new Relay();
 
+    public Relay OnPlayersRoomChange = new Relay();
+
+
     public Relay<KillItem, KillItem> OnKillNotice = new Relay<KillItem, KillItem>();
 
     private void Start()

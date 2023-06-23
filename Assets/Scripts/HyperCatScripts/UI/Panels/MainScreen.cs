@@ -101,6 +101,12 @@ public class MainScreen : UIPanel
         PopupRoom.Instance.ShowRoomState(ROOM_PANEL_STATE.CREATING);
     }
 
+    public void QuickMatching()
+    {
+        PopupQuickMatch.Show();
+      
+    }
+
     void UpdateNickNameUI()
     {
         currentNickname.text = PhotonNetwork.NickName;

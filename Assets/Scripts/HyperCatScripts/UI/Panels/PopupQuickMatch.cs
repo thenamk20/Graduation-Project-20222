@@ -1,3 +1,4 @@
+using Photon.Pun;
 using Photon.Realtime;
 
 public class PopupQuickMatch : UIPanel
@@ -28,7 +29,7 @@ public class PopupQuickMatch : UIPanel
 
     private void Init()
     {
-        
+        NetworkManager.Instance.QuickMatch();
     }
 
     protected override void RegisterEvent()
@@ -45,5 +46,19 @@ public class PopupQuickMatch : UIPanel
     {
         base.OnDisappear();
         Instance = null;
+    }
+
+    public override void Close()
+    {
+        base.Close();
+        if (PhotonNetwork.InRoom)
+        {
+            PhotonNetwork.LeaveRoom();
+        }
+    }
+
+    public override void OnPlayerEnteredRoom(Player newPlayer)
+    {
+        base.OnPlayerEnteredRoom(newPlayer);
     }
 }

@@ -24,7 +24,10 @@ public class NetworkManager : Singleton<NetworkManager>
     public void CreateRoom(string roomName)
     {
         if (string.IsNullOrEmpty(roomName)) return;
-        PhotonNetwork.CreateRoom(roomName);
+        PhotonNetwork.CreateRoom(roomName, new RoomOptions
+        {
+            MaxPlayers = 6
+        });
 
         PopupRoom.Show();
     }
@@ -37,6 +40,14 @@ public class NetworkManager : Singleton<NetworkManager>
     public void JoinRoom(RoomInfo info)
     {
         PhotonNetwork.JoinRoom(info.Name);
+    }
+
+    public void QuickMatch()
+    {
+        PhotonNetwork.JoinOrCreateRoom("QuickMatch", new RoomOptions
+        {
+            MaxPlayers = 2
+        }, TypedLobby.Default);
     }
 
     public void ClearListRoom()

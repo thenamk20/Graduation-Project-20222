@@ -7,6 +7,7 @@ using Photon.Pun;
 using Photon.Realtime;
 using Sirenix.Utilities;
 using System.Linq;
+using DG.Tweening;
 
 public class PopupRoom : UIPanel
 {
@@ -90,11 +91,13 @@ public class PopupRoom : UIPanel
     protected override void RegisterEvent()
     {
         base.RegisterEvent();
+        Evm.OnPlayersRoomChange.AddListener(HandlePlayersRoomChange);
     }
 
     protected override void UnregisterEvent()
     {
         base.UnregisterEvent();
+        Evm.OnPlayersRoomChange.RemoveListener(HandlePlayersRoomChange);
     }
 
     public override void OnDisappear()
@@ -125,13 +128,20 @@ public class PopupRoom : UIPanel
         NetworkManager.Instance.StartGame();
     }
     
+    void HandlePlayersRoomChange()
+    {
+        if (PhotonNetwork.IsMasterClient)
+        {
+            startGameButton.SetActive(PhotonNetwork.CurrentRoom.PlayerCount >= Cfg.gameCfg.numberOfPlayerRequire);
+        }
+    }
 
     #region PUn callbacks
 
     public override void OnJoinedRoom()
     {
         ShowRoomState(ROOM_PANEL_STATE.INSIDE_ROOM);
-        roomNameText.text = PhotonNetwork.CurrentRoom.Name;
+        roomNameText.text = "Room: " + PhotonNetwork.CurrentRoom.Name;
 
         EventGlobalManager.Instance.OnEnterARoom.Dispatch();
 
@@ -139,7 +149,21 @@ public class PopupRoom : UIPanel
 
         playerListController.Init(players);
 
-        startGameButton.SetActive(PhotonNetwork.IsMasterClient);
+        HCDebug.Log("players in room: " + PhotonNetwork.PlayerList.Count().ToString(), HcColor.Aqua);
+        startGameButton.SetActive(PhotonNetwork.IsMasterClient && PhotonNetwork.CurrentRoom.PlayerCount >= Cfg.gameCfg.numberOfPlayerRequire);
+    }
+
+    public override void OnJoinRoomFailed(short returnCode, string message)
+    {
+        base.OnJoinRoomFailed(returnCode, message);
+        ShowRoomState(ROOM_PANEL_STATE.ERROR);
+        errorMessage.text = "join room failed";
+
+        DOTween.Kill(this);
+        DOVirtual.DelayedCall(2f, () =>
+        {
+            ShowRoomState(ROOM_PANEL_STATE.FINDING);
+        }).SetTarget(this);
     }
 
     public override void OnMasterClientSwitched(Player newMasterClient)
@@ -155,7 +179,14 @@ public class PopupRoom : UIPanel
     public override void OnCreateRoomFailed(short returnCode, string message)
     {
         base.OnCreateRoomFailed(returnCode, message);
-        errorMessage.text = message;
+        ShowRoomState(ROOM_PANEL_STATE.ERROR);
+        errorMessage.text = "create room failed";
+
+        DOTween.Kill(this);
+        DOVirtual.DelayedCall(2f, () =>
+        {
+            ShowRoomState(ROOM_PANEL_STATE.CREATING);
+        }).SetTarget(this);
     }
 
     #endregion

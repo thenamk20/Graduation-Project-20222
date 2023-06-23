@@ -34,5 +34,6 @@ public class PlayerRoomListController : MonoBehaviourPunCallbacks
     public override void OnPlayerEnteredRoom(Player newPlayer)
     {
         Instantiate(playerItemPrefab, playerListContainer).GetComponent<PlayerRoomItem>().Init(newPlayer);
+        EventGlobalManager.Instance.OnPlayersRoomChange.Dispatch();
     }
 }

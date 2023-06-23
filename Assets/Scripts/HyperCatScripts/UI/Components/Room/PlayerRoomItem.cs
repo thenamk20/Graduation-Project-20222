@@ -23,12 +23,12 @@ public class PlayerRoomItem : MonoBehaviourPunCallbacks
         if(player == otherPlayer)
         {
             Destroy(gameObject);
+            EventGlobalManager.Instance.OnPlayersRoomChange.Dispatch();
         }
     }
 
     public override void OnLeftRoom()
     {
         Destroy(gameObject);
-        
     }
 }
