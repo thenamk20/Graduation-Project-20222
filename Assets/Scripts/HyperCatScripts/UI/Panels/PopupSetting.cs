@@ -11,15 +11,6 @@ public class PopupSetting : UIPanel
     public static PopupSetting Instance { get; private set; }
 
     [SerializeField]
-    private Button btnRestorePurchase;
-
-    [SerializeField]
-    private Button btnSound;
-
-    [SerializeField]
-    private Button btnVibrate;
-
-    [SerializeField]
     private Button closeBg;
 
     [SerializeField]
@@ -30,6 +21,12 @@ public class PopupSetting : UIPanel
 
     [SerializeField]
     private GameObject soundOn;
+
+    [SerializeField]
+    private GameObject musicOff;
+
+    [SerializeField]
+    private GameObject musicOn;
 
     [SerializeField]
     private GameObject vibrateOff;
@@ -65,6 +62,9 @@ public class PopupSetting : UIPanel
 
         soundOn.SetActive(Gm.data.setting.soundVolume > 0);
         soundOff.SetActive(Gm.data.setting.soundVolume == 0);
+
+        musicOn.SetActive(Gm.data.setting.musicVolume > 0);
+        musicOff.SetActive(Gm.data.setting.musicVolume == 0);
     }
 
     public void SwitchSound()
@@ -73,6 +73,19 @@ public class PopupSetting : UIPanel
 
         soundOn.SetActive(Gm.data.setting.soundVolume > 0);
         soundOff.SetActive(Gm.data.setting.soundVolume == 0);
+
+        Database.SaveData();
+        EventGlobalManager.Instance.OnUpdateSetting.Dispatch();
+
+        AudioAssistant.Shot(TypeSound.Button);
+    }
+
+    public void SwitchMusic()
+    {
+        Gm.data.setting.musicVolume = Gm.data.setting.musicVolume > 0 ? 0 : 1;
+
+        musicOn.SetActive(Gm.data.setting.musicVolume > 0);
+        musicOff.SetActive(Gm.data.setting.musicVolume == 0);
 
         Database.SaveData();
         EventGlobalManager.Instance.OnUpdateSetting.Dispatch();
