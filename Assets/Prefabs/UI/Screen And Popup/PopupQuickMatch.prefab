@@ -936,6 +936,7 @@ MonoBehaviour:
   openSound: 1
   closeSound: 2
   panelAnimator: {fileID: 5669069747024256057}
+  maxPlayers: 2
 --- !u!1 &2985474300590522215
 GameObject:
   m_ObjectHideFlags: 0

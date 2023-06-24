@@ -29,6 +29,11 @@ public class PlayScreen : UIPanel
     {
         base.OnAppear();
         Init();
+
+        if(PopupQuickMatch.Instance != null)
+        {
+            PopupQuickMatch.Instance.Close();
+        }
     }
 
     private void Init()

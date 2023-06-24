@@ -11,7 +11,7 @@ public class PlayerRoomItem : MonoBehaviourPunCallbacks
     [SerializeField] private TextMeshProUGUI playerName;
 
     private Player player;
-
+     
     public void Init(Player _player)
     {
         player = _player;
