@@ -36,6 +36,7 @@ public class RoomManager : MonoBehaviourPunCallbacks
     {
         if (scene.buildIndex == (int)SceneIndex.Battle) // We're in the game scene
         {
+            AudioAssistant.Instance.PlayMusic("Hall");
             PlayScreen.Show();
             PhotonNetwork.Instantiate(Path.Combine(GameConst.PhotonPrefabs, GameConst.PlayerManager), Vector3.zero, Quaternion.identity);
             PopupRoom.Instance?.Close();
@@ -44,6 +45,7 @@ public class RoomManager : MonoBehaviourPunCallbacks
         if(scene.buildIndex == (int)SceneIndex.Hall)
         {
             MainScreen.Show();
+            AudioAssistant.Instance.PlayMusic("Battle");
         }
     }
 }

@@ -23,6 +23,12 @@ public enum TypeSound
     Button = 0,
     OpenPopup = 1,
     ClosePopup = 2,
+    Pop,
+    Bump,
+    Bell,
+    BallTap,
+    Bloop,
+    ClickError
 }
 
 public enum Pool

@@ -1063,8 +1063,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   root: {fileID: 767738415504371371}
-  openSound: 1
-  closeSound: 2
+  openSound: -1
+  closeSound: -1
   panelAnimator: {fileID: 193168299727343066}
 --- !u!1 &6435935539231953777
 GameObject:

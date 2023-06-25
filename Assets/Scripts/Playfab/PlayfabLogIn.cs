@@ -21,6 +21,8 @@ public class PlayfabLogIn : MonoBehaviour
 
     [SerializeField] private GameObject waitingPanel;
 
+    [SerializeField] private AudioSource soundButton;
+
     public string userEmail;
 
     public string password;
@@ -53,6 +55,8 @@ public class PlayfabLogIn : MonoBehaviour
     private bool IsValidUsername()
     {
         bool isValid = false;
+
+        if (userEmail == null || password == null) return false;
 
         if (userEmail.Length >= 3 && userEmail.Length <= 24)
             isValid = true;
@@ -104,6 +108,7 @@ public class PlayfabLogIn : MonoBehaviour
 
     public void Login()
     {
+        soundButton.Play();
         if (!IsValidUsername()) return;
         waitingPanel.SetActive(true);
 
@@ -149,9 +154,10 @@ public class PlayfabLogIn : MonoBehaviour
 
     private void OnLoginEmailFailure(PlayFabError error)
     {
+        //AudioAssistant.Shot(TypeSound.ClickError);
         waitingPanel.SetActive(false);
         Debug.Log($"There was an issue with your request: {error.GenerateErrorReport()}");
-        errorMessage.text = error.GenerateErrorReport();
+        errorMessage.text = "Login failed, make sure your email and password are correct!";
         errorMessage.gameObject.SetActive(true);
     }
 

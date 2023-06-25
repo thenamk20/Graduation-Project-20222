@@ -21,8 +21,30 @@ MonoBehaviour:
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
     SerializationNodes: []
-  listBgm: []
-  listSfx: []
+  listBgm:
+  - name: Battle
+    track: {fileID: 8300000, guid: 5d35bf33dcd37314e844838745b7aa91, type: 3}
+  - name: Hall
+    track: {fileID: 8300000, guid: d1359471832e8494f84f7b018b308f0f, type: 3}
+  listSfx:
+  - audioClip: {fileID: 8300000, guid: 3465004066aa7aa4ca86d46f58ee88dc, type: 3}
+    typeSound: 0
+  - audioClip: {fileID: 8300000, guid: e592f595813944846a81cecf757c815e, type: 3}
+    typeSound: 1
+  - audioClip: {fileID: 8300000, guid: e592f595813944846a81cecf757c815e, type: 3}
+    typeSound: 2
+  - audioClip: {fileID: 8300000, guid: e6ff31b2fd45849418e4e45abca60bbc, type: 3}
+    typeSound: 3
+  - audioClip: {fileID: 8300000, guid: 5519fa9bd7ab10c4380419180b74917e, type: 3}
+    typeSound: 4
+  - audioClip: {fileID: 8300000, guid: 0b5d8a5aaebe8204f8dc6fe86bc77028, type: 3}
+    typeSound: 5
+  - audioClip: {fileID: 8300000, guid: 9bde49cbff75b3647b28a7036c7395fa, type: 3}
+    typeSound: 6
+  - audioClip: {fileID: 8300000, guid: 39873cee14bb70b4f9c2f83ddbb15389, type: 3}
+    typeSound: 7
+  - audioClip: {fileID: 8300000, guid: f82644b61c3820b49b7718f531457478, type: 3}
+    typeSound: 8
   volumeBgm: 0.5
   volumeSfx: 1
   path: Assets/Sounds

@@ -49,20 +49,17 @@ public class MainScreen : UIPanel
             currentNickname.text = Gm.data.user.name;
         }
 
-
+       
         CharacterPreview.Instance.ToggleCharacterPreview(true);
     }
 
     public void ShowSetting()
     {
-        AudioAssistant.Shot(TypeSound.Button);
         PopupSetting.Show();
     }
 
     public void StartGame()
     {
-        AudioAssistant.Shot(TypeSound.Button);
-
         if (!GameManager.NetworkAvailable)
         {
             PopupNoInternet.Show();
