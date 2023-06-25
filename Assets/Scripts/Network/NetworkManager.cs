@@ -42,14 +42,6 @@ public class NetworkManager : Singleton<NetworkManager>
         PhotonNetwork.JoinRoom(info.Name);
     }
 
-    public void QuickMatch()
-    {
-        PhotonNetwork.JoinOrCreateRoom("QuickMatch", new RoomOptions
-        {
-            MaxPlayers = 2
-        }, TypedLobby.Default);
-    }
-
     public void ClearListRoom()
     {
         AllRoomList.Clear();
