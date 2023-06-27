@@ -54,6 +54,13 @@ MonoBehaviour:
   - {r: 1, g: 0.39636728, b: 0, a: 1}
   - {r: 0.56523514, g: 0, b: 1, a: 1}
   spawnBuffItemUIPoint: {fileID: 3091167836012981203}
+  buffVFXPrefab:
+  - {fileID: 256128311289730591, guid: 0c922cbead0c9bc46b70b5aaf94dcdad, type: 3}
+  - {fileID: 256128311289730591, guid: 4fccb5cbbc1cd1f428378cd7647e5e0f, type: 3}
+  - {fileID: 256128311289730591, guid: 0e047709d5bce004f990e44a2d18f8d0, type: 3}
+  - {fileID: 256128311289730591, guid: e4adcd74e65aae64bacd66d0fc47b85b, type: 3}
+  - {fileID: 256128311289730591, guid: 078594c8ee4a1f44fb0972263362cd47, type: 3}
+  - {fileID: 256128311289730591, guid: e4adcd74e65aae64bacd66d0fc47b85b, type: 3}
 --- !u!1 &8207789137481013327
 GameObject:
   m_ObjectHideFlags: 0

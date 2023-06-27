@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class PlayScreen : UIPanel
@@ -8,6 +9,9 @@ public class PlayScreen : UIPanel
 
     [SerializeField]
     private Transform controlPanel;
+
+    [SerializeField]
+    private TextMeshProUGUI countPlayerText;
 
     private GameObject skillsPanel;
 
@@ -40,6 +44,8 @@ public class PlayScreen : UIPanel
     {
         GameObject skillsPanelPrefab = Cfg.characters[Gm.data.user.currentCharacter].skillUIController;
         skillsPanel = Instantiate(skillsPanelPrefab, skillCtrlContainer);
+
+        controlPanel.gameObject.SetActive(true);
     }
 
     public override void OnDisappear()
@@ -61,13 +67,17 @@ public class PlayScreen : UIPanel
     protected override void RegisterEvent()
     {
         base.RegisterEvent();
-        EventGlobalManager.Instance.OnDoneFighting.AddListener(HideControlSkillPanels);
+        Evm.OnDoneFighting.AddListener(HideControlSkillPanels);
+        Evm.OnStartBattle.AddListener(BindingBattleInfo);
+        Evm.OnRemovePlayer.AddListener(BindingBattleInfo);
     }
 
     protected override void UnregisterEvent()
     {
         base.UnregisterEvent();
         EventGlobalManager.Instance.OnDoneFighting.RemoveListener(HideControlSkillPanels);
+        Evm.OnStartBattle.RemoveListener(BindingBattleInfo);
+        Evm.OnRemovePlayer.RemoveListener(BindingBattleInfo);
     }
 
     void HideControlSkillPanels()
@@ -76,4 +86,8 @@ public class PlayScreen : UIPanel
         controlPanel.gameObject.SetActive(false);
     }
 
+    void BindingBattleInfo()
+    {
+        countPlayerText.text = BattleController.Instance.Players.Count.ToString();
+    }
 }

@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 7228268571210275483}
   - component: {fileID: 7126803052026273408}
   - component: {fileID: 6330293881610465244}
+  - component: {fileID: 1324180385746848759}
   m_Layer: 0
   m_Name: BuffSpeedVFx
   m_TagString: Untagged
@@ -66,10 +67,27 @@ MonoBehaviour:
   Synchronization: 3
   OwnershipTransfer: 0
   observableSearch: 2
-  ObservedComponents: []
+  ObservedComponents:
+  - {fileID: 1324180385746848759}
   sceneViewId: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
+--- !u!114 &1324180385746848759
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1175518471683423317}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 627855c7f81362d41938ffe0b1475957, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SynchronizePosition: 1
+  m_SynchronizeRotation: 1
+  m_SynchronizeScale: 0
+  m_UseLocal: 1
 --- !u!1001 &4365461836106961994
 PrefabInstance:
   m_ObjectHideFlags: 0

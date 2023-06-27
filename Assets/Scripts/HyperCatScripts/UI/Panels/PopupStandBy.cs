@@ -58,7 +58,7 @@ public class PopupStandBy : UIPanel
     IEnumerator DelayHide()
     {
         yield return new WaitForSecondsRealtime(2f);
-        BattleController.Instance.OnStartBattle.Dispatch();
+        Evm.OnStartBattle.Dispatch();
         yield return new WaitForSeconds(0.5f);
         Close();
     }

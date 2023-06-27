@@ -17,8 +17,6 @@ public class BattleController : MonoBehaviourPunCallbacks
 
     public Relay OnEndBattle = new Relay();
 
-    public Relay OnStartBattle = new Relay();
-
     public bool ended = false;
 
     public ObjectSpawner Spawner;
@@ -56,6 +54,7 @@ public class BattleController : MonoBehaviourPunCallbacks
         {
             Players.Remove(player);
             CheckEndBattle();
+            EventGlobalManager.Instance.OnRemovePlayer.Dispatch();
         }
     }
 

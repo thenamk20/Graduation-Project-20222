@@ -34,6 +34,12 @@ public class EventGlobalManager : Singleton<EventGlobalManager>
     public Relay OnDoneFighting = new Relay();
 
     public Relay OnPlayersRoomChange = new Relay();
+    
+
+    //Battle event;
+    public Relay OnStartBattle = new Relay();
+
+    public Relay OnRemovePlayer = new Relay();
 
 
     public Relay<KillItem, KillItem> OnKillNotice = new Relay<KillItem, KillItem>();

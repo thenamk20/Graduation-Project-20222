@@ -26,7 +26,7 @@ public class PlayerManager : MonoBehaviour
         isAlive = true;
         BattleController.Instance.AddPlayer(this);
         BattleController.Instance.OnEndBattle.AddListener(HandleBattleEnd);
-        BattleController.Instance.OnStartBattle.AddListener(CreateController);
+        EventGlobalManager.Instance.OnStartBattle.AddListener(CreateController);
     }
 
     // Update is called once per frame
@@ -48,7 +48,7 @@ public class PlayerManager : MonoBehaviour
     {
         BattleController.Instance.RemovePlayer(this);
         BattleController.Instance.OnEndBattle.RemoveListener(HandleBattleEnd);
-        BattleController.Instance.OnStartBattle.RemoveListener(CreateController);
+        EventGlobalManager.Instance.OnStartBattle.RemoveListener(CreateController);
     }
 
     public void Die(string victimName, string killerName)
