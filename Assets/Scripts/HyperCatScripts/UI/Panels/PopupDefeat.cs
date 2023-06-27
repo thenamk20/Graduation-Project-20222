@@ -3,10 +3,19 @@ using Photon.Realtime;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using TMPro;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class PopupDefeat : UIPanel
 {
+    [SerializeField]
+    private TextMeshProUGUI topText;
+
+    [SerializeField] private GameObject panel1;
+
+    [SerializeField] private GameObject panel2;
+
     public static PopupDefeat Instance { get; private set; }
 
     public override UiPanelType GetId()
@@ -33,6 +42,9 @@ public class PopupDefeat : UIPanel
 
     private void Init()
     {
+        topText.text = "You got top" + (BattleController.Instance.Players.Count);
+        panel1.SetActive(true);
+        panel2.SetActive(false);
     }
 
     protected override void RegisterEvent()
@@ -76,5 +88,11 @@ public class PopupDefeat : UIPanel
         Close();
         PhotonNetwork.LoadLevel((int)SceneIndex.Hall);
         PhotonNetwork.LeaveRoom();
+    }
+
+    public void Leave()
+    {
+        panel1.SetActive(false);
+        panel2.SetActive(true);
     }
 }

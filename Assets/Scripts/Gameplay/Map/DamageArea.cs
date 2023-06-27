@@ -25,14 +25,18 @@ public class DamageArea : MonoBehaviourPun
 
     public float Range => range;
 
+    private bool reducing = true;
+
     private void Start()
     {
         range = initRange;
+        reducing = true;
+        BattleController.Instance.OnEndBattle.AddListener(StopReducing);
     }
 
     private void Update()
     {
-        if(range > minRange)
+        if(range > minRange && reducing)
         {
             range -= reduceSpeed * Time.deltaTime;
             maskTransform.localScale = range / 5f * Vector3.one;
@@ -40,5 +44,8 @@ public class DamageArea : MonoBehaviourPun
     }
 
 
-
+    void StopReducing()
+    {
+        reducing = false;
+    }
 }

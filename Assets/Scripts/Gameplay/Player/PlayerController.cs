@@ -143,6 +143,7 @@ public class PlayerController : MonoBehaviour, IDamageable, IHideable
 
         playerManager.Die(PhotonNetwork.LocalPlayer.NickName, info.Sender.NickName);
         animController.PlayDie();
+        PlayerManager.Find(info.Sender).GetKill();
     }
 
     public bool IsFullHealth => (stats.currentHealth >= stats.maxHealth);
