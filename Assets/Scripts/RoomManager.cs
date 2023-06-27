@@ -39,6 +39,7 @@ public class RoomManager : MonoBehaviourPunCallbacks
             PlayScreen.Show();
             PhotonNetwork.Instantiate(Path.Combine(GameConst.PhotonPrefabs, GameConst.PlayerManager), Vector3.zero, Quaternion.identity);
             PopupRoom.Instance?.Close();
+            PopupStandBy.Show();
         }
 
         if(scene.buildIndex == (int)SceneIndex.Hall)

@@ -31,7 +31,7 @@ public class EventGlobalManager : Singleton<EventGlobalManager>
 
     public Relay OnChangeCharacter = new Relay();
 
-    public Relay OnDie = new Relay();
+    public Relay OnDoneFighting = new Relay();
 
     public Relay OnPlayersRoomChange = new Relay();
 

@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   extraFeatureConfig: {fileID: 0}
   maxOfflineRemindMinute: 720
-  numberOfPlayerRequire: 2
+  numberOfPlayerRequire: 1

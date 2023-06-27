@@ -27,5 +27,6 @@ public enum UiPanelType
     PopupVictory,
     PopupDefeat,
     PopupCharacters,
+    PopupStandBy,
     SdkPlaceHolder
 }

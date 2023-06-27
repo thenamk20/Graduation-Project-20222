@@ -38,6 +38,11 @@ public class SkillItemUI : HCMonoBehaviour, IPointerUpHandler, IPointerDownHandl
 
     private void Start()
     {
+        MyPlayer.Instance.OnFinishSetupMyPlayer.AddListener(RegisterSkillPanel);
+    }
+
+    void RegisterSkillPanel()
+    {
         PlayerCtrl.SkillsManager.OnReady.AddListener(HandleSkillReady);
 
         PlayerCtrl.SkillsManager.OnStartExecute.AddListener(HandleSkillStartExecute);
@@ -55,6 +60,21 @@ public class SkillItemUI : HCMonoBehaviour, IPointerUpHandler, IPointerDownHandl
 
         cooldownCover.SetActive(false);
         executeCover.SetActive(false);
+    }
+
+    void UnRegisterSkillPanel()
+    {
+        PlayerCtrl.SkillsManager.OnReady.RemoveListener(HandleSkillReady);
+
+        PlayerCtrl.SkillsManager.OnStartExecute.RemoveListener(HandleSkillStartExecute);
+        PlayerCtrl.SkillsManager.OnDoneExecute.RemoveListener(HandleSkillDoneExecute);
+
+        PlayerCtrl.SkillsManager.OnStartCoolDown.RemoveListener(HandleSkillStartCoolDown);
+        PlayerCtrl.SkillsManager.OnDoneCoolDown.RemoveListener(HandleSkillDoneCoolDown);
+
+        PlayerCtrl.SkillsManager.OnClaimAnUpgradePoint.RemoveListener(HandleClaimAnUpgradePoint);
+
+        PlayerCtrl.SkillsManager.OnUpgradeSkill.RemoveListener(HandleClaimAnUpgradePoint);
     }
 
     public void OnPointerUp(PointerEventData eventData)
@@ -120,17 +140,8 @@ public class SkillItemUI : HCMonoBehaviour, IPointerUpHandler, IPointerDownHandl
     public override void OnDisable()
     {
         base.OnDisable();
-        PlayerCtrl.SkillsManager.OnReady.RemoveListener(HandleSkillReady);
-
-        PlayerCtrl.SkillsManager.OnStartExecute.RemoveListener(HandleSkillStartExecute);
-        PlayerCtrl.SkillsManager.OnDoneExecute.RemoveListener(HandleSkillDoneExecute);
-
-        PlayerCtrl.SkillsManager.OnStartCoolDown.RemoveListener(HandleSkillStartCoolDown);
-        PlayerCtrl.SkillsManager.OnDoneCoolDown.RemoveListener(HandleSkillDoneCoolDown);
-
-        PlayerCtrl.SkillsManager.OnClaimAnUpgradePoint.RemoveListener(HandleClaimAnUpgradePoint);
-
-        PlayerCtrl.SkillsManager.OnUpgradeSkill.RemoveListener(HandleClaimAnUpgradePoint);
+        MyPlayer.Instance?.OnFinishSetupMyPlayer.RemoveListener(RegisterSkillPanel);
+        UnRegisterSkillPanel();
     }
 }
 

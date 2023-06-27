@@ -61,13 +61,13 @@ public class PlayScreen : UIPanel
     protected override void RegisterEvent()
     {
         base.RegisterEvent();
-        EventGlobalManager.Instance.OnDie.AddListener(HideControlSkillPanels);
+        EventGlobalManager.Instance.OnDoneFighting.AddListener(HideControlSkillPanels);
     }
 
     protected override void UnregisterEvent()
     {
         base.UnregisterEvent();
-        EventGlobalManager.Instance.OnDie.RemoveListener(HideControlSkillPanels);
+        EventGlobalManager.Instance.OnDoneFighting.RemoveListener(HideControlSkillPanels);
     }
 
     void HideControlSkillPanels()

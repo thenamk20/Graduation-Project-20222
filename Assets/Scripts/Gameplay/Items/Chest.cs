@@ -62,11 +62,11 @@ public class Chest : MonoBehaviour, IDamageable
         int rd = Random.Range(0, 100);
         int itemCount = 0;
 
-        if(rd < 45)
+        if(rd < 50)
         {
             itemCount = 1;
         }
-        else if(rd < 80)
+        else if(rd < 85)
         {
             itemCount = 2;
         }
