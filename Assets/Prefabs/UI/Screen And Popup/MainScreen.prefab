@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 3535972130290264399}
   - component: {fileID: 5596064472933647000}
   - component: {fileID: 723559242059473619}
+  - component: {fileID: 2782413161249494735}
   m_Layer: 5
   m_Name: BG
   m_TagString: Untagged
@@ -77,6 +78,32 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &2782413161249494735
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 97023743649997844}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f19b7e2285c104f6ca47d583f3e5444f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectFactor: 0.5
+  m_Width: 0.25
+  m_Rotation: 135
+  m_Softness: 1
+  m_Brightness: 1
+  m_Gloss: 1
+  m_EffectArea: 0
+  m_Player:
+    play: 1
+    initialPlayDelay: 1
+    duration: 0.75
+    loop: 1
+    loopDelay: 1.5
+    updateMode: 0
 --- !u!1 &345097315596842008
 GameObject:
   m_ObjectHideFlags: 0
@@ -806,6 +833,7 @@ GameObject:
   - component: {fileID: 2822795891238393490}
   - component: {fileID: 3736899081764506150}
   - component: {fileID: 4165499092775474231}
+  - component: {fileID: 635630723337282332}
   m_Layer: 5
   m_Name: BG
   m_TagString: Untagged
@@ -872,6 +900,32 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &635630723337282332
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1845649350297861761}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f19b7e2285c104f6ca47d583f3e5444f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectFactor: 0.5
+  m_Width: 0.25
+  m_Rotation: 135
+  m_Softness: 1
+  m_Brightness: 1
+  m_Gloss: 1
+  m_EffectArea: 0
+  m_Player:
+    play: 1
+    initialPlayDelay: 1
+    duration: 0.75
+    loop: 1
+    loopDelay: 1.5
+    updateMode: 0
 --- !u!1 &2518121511460164066
 GameObject:
   m_ObjectHideFlags: 0
@@ -883,6 +937,7 @@ GameObject:
   - component: {fileID: 1326896200673703461}
   - component: {fileID: 5001337120286068114}
   - component: {fileID: 1882505757339600380}
+  - component: {fileID: 2157050699750337707}
   m_Layer: 5
   m_Name: BG
   m_TagString: Untagged
@@ -949,6 +1004,32 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &2157050699750337707
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2518121511460164066}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f19b7e2285c104f6ca47d583f3e5444f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectFactor: 0.5
+  m_Width: 0.25
+  m_Rotation: 135
+  m_Softness: 1
+  m_Brightness: 1
+  m_Gloss: 1
+  m_EffectArea: 0
+  m_Player:
+    play: 1
+    initialPlayDelay: 1
+    duration: 0.75
+    loop: 1
+    loopDelay: 1.5
+    updateMode: 0
 --- !u!1 &2573207441606864033
 GameObject:
   m_ObjectHideFlags: 0
@@ -4526,8 +4607,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   root: {fileID: 4315927354634875553}
-  openSound: 1
-  closeSound: 2
+  openSound: -1
+  closeSound: -1
   panelAnimator: {fileID: 0}
   currentNickname: {fileID: 8872803540703177629}
 --- !u!1 &8111579166844993521
@@ -4843,6 +4924,7 @@ GameObject:
   - component: {fileID: 9015239517946720657}
   - component: {fileID: 1438780658700393422}
   - component: {fileID: 5623748694862068301}
+  - component: {fileID: 2835213720359562031}
   m_Layer: 5
   m_Name: BG
   m_TagString: Untagged
@@ -4909,6 +4991,32 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &2835213720359562031
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8586539609153223649}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f19b7e2285c104f6ca47d583f3e5444f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectFactor: 0.5
+  m_Width: 0.25
+  m_Rotation: 135
+  m_Softness: 1
+  m_Brightness: 1
+  m_Gloss: 1
+  m_EffectArea: 0
+  m_Player:
+    play: 1
+    initialPlayDelay: 1
+    duration: 0.75
+    loop: 1
+    loopDelay: 1.5
+    updateMode: 0
 --- !u!1 &8988720832944105531
 GameObject:
   m_ObjectHideFlags: 0

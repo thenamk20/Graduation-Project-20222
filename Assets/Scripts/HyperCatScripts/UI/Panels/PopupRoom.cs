@@ -157,6 +157,8 @@ public class PopupRoom : UIPanel
     {
         base.OnJoinRoomFailed(returnCode, message);
         ShowRoomState(ROOM_PANEL_STATE.ERROR);
+        AudioAssistant.Shot(TypeSound.ClickError);
+
         errorMessage.text = "join room failed";
 
         DOTween.Kill(this);
@@ -181,6 +183,7 @@ public class PopupRoom : UIPanel
         base.OnCreateRoomFailed(returnCode, message);
         ShowRoomState(ROOM_PANEL_STATE.ERROR);
         errorMessage.text = "create room failed";
+        AudioAssistant.Shot(TypeSound.ClickError);
 
         DOTween.Kill(this);
         DOVirtual.DelayedCall(2f, () =>

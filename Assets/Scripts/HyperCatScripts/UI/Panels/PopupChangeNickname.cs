@@ -100,6 +100,7 @@ public class PopupChangeNickname : UIPanel
     void OnError(PlayFabError error)
     {
         waiting.SetActive(false);
+        AudioAssistant.Shot(TypeSound.ClickError);
         HCDebug.Log("Update name failed", HcColor.Red);
         warningText.SetActive(true);
     }

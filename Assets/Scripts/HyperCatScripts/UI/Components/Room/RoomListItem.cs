@@ -27,6 +27,7 @@ public class RoomListItem : MonoBehaviour
     public void Onclick()
     {
         Debug.Log("Click join room");
+        AudioAssistant.Shot(TypeSound.BallTap);
         NetworkManager.Instance.JoinRoom(_roomInfo);
         PopupRoom.Instance.SetLoadingMessage("Joining room...");
     }

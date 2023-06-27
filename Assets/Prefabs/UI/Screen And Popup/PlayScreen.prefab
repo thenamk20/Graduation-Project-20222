@@ -556,8 +556,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   root: {fileID: 7663814133516637969}
-  openSound: 1
-  closeSound: 2
+  openSound: -1
+  closeSound: -1
   panelAnimator: {fileID: 0}
   skillCtrlContainer: {fileID: 334533687488413160}
   controlPanel: {fileID: 3855633873010861395}

@@ -356,7 +356,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f8be8997e0570043b41d535bc5bcc05, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  btnSound: -1
+  btnSound: 0
   unscaleTime: 0
   showAnimType: 0
   showAnimTime: 0.35
@@ -1906,11 +1906,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 38d593cffca754840b46453dc83bc4bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animIn: 0
+  animIn: 6
   animInCompletedEvent:
     m_PersistentCalls:
       m_Calls: []
-  animInTime: 0.35
+  animInTime: 0.2
   delayAnimIn: 0
   initScale: 0
   separateAxisAnimIn: 0
@@ -1989,11 +1989,11 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  animOut: 0
+  animOut: 6
   animOutCompletedEvent:
     m_PersistentCalls:
       m_Calls: []
-  animOutTime: 0.35
+  animOutTime: 0.2
   targetScale: 0
   separateAxisAnimOut: 0
   animOutEasingType: 6
@@ -2087,8 +2087,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   root: {fileID: 1286487958375307819}
-  openSound: 1
-  closeSound: 2
+  openSound: 3
+  closeSound: -1
   panelAnimator: {fileID: 1860917338024802650}
   characterSlots:
   - {fileID: 4853057549241000103}
@@ -2225,7 +2225,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f8be8997e0570043b41d535bc5bcc05, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  btnSound: -1
+  btnSound: 4
   unscaleTime: 0
   showAnimType: 0
   showAnimTime: 0.35
@@ -2682,7 +2682,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f8be8997e0570043b41d535bc5bcc05, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  btnSound: -1
+  btnSound: 0
   unscaleTime: 0
   showAnimType: 0
   showAnimTime: 0.35
@@ -3194,7 +3194,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f8be8997e0570043b41d535bc5bcc05, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  btnSound: -1
+  btnSound: 4
   unscaleTime: 0
   showAnimType: 0
   showAnimTime: 0.35
@@ -3950,6 +3950,41 @@ PrefabInstance:
       propertyPath: m_Name
       value: CharacterSlot
       objectReference: {fileID: 0}
+    - target: {fileID: 5337479128561067706, guid: 32640610a30f9a844ad6055014cae8d0,
+        type: 3}
+      propertyPath: btnSound
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 5337479128561067706, guid: 32640610a30f9a844ad6055014cae8d0,
+        type: 3}
+      propertyPath: pressAnimType
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5373117879677018943, guid: 32640610a30f9a844ad6055014cae8d0,
+        type: 3}
+      propertyPath: btnSound
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 5413047984687226477, guid: 32640610a30f9a844ad6055014cae8d0,
+        type: 3}
+      propertyPath: btnSound
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 5413047984687226477, guid: 32640610a30f9a844ad6055014cae8d0,
+        type: 3}
+      propertyPath: pressAnimType
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6046289904531642486, guid: 32640610a30f9a844ad6055014cae8d0,
+        type: 3}
+      propertyPath: btnSound
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 6046289904531642486, guid: 32640610a30f9a844ad6055014cae8d0,
+        type: 3}
+      propertyPath: pressAnimType
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7845207473488295112, guid: 32640610a30f9a844ad6055014cae8d0,
         type: 3}
       propertyPath: m_Pivot.x
@@ -4407,6 +4442,46 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 4.1752
+      objectReference: {fileID: 0}
+    - target: {fileID: 5337479128561067706, guid: 32640610a30f9a844ad6055014cae8d0,
+        type: 3}
+      propertyPath: btnSound
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 5337479128561067706, guid: 32640610a30f9a844ad6055014cae8d0,
+        type: 3}
+      propertyPath: unscaleTime
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5337479128561067706, guid: 32640610a30f9a844ad6055014cae8d0,
+        type: 3}
+      propertyPath: pressAnimType
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5373117879677018943, guid: 32640610a30f9a844ad6055014cae8d0,
+        type: 3}
+      propertyPath: btnSound
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 5413047984687226477, guid: 32640610a30f9a844ad6055014cae8d0,
+        type: 3}
+      propertyPath: btnSound
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 5413047984687226477, guid: 32640610a30f9a844ad6055014cae8d0,
+        type: 3}
+      propertyPath: pressAnimType
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6046289904531642486, guid: 32640610a30f9a844ad6055014cae8d0,
+        type: 3}
+      propertyPath: btnSound
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 6046289904531642486, guid: 32640610a30f9a844ad6055014cae8d0,
+        type: 3}
+      propertyPath: pressAnimType
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6478535612313329741, guid: 32640610a30f9a844ad6055014cae8d0,
         type: 3}

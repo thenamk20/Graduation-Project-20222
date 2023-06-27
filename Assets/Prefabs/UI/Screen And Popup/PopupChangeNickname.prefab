@@ -326,8 +326,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   root: {fileID: 5881496119644762294}
-  openSound: 1
-  closeSound: 2
+  openSound: 3
+  closeSound: -1
   panelAnimator: {fileID: 6455503254331708359}
   warningText: {fileID: 6006981784470862009}
   waiting: {fileID: 5837684573127069358}

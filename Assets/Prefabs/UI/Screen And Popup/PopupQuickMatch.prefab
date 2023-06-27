@@ -129,7 +129,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f8be8997e0570043b41d535bc5bcc05, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  btnSound: -1
+  btnSound: 0
   unscaleTime: 0
   showAnimType: 0
   showAnimTime: 0.35
@@ -752,15 +752,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 38d593cffca754840b46453dc83bc4bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animIn: 0
+  animIn: 6
   animInCompletedEvent:
     m_PersistentCalls:
       m_Calls: []
-  animInTime: 0.35
+  animInTime: 0.3
   delayAnimIn: 0
   initScale: 0
-  separateAxisAnimIn: 0
-  animInEasingType: 6
+  separateAxisAnimIn: 1
+  animInEasingType: 36
   animInCurve:
     serializedVersion: 2
     m_Curve:
@@ -785,64 +785,118 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  animInXAxisEasingType: 6
+  animInXAxisEasingType: 36
   animInXAxisCurve:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
       time: 0
       value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
+      inSlope: 2.25
+      outSlope: 2.25
+      tangentMode: 34
       weightedMode: 0
       inWeight: 0
-      outWeight: 0
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.4
+      value: 0.9
+      inSlope: 1.625
+      outSlope: 1.625
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.6
+      value: 1.1
+      inSlope: 0.12499994
+      outSlope: 0.12499994
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.8
+      value: 0.95
+      inSlope: -0.25000006
+      outSlope: -0.25000006
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
     - serializedVersion: 3
       time: 1
       value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
+      inSlope: 0.2500001
+      outSlope: 0.2500001
+      tangentMode: 34
       weightedMode: 0
-      inWeight: 0
+      inWeight: 0.33333334
       outWeight: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  animInYAxisEasingType: 6
+  animInYAxisEasingType: 36
   animInYAxisCurve:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
       time: 0
       value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
+      inSlope: 2.75
+      outSlope: 2.75
+      tangentMode: 34
       weightedMode: 0
       inWeight: 0
-      outWeight: 0
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.4
+      value: 1.1
+      inSlope: 0.87499994
+      outSlope: 0.87499994
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.6
+      value: 0.9
+      inSlope: -0.12500009
+      outSlope: -0.12500009
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.8
+      value: 1.05
+      inSlope: 0.2500001
+      outSlope: 0.2500001
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
     - serializedVersion: 3
       time: 1
       value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
+      inSlope: -0.24999978
+      outSlope: -0.24999978
+      tangentMode: 34
       weightedMode: 0
-      inWeight: 0
+      inWeight: 0.33333334
       outWeight: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  animOut: 0
+  animOut: 6
   animOutCompletedEvent:
     m_PersistentCalls:
       m_Calls: []
-  animOutTime: 0.35
+  animOutTime: 0.3
   targetScale: 0
   separateAxisAnimOut: 0
-  animOutEasingType: 6
+  animOutEasingType: 28
   animOutCurve:
     serializedVersion: 2
     m_Curve:
@@ -934,7 +988,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   root: {fileID: 5090579857882562376}
   openSound: 1
-  closeSound: 2
+  closeSound: -1
   panelAnimator: {fileID: 5669069747024256057}
   maxPlayers: 2
 --- !u!1 &2985474300590522215
