@@ -60,6 +60,7 @@ public class GameData
         public int avatarID;
         public int winCount;
         public int matchCount;
+        public int rewardPoint;
     }
 
 

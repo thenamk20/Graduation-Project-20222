@@ -36,13 +36,13 @@ public class GameManager : Singleton<GameManager>
 
     public static bool NetworkAvailable => Application.internetReachability != NetworkReachability.NotReachable;
 
-//#if UNITY_EDITOR
-//    [Button]
-//    private void GetGameSetting()
-//    {
-//        gameSetting = HCTools.GetGameSetting();
-//    }
-//#endif
+    //#if UNITY_EDITOR
+    //    [Button]
+    //    private void GetGameSetting()
+    //    {
+    //        gameSetting = HCTools.GetGameSetting();
+    //    }
+    //#endif
 
     protected override void Awake()
     {
@@ -59,6 +59,8 @@ public class GameManager : Singleton<GameManager>
         Instance.gameInited = true;
 
         EventGlobalManager.Instance.OnGameInited.Dispatch();
+
+        LoadRemoteData();
     }
 
     private void Start()
@@ -93,21 +95,27 @@ public class GameManager : Singleton<GameManager>
         if (data == null)
         {
             data = new GameData();
+        }
 
-            data.user.isRememberMe = PreloadData.Instance.gameData.user.isRememberMe;
-            data.user.cachedEmail = PreloadData.Instance.gameData.user.cachedEmail;
-            data.user.cachedPassword = PreloadData.Instance.gameData.user.cachedPassword;
+        data.user.isRememberMe = PreloadData.Instance.gameData.user.isRememberMe;
+        data.user.cachedEmail = PreloadData.Instance.gameData.user.cachedEmail;
+        data.user.cachedPassword = PreloadData.Instance.gameData.user.cachedPassword;
 
-#if PROTOTYPE
-            Data.User.PurchasedNoAds = true;
-#endif
-            Database.SaveData();
+        Database.SaveData();
+    }
+
+    private void LoadRemoteData()
+    {
+        string displayName = PlayFabManager.Instance.displayName;
+        if (!string.IsNullOrEmpty(displayName))
+        {
+            data.user.name = displayName;
         }
     }
 
     private void SetupPushNotification()
     {
-       
+
     }
 
     private void RequestTrackingForiOs()
@@ -175,7 +183,7 @@ public class GameManager : Singleton<GameManager>
 
     public void SetupRemindOfflinePushNotification()
     {
-       
-        
+
+
     }
 }

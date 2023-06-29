@@ -3,10 +3,14 @@ using Photon.Realtime;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using TMPro;
 using UnityEngine;
 
 public class PopupVictory : UIPanel
 {
+    [SerializeField]
+    private TextMeshProUGUI rewardText;
+
     public static PopupVictory Instance { get; private set; }
 
     public override UiPanelType GetId()
@@ -33,6 +37,12 @@ public class PopupVictory : UIPanel
 
     private void Init()
     {
+        int rewardPoint = MyPlayer.Instance.Manager.CalculateRewardPoint(isTop1: true) + 3;
+
+        string prefix = (rewardPoint >= 0) ? "+" : "";
+        rewardText.text = prefix + rewardPoint.ToString();
+
+        PlayFabManager.Instance.UpdateRewardPoints(rewardPoint);
     }
 
     protected override void RegisterEvent()

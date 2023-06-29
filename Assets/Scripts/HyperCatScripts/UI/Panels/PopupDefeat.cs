@@ -12,6 +12,9 @@ public class PopupDefeat : UIPanel
     [SerializeField]
     private TextMeshProUGUI topText;
 
+    [SerializeField]
+    private TextMeshProUGUI rewardText;
+
     [SerializeField] private GameObject panel1;
 
     [SerializeField] private GameObject panel2;
@@ -45,6 +48,11 @@ public class PopupDefeat : UIPanel
         topText.text = "You got top" + (BattleController.Instance.Players.Count);
         panel1.SetActive(true);
         panel2.SetActive(false);
+
+        int rewardPoint = MyPlayer.Instance.Manager.CalculateRewardPoint();
+        PlayFabManager.Instance.UpdateRewardPoints(rewardPoint);
+
+        rewardText.text = rewardPoint.ToString();
     }
 
     protected override void RegisterEvent()

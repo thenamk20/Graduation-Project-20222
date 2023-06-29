@@ -59,6 +59,7 @@ MonoBehaviour:
   - RPC_HideOnBush
   - RPC_UpdateTarget
   - RPC_GainKill
+  - RPC_SetName
   DisableAutoOpenWizard: 1
   ShowSettings: 1
   DevRegionSetOnce: 1

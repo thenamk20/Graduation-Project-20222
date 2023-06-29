@@ -43,7 +43,7 @@ public class PlayerControllerOld : MonoBehaviour
 
     public CharacterStats stats;
 
-    //private properities
+    //private properties
     PhotonView PV;
 
     // Start is called before the first frame update

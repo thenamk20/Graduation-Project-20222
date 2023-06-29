@@ -29,6 +29,11 @@ public class PlayerManager : MonoBehaviour
         BattleController.Instance.AddPlayer(this);
         BattleController.Instance.OnEndBattle.AddListener(HandleBattleEnd);
         EventGlobalManager.Instance.OnStartBattle.AddListener(CreateController);
+
+        if (PV.IsMine)
+        {
+            PlayFabManager.Instance.UpdateMatchCount();
+        }
     }
 
     // Update is called once per frame
@@ -116,5 +121,17 @@ public class PlayerManager : MonoBehaviour
     void RPC_GetSpawnPoint(Vector3 pos)
     {
         spawnPoint = pos;
+    }
+
+    public int CalculateRewardPoint(bool isTop1 = false)
+    {
+        if(!isTop1)
+        {
+            return killsCount;
+        }
+        else
+        {
+            return BattleController.Instance.playersJoinBattle * 5;
+        }
     }
 }

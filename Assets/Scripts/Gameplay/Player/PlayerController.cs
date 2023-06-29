@@ -4,6 +4,7 @@ using Photon.Pun;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour, IDamageable, IHideable
@@ -27,6 +28,8 @@ public class PlayerController : MonoBehaviour, IDamageable, IHideable
     [SerializeField] private CapsuleCollider hitBoxCollider;
 
     [SerializeField] private BuffEffect buffEffect;
+
+    [SerializeField] private TextMeshProUGUI playerNameText;
 
     public CharacterStats stats;
 
@@ -59,6 +62,7 @@ public class PlayerController : MonoBehaviour, IDamageable, IHideable
         {
             BattleController.Instance.SetCamWatchMyPlayer(gameObject.transform);
             healthBar.SetMyPlayerHealthColor();
+            PV.RPC(nameof(RPC_SetName), RpcTarget.All, PhotonNetwork.NickName);
         }
         else
         {
@@ -110,6 +114,13 @@ public class PlayerController : MonoBehaviour, IDamageable, IHideable
     {
         PV.RPC(nameof(RPC_ReceiveDamage), RpcTarget.All, amount);
     }
+
+    [PunRPC]
+    void RPC_SetName(string name)
+    {
+        playerNameText.text = name;
+    }
+
 
     [PunRPC]
     void RPC_ReceiveDamage(int amount, PhotonMessageInfo info)

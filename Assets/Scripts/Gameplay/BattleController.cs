@@ -7,9 +7,9 @@ using UnityEngine;
 
 public class BattleController : MonoBehaviourPunCallbacks
 {
-    public CinemachineVirtualCamera followVcam;
-
     private CinemachineFramingTransposer followVcamFt;
+
+    public CinemachineVirtualCamera followVcam;
 
     public static BattleController Instance;
 
@@ -21,11 +21,16 @@ public class BattleController : MonoBehaviourPunCallbacks
 
     public ObjectSpawner Spawner;
 
+    public int playersJoinBattle;
+
+    public int CurrentPlayersCount => Players.Count;
+
     private void Start()
     {
         Instance = this;
         followVcamFt = followVcam.GetCinemachineComponent<CinemachineFramingTransposer>();
         Players = new List<PlayerManager>();
+        playersJoinBattle = PhotonNetwork.CurrentRoom.PlayerCount;
     }
 
     public void SetCamWatchMyPlayer(Transform myPlayer)
