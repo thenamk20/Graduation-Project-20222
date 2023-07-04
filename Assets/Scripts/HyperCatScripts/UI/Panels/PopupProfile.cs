@@ -47,9 +47,10 @@ public class PopupProfile : UIPanel
     {
         userNameText.text = Gm.data.user.name;
         UpdateAvatar(Gm.data.user.userRemoteData.avatarID);
-        matchCountText.text = Gm.data.user.userRemoteData.matchCount.ToFormatString();
-        winCountText.text = Gm.data.user.userRemoteData.winCount.ToFormatString();
-        startPointText.text = Gm.data.user.userRemoteData.rewardPoint.ToFormatString();
+
+        //matchCountText.text = Gm.data.user.userRemoteData.matchCount.ToFormatString();
+        //winCountText.text = Gm.data.user.userRemoteData.winCount.ToFormatString();
+        //startPointText.text = Gm.data.user.userRemoteData.rewardPoint.ToFormatString();
     }
 
     protected override void RegisterEvent()
