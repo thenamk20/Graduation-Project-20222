@@ -113,4 +113,9 @@ public class MainScreen : UIPanel
     {
         PopupCharacters.Show();
     }
+
+    public void OpenLeaderboard()
+    {
+        PopupRank.Show();
+    }
 }
