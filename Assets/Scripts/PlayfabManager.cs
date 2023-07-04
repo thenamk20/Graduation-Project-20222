@@ -1,6 +1,7 @@
 using Newtonsoft.Json;
 using PlayFab;
 using PlayFab.ClientModels;
+using Sirenix.OdinInspector;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -100,7 +101,10 @@ public class PlayFabManager : Singleton<PlayFabManager>
             rewardPoint = remoteData.rewardPoint + rewardPointGain,
         };
 
+        SendLeaderBoard(newData.rewardPoint);
+
         GameManager.Instance.data.user.userRemoteData = newData;
+        
 
         SaveUserRemoteData(newData);
     }
@@ -182,4 +186,60 @@ public class PlayFabManager : Singleton<PlayFabManager>
             HCDebug.Log("Get Remote Data Failed On Init", HcColor.Red);
         }
     }
+
+    #region Leaderboard
+    public void SendLeaderBoard(int score)
+    {
+        var request = new UpdatePlayerStatisticsRequest
+        {
+            Statistics = new List<StatisticUpdate>
+            {
+                new StatisticUpdate
+                {
+                    StatisticName = "StarPoint",
+                    Value = score
+                }
+            }
+        };
+
+        PlayFabClientAPI.UpdatePlayerStatistics(request, OnLeaderboardUpdated, OnLeaderboardUpdateFailed);
+    }
+
+    void OnLeaderboardUpdated(UpdatePlayerStatisticsResult result)
+    {
+        HCDebug.Log("Update leader board succeed!", HcColor.Green);
+    }
+
+    void OnLeaderboardUpdateFailed(PlayFabError error)
+    {
+        HCDebug.Log("Update leader board failed!", HcColor.Red);
+    }
+
+    [Button]
+    public void GetLeaderboard()
+    {
+        var request = new GetLeaderboardRequest
+        {
+            StatisticName = "StarPoint",
+            StartPosition = 0,
+            MaxResultsCount = 20
+        };
+
+        PlayFabClientAPI.GetLeaderboard(request, OnGetLeaderBoardSucceed, OnGetLeaderboardFailed);
+    }
+
+    void OnGetLeaderBoardSucceed(GetLeaderboardResult result)
+    {
+        foreach(var item in result.Leaderboard)
+        {
+            Debug.Log(item.DisplayName + "_" + item.StatValue);
+        }
+    }
+
+    void OnGetLeaderboardFailed(PlayFabError error)
+    {
+        HCDebug.Log("Get leader board failed!", HcColor.Red);
+    }
+
+    #endregion
 }

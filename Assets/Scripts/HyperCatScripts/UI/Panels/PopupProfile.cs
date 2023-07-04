@@ -8,6 +8,15 @@ public class PopupProfile : UIPanel
     private TextMeshProUGUI userNameText;
 
     [SerializeField]
+    private TextMeshProUGUI matchCountText;
+
+    [SerializeField]
+    private TextMeshProUGUI winCountText;
+
+    [SerializeField]
+    private TextMeshProUGUI startPointText;
+
+    [SerializeField]
     private Image avatarIcon;
 
     public static PopupProfile Instance { get; private set; }
@@ -38,6 +47,9 @@ public class PopupProfile : UIPanel
     {
         userNameText.text = Gm.data.user.name;
         UpdateAvatar(Gm.data.user.userRemoteData.avatarID);
+        matchCountText.text = Gm.data.user.userRemoteData.matchCount.ToFormatString();
+        winCountText.text = Gm.data.user.userRemoteData.winCount.ToFormatString();
+        startPointText.text = Gm.data.user.userRemoteData.rewardPoint.ToFormatString();
     }
 
     protected override void RegisterEvent()
