@@ -29,5 +29,6 @@ public enum UiPanelType
     PopupCharacters,
     PopupStandBy,
     PopupRank,
+    PopupAvatars,
     SdkPlaceHolder
 }

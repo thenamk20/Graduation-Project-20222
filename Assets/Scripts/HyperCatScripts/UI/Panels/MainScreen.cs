@@ -5,6 +5,7 @@ using PlayFab;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 #endregion
 
@@ -12,6 +13,9 @@ public class MainScreen : UIPanel
 {
     [SerializeField]
     private TextMeshProUGUI currentNickname;
+
+    [SerializeField]
+    private Image avatarIcon;
 
     public static MainScreen Instance { get; private set; }
 
@@ -49,8 +53,8 @@ public class MainScreen : UIPanel
             currentNickname.text = Gm.data.user.name;
         }
 
-       
-        CharacterPreview.Instance.ToggleCharacterPreview(true);
+        UpdateAvatar(Gm.data.user.userRemoteData.avatarID);
+;       CharacterPreview.Instance.ToggleCharacterPreview(true);
     }
 
     public void ShowSetting()
@@ -70,13 +74,15 @@ public class MainScreen : UIPanel
     protected override void RegisterEvent()
     {
         base.RegisterEvent();
-        EventGlobalManager.Instance.OnChangeName.AddListener(UpdateNickNameUI);
+        Evm.OnChangeName.AddListener(UpdateNickNameUI);
+        Evm.OnUpdateAvatar.AddListener(UpdateAvatar);
     }
 
     protected override void UnregisterEvent()
     {
         base.UnregisterEvent();
-        EventGlobalManager.Instance.OnChangeName.RemoveListener(UpdateNickNameUI);
+        Evm.OnChangeName.RemoveListener(UpdateNickNameUI);
+        Evm.OnUpdateAvatar.RemoveListener(UpdateAvatar);
     }
 
     public override void OnDisappear()
@@ -117,5 +123,11 @@ public class MainScreen : UIPanel
     public void OpenLeaderboard()
     {
         PopupRank.Show();
+    }
+
+    void UpdateAvatar(int avatarId)
+    {
+        AvatarConfig config = Cfg.gameCfg.avatars.Find(x => x.avatarIndex == avatarId);
+        avatarIcon.sprite = config.icon;
     }
 }

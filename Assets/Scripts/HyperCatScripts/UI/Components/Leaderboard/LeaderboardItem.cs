@@ -1,18 +1,18 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class LeaderboardItem : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    [SerializeField] private TextMeshProUGUI rankIndexText;
 
-    // Update is called once per frame
-    void Update()
+    [SerializeField] private TextMeshProUGUI playerNameText;
+
+    [SerializeField] private TextMeshProUGUI scoreText;
+
+    public void Init()
     {
-        
+
     }
 }

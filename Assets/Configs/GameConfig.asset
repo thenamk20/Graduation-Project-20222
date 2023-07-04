@@ -15,3 +15,13 @@ MonoBehaviour:
   extraFeatureConfig: {fileID: 0}
   maxOfflineRemindMinute: 720
   numberOfPlayerRequire: 1
+  avatars:
+  - {fileID: 11400000, guid: 70107103cf1d92345871ad038d4cd33d, type: 2}
+  - {fileID: 11400000, guid: 3f9b1660cbf6354428a520461d7e123a, type: 2}
+  - {fileID: 11400000, guid: 46c0953b2f7b3954b8bb8cf5b403d41a, type: 2}
+  - {fileID: 11400000, guid: fbeeeefbb88d7f0449e39e88a4d2714c, type: 2}
+  - {fileID: 11400000, guid: 13781c07d9e382940b5b7deadc042b16, type: 2}
+  - {fileID: 11400000, guid: 65b768a3bb5798a44bc5791b23fd59ea, type: 2}
+  - {fileID: 11400000, guid: 5f1cefa8cf564104ca9f756aa0d3e128, type: 2}
+  - {fileID: 11400000, guid: 1dfd97bc4b1397a4ca2bb92ad35dc163, type: 2}
+  - {fileID: 11400000, guid: bfc4c967d127d6b4a898d9b92ee51de6, type: 2}

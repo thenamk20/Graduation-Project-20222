@@ -1,6 +1,7 @@
 ﻿#region
 
 using Sirenix.OdinInspector;
+using System.Collections.Generic;
 using UnityEngine;
 
 #endregion
@@ -16,4 +17,6 @@ public class GameConfig : ScriptableObject
 
     [TabGroup("Gameplay")]
     public int numberOfPlayerRequire = 2;
+
+    public List<AvatarConfig> avatars;
 }
