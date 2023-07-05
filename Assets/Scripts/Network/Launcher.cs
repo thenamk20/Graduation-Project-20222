@@ -25,7 +25,7 @@ public class Launcher : MonoBehaviourPunCallbacks
 
     public void ConnectToPhoton()
     {
-        string nickName = $"{GameManager.Instance.data.user.name}#{Random.Range(1000, 9999).ToString()}";
+        string nickName = $"{GameManager.Instance.data.user.name}#{Random.Range(1000, 9999)}";
         PhotonNetwork.GameVersion = "0.0.0";
         ConnectToPhoton(nickName);
     }
@@ -59,8 +59,6 @@ public class Launcher : MonoBehaviourPunCallbacks
     }
 
     #region PUN callbacks
-
-
     public override void OnCreateRoomFailed(short returnCode, string message)
     {
 

@@ -5,6 +5,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 using Hashtable = ExitGames.Client.Photon.Hashtable;
 
 public class PlayerRoomItem : MonoBehaviourPunCallbacks
@@ -12,6 +13,8 @@ public class PlayerRoomItem : MonoBehaviourPunCallbacks
     [SerializeField] private TextMeshProUGUI playerName;
 
     [SerializeField] private TextMeshProUGUI avatarIndexText;
+
+    [SerializeField] private Image avatarIcon;
 
     private Player player;
 
@@ -22,7 +25,15 @@ public class PlayerRoomItem : MonoBehaviourPunCallbacks
 
         if (_player == PhotonNetwork.LocalPlayer)
         {
-            SetAvatar(GameManager.Instance.data.user.userRemoteData.avatarID);
+            SetCustomPropertyAvatar(GameManager.Instance.data.user.userRemoteData.avatarID);
+        }
+        else
+        {
+            if (player.CustomProperties.ContainsKey("avatar"))
+            {
+                avatarIndexText.text = ((int)player.CustomProperties["avatar"]).ToString();
+                SetAvatar((int)player.CustomProperties["avatar"]);
+            }
         }
     }
 
@@ -40,7 +51,7 @@ public class PlayerRoomItem : MonoBehaviourPunCallbacks
         Destroy(gameObject);
     }
 
-    public void SetAvatar(int avatarIndex)
+    public void SetCustomPropertyAvatar(int avatarIndex)
     {
         Hashtable hash = new Hashtable
         {
@@ -61,8 +72,15 @@ public class PlayerRoomItem : MonoBehaviourPunCallbacks
                 if (changedProps.TryGetValue("avatar", out object avatar))
                 {
                     avatarIndexText.text = ((int)avatar).ToString();
+                    SetAvatar((int)avatar);
                 }
             }
         }
+    }
+
+    void SetAvatar(int _avatarID)
+    {
+        AvatarConfig avatarConfig = ConfigManager.Instance.gameCfg.avatars.Find(x => x.avatarIndex == _avatarID);
+        avatarIcon.sprite = avatarConfig.icon;
     }
 }
