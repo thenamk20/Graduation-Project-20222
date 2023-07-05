@@ -1,4 +1,5 @@
 using CnControls;
+using HighlightPlus;
 using JetBrains.Annotations;
 using Photon.Pun;
 using System;
@@ -32,6 +33,8 @@ public class PlayerController : MonoBehaviour, IDamageable, IHideable
     [SerializeField] private TextMeshProUGUI playerNameText;
 
     [SerializeField] private CharacterStatConfig initStats;
+
+    [SerializeField] private HighlightEffect effect;
 
     public CharacterStats stats;
 
@@ -128,6 +131,8 @@ public class PlayerController : MonoBehaviour, IDamageable, IHideable
     void RPC_ReceiveDamage(int amount, PhotonMessageInfo info)
     {
         if (!isAlive) return;
+
+        effect.HitFX();
         HCDebug.Log("Me receive damage", HcColor.Red);
         stats.currentHealth -= amount;
 
