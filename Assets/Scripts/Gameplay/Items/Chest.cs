@@ -13,6 +13,9 @@ public class Chest : MonoBehaviour, IDamageable
     [SerializeField]
     private int chestMaxHealth = 50;
 
+    [SerializeField]
+    private GameObject explodeFx;
+
     PhotonView chestPV;
 
     private int currentHealth;
@@ -79,6 +82,7 @@ public class Chest : MonoBehaviour, IDamageable
             itemCount = 4;
         }
 
+        NetworkManager.Instance.InstantiateObject(explodeFx, transform.position, Quaternion.identity);
         PhotonNetwork.Destroy(gameObject);
 
         for(int i=0; i< itemCount; i++)

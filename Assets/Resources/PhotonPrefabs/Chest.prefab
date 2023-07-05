@@ -87,6 +87,8 @@ MonoBehaviour:
   - {fileID: 2651213197211161665, guid: 5a7e04366244653448f108246e8c04b7, type: 3}
   healthBar: {fileID: 5385304910760342064}
   chestMaxHealth: 200
+  explodeFx: {fileID: 8262643854284156321, guid: 3915079432ca8ce4ca481e25749cb5b0,
+    type: 3}
 --- !u!114 &449003395552178948
 MonoBehaviour:
   m_ObjectHideFlags: 0

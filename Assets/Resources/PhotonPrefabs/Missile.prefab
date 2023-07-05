@@ -103,6 +103,8 @@ MonoBehaviour:
   rigidBody: {fileID: 7835494008521362932}
   force: 900
   damage: 75
+  explodeFx: {fileID: 111592133229413954, guid: 8ee6bab3eacb51f4e96674292d8f3feb,
+    type: 3}
 --- !u!54 &7835494008521362932
 Rigidbody:
   m_ObjectHideFlags: 0
