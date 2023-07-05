@@ -35,6 +35,9 @@ public class ExplodeZoneItem : MonoBehaviour
     [SerializeField]
     private GameObject enemyVisual;
 
+    [SerializeField]
+    private int damage = 100;
+
     private int ownerViewID;
 
     private List<IDamageable> currentTarget;
@@ -100,7 +103,7 @@ public class ExplodeZoneItem : MonoBehaviour
     {
         if (PV.IsMine)
         {
-            other.ReceiveDamage(50);
+            other.ReceiveDamage((int)(damage * MyPlayer.Instance.Controller.stats.damMultiply));
         }
     }
 

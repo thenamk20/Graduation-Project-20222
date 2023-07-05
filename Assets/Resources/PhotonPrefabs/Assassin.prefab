@@ -920,6 +920,7 @@ MonoBehaviour:
   hitBoxCollider: {fileID: 6088363015086703974}
   buffEffect: {fileID: 8677061235545245713}
   playerNameText: {fileID: 4351871625846745425}
+  initStats: {fileID: 11400000, guid: 632c6033453bf5d49a96f3108da76aaf, type: 2}
   stats:
     currentHealth: 100
     currentChakra: 100
@@ -1546,6 +1547,7 @@ MonoBehaviour:
   skillIndex: 0
   aimType: 0
   IsReady: 0
+  damage: 70
   hitBoxCollider: {fileID: 8410350527258724411}
   delayAttack: 0.2
   attackTime: 0.2

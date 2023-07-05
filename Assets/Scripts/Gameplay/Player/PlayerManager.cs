@@ -92,6 +92,7 @@ public class PlayerManager : MonoBehaviour
         if (PV.IsMine && isAlive)
         {
             EventGlobalManager.Instance.OnDoneFighting.Dispatch();
+            AudioAssistant.Instance.Pause();
             PopupVictory.Show();
         }
     }

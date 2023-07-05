@@ -17,6 +17,9 @@ public class Missile : MonoBehaviour
     [SerializeField]
     public float force = 500;
 
+    [SerializeField]
+    private int damage = 50;
+
     void Start()
     {
         rigidBody.AddForce(transform.forward * force);
@@ -34,7 +37,7 @@ public class Missile : MonoBehaviour
             if(PV.IsMine && co.TryGetComponent<IDamageable>(out damageableObject))
             {
                 HCDebug.Log("Missile deal damage");
-                damageableObject.ReceiveDamage(30);
+                damageableObject.ReceiveDamage((int)(damage * MyPlayer.Instance.Controller.stats.damMultiply));
                 PhotonNetwork.Destroy(gameObject);
             }
         }

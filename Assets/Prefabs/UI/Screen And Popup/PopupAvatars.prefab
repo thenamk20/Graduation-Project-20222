@@ -796,8 +796,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   root: {fileID: 1449145435835153811}
-  openSound: 1
-  closeSound: 2
+  openSound: -1
+  closeSound: -1
   panelAnimator: {fileID: 2023714469162999522}
   avatarItemPrefab: {fileID: 6719944621856337243, guid: a0bbac9c22a308947b46227df5627547,
     type: 3}

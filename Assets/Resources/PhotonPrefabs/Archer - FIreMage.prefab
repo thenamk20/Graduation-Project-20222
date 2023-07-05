@@ -1195,6 +1195,7 @@ MonoBehaviour:
   hitBoxCollider: {fileID: 6088363015086703974}
   buffEffect: {fileID: 7441633899368660140}
   playerNameText: {fileID: 4351871625846745425}
+  initStats: {fileID: 11400000, guid: 2da7d0ba2c2aa3f44a5fcfb15251e8cb, type: 2}
   stats:
     currentHealth: 100
     currentChakra: 100

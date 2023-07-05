@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: BuffSpeedSkill
   m_EditorClassIdentifier: 
   skillIndex: 1
-  executeTime: 4
+  executeTime: 3
   cooldownTime: 12
   title: Warm It Up
   description: Firo burns his own body, doubling her movement speed for 4s.

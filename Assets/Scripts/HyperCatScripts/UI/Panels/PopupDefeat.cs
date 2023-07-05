@@ -53,6 +53,9 @@ public class PopupDefeat : UIPanel
         PlayFabManager.Instance.UpdateRewardPoints(rewardPoint);
 
         rewardText.text = rewardPoint.ToString();
+
+        AudioAssistant.Shot(TypeSound.Defeat);
+        AudioAssistant.Instance.Pause();
     }
 
     protected override void RegisterEvent()

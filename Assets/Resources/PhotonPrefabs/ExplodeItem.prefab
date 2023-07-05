@@ -288,6 +288,7 @@ MonoBehaviour:
   explodeFx: {fileID: 1698063990969977651}
   meVisual: {fileID: 2452997164679139908}
   enemyVisual: {fileID: 386108334132010465}
+  damage: 150
 --- !u!114 &7862002698128404020
 MonoBehaviour:
   m_ObjectHideFlags: 0

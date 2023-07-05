@@ -584,8 +584,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   root: {fileID: 7099566927828197025}
-  openSound: 1
-  closeSound: 2
+  openSound: -1
+  closeSound: -1
   panelAnimator: {fileID: 7678480201207905744}
   loadingFill: {fileID: 1471818756048422824}
 --- !u!1 &5745993275461167059

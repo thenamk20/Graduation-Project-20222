@@ -28,7 +28,12 @@ public enum TypeSound
     Bell,
     BallTap,
     Bloop,
-    ClickError
+    ClickError,
+    Victory,
+    Defeat,
+    Claim,
+    Toat,
+    Tick
 }
 
 public enum Pool

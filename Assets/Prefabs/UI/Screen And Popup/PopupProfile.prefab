@@ -1321,7 +1321,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f8be8997e0570043b41d535bc5bcc05, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  btnSound: -1
+  btnSound: 1
   unscaleTime: 0
   showAnimType: 0
   showAnimTime: 0.35

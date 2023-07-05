@@ -60,6 +60,7 @@ public class PopupStandBy : UIPanel
         yield return new WaitForSecondsRealtime(2f);
         Evm.OnStartBattle.Dispatch();
         yield return new WaitForSeconds(0.5f);
+        AudioAssistant.Instance.PlayMusic("Battle");
         Close();
     }
 }

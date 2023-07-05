@@ -7,6 +7,9 @@ using UnityEngine;
 public class SlashAttack : SkillItemController
 {
     [SerializeField]
+    private int damage = 70;
+
+    [SerializeField]
     private Collider hitBoxCollider;
 
     [SerializeField]
@@ -122,7 +125,7 @@ public class SlashAttack : SkillItemController
             {
                 if (damageableObject == owner) return;
                 HCDebug.Log("Missile deal damage");
-                damageableObject?.ReceiveDamage(30);
+                damageableObject?.ReceiveDamage((int)(damage * MyPlayer.Instance.Controller.stats.damMultiply));
             }
         }
     }

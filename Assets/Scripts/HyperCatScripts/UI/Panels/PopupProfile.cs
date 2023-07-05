@@ -78,6 +78,7 @@ public class PopupProfile : UIPanel
 
     public void ChangeName()
     {
+        AudioAssistant.Shot(TypeSound.OpenPopup);
         PopupChangeNickname.Show();
     }
 

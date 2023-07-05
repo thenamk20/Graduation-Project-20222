@@ -31,6 +31,8 @@ public class PlayerController : MonoBehaviour, IDamageable, IHideable
 
     [SerializeField] private TextMeshProUGUI playerNameText;
 
+    [SerializeField] private CharacterStatConfig initStats;
+
     public CharacterStats stats;
 
     PhotonView PV;
@@ -72,7 +74,7 @@ public class PlayerController : MonoBehaviour, IDamageable, IHideable
         isAlive = true;
         chakraBar.gameObject.SetActive(PV.IsMine);
 
-        stats = new CharacterStats();
+        stats = new CharacterStats(initStats);
         healthBar.SetDirectProgressValue(1);
 
         moveable = true;
@@ -321,15 +323,23 @@ public class CharacterStats
 
     public float CharkaRequirePerSkill => maxChakra / charkaSlots;
 
-    public CharacterStats()
+    public CharacterStats(CharacterStatConfig statsConfig)
     {
-        moveSpeed = 3f;
-        maxHealth = 100;
-        maxChakra = 100;
-        restoreChakraSpeed = 10;
+        //moveSpeed = 3f;
+        //maxHealth = 100;
+        //maxChakra = 100;
+        //restoreChakraSpeed = 10;
 
-        currentHealth = 100;
-        currentChakra = 100;
+        //currentHealth = 100;
+        //currentChakra = 100;
+
+        moveSpeed = statsConfig.moveSpeed;
+        maxHealth = statsConfig.health;
+        maxChakra = statsConfig.chakra;
+        restoreChakraSpeed = statsConfig.restoreChakraSpeed;
+
+        currentHealth = statsConfig.health;
+        currentChakra = statsConfig.chakra;
     }
 }
 

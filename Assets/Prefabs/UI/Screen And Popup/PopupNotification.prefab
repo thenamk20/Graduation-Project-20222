@@ -392,8 +392,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   root: {fileID: 7069518484007094753}
-  openSound: 1
-  closeSound: 2
+  openSound: 5
+  closeSound: -1
   panelAnimator: {fileID: 2822018508315642982}
   txtMessage: {fileID: 414407845588972226}
 --- !u!225 &8416170941835272424

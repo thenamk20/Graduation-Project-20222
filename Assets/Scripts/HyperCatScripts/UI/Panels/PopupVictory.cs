@@ -43,6 +43,9 @@ public class PopupVictory : UIPanel
         rewardText.text = prefix + rewardPoint.ToString();
 
         PlayFabManager.Instance.UpdateRewardPoints(rewardPoint);
+
+        
+        AudioAssistant.Shot(TypeSound.Victory);
     }
 
     protected override void RegisterEvent()
@@ -63,6 +66,7 @@ public class PopupVictory : UIPanel
 
     public void GoBack()
     {
+        AudioAssistant.Shot(TypeSound.Claim);
         if (PhotonNetwork.IsMasterClient)
         {
             List<Player> players = PhotonNetwork.PlayerList.ToList();

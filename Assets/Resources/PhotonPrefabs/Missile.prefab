@@ -102,6 +102,7 @@ MonoBehaviour:
   destroyAfter: 0.45
   rigidBody: {fileID: 7835494008521362932}
   force: 900
+  damage: 50
 --- !u!54 &7835494008521362932
 Rigidbody:
   m_ObjectHideFlags: 0

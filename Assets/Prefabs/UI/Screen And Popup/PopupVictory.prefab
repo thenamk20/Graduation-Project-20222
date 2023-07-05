@@ -1944,7 +1944,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   root: {fileID: 2857931466333253064}
-  openSound: 1
-  closeSound: 2
+  openSound: -1
+  closeSound: -1
   panelAnimator: {fileID: 3431921072048836281}
   rewardText: {fileID: 5342269869160657375}

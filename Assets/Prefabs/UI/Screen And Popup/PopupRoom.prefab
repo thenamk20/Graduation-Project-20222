@@ -2219,7 +2219,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f8be8997e0570043b41d535bc5bcc05, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  btnSound: -1
+  btnSound: 12
   unscaleTime: 0
   showAnimType: 0
   showAnimTime: 0.35
@@ -2300,7 +2300,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  pressAnimType: 0
+  pressAnimType: 1
   pressAnimTime: 0.2
   releaseAnimTime: 0.2
   pressedTargetScale: {x: 0.95, y: 0.95}
@@ -2562,7 +2562,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f8be8997e0570043b41d535bc5bcc05, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  btnSound: -1
+  btnSound: 12
   unscaleTime: 0
   showAnimType: 0
   showAnimTime: 0.35
@@ -5317,7 +5317,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f8be8997e0570043b41d535bc5bcc05, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  btnSound: -1
+  btnSound: 13
   unscaleTime: 0
   showAnimType: 0
   showAnimTime: 0.35
@@ -5870,7 +5870,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   root: {fileID: 2454988804771017890}
   openSound: 1
-  closeSound: 0
+  closeSound: -1
   panelAnimator: {fileID: 3033197170015442899}
   roomSubPanels:
   - {fileID: 6092764253530860783}
@@ -6007,6 +6007,11 @@ PrefabInstance:
     - target: {fileID: 3003985666940345921, guid: 25dcb34dc349f0249910c1c3d6187644,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3607959519491817898, guid: 25dcb34dc349f0249910c1c3d6187644,
+        type: 3}
+      propertyPath: btnSound
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4426926838490316788, guid: 25dcb34dc349f0249910c1c3d6187644,

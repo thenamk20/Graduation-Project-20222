@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   skillIndex: 2
   executeTime: 0.6
-  cooldownTime: 1
+  cooldownTime: 18
   title: Rise of true fire
   description: 'Fire Lord condensates power for a while then cast a big explosion '
