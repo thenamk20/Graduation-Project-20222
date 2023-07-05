@@ -5875,6 +5875,7 @@ MonoBehaviour:
   playerListController: {fileID: 68302882310108461}
   roomListController: {fileID: 5348246038027872106}
   startGameButton: {fileID: 3778374586777406283}
+  closeBtn: {fileID: 5823666372270696088}
 --- !u!1001 &1302333740772133867
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6014,6 +6015,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 25dcb34dc349f0249910c1c3d6187644, type: 3}
+--- !u!1 &5823666372270696088 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4810688925682085235, guid: 25dcb34dc349f0249910c1c3d6187644,
+    type: 3}
+  m_PrefabInstance: {fileID: 1302333740772133867}
+  m_PrefabAsset: {fileID: 0}
 --- !u!224 &4297169271003452842 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 3003985666940345921, guid: 25dcb34dc349f0249910c1c3d6187644,

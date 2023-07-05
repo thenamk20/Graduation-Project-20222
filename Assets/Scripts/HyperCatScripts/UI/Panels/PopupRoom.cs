@@ -28,6 +28,8 @@ public class PopupRoom : UIPanel
     [SerializeField] private RoomListController roomListController;
 
     [SerializeField] private GameObject startGameButton;
+
+    [SerializeField] private GameObject closeBtn;
     
     public static PopupRoom Instance { get; private set; }
 
@@ -55,12 +57,13 @@ public class PopupRoom : UIPanel
 
     private void Init()
     {
-        
+        closeBtn.gameObject.SetActive(true);
     }
 
     public void ShowRoomState(ROOM_PANEL_STATE state)
     {
-        for(int i = 0; i < roomSubPanels.Count; i++)
+        closeBtn.gameObject.SetActive(true);
+        for (int i = 0; i < roomSubPanels.Count; i++)
         {
             roomSubPanels[i].SetActive(i == (int)state);
         }
@@ -68,7 +71,7 @@ public class PopupRoom : UIPanel
         switch (state)
         {
             case ROOM_PANEL_STATE.INSIDE_ROOM:
-               
+                closeBtn.gameObject.SetActive(false);
                 break;
 
             case ROOM_PANEL_STATE.FINDING:
@@ -134,6 +137,11 @@ public class PopupRoom : UIPanel
         {
             startGameButton.SetActive(PhotonNetwork.CurrentRoom.PlayerCount >= Cfg.gameCfg.numberOfPlayerRequire);
         }
+    }
+
+    public override void Close()
+    {
+        base.Close();
     }
 
     #region PUn callbacks

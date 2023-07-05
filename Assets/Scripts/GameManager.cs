@@ -8,6 +8,8 @@ using UnityEngine;
 using Sirenix.OdinInspector;
 #if UNITY_EDITOR
 using UnityEditor;
+using PlayFab.ClientModels;
+using PlayFab;
 #endif
 
 #endregion
@@ -67,7 +69,36 @@ public class GameManager : Singleton<GameManager>
     {
         EventGlobalManager.Instance.OnUpdateSetting.Dispatch();
 
-        LoadingManager.Instance.LoadScene(SceneIndex.Hall, MainScreen.Show);
+        FetchPlayFabData();
+    }
+
+    public void FetchPlayFabData()
+    {
+        var request = new GetAccountInfoRequest();
+
+        PlayFabClientAPI.GetAccountInfo(request, OnGetAccountInfoSuccess, OnGetAccountInfoFailed);
+
+        void OnGetAccountInfoSuccess(GetAccountInfoResult result)
+        {
+            if (result.AccountInfo != null && result.AccountInfo.TitleInfo != null)
+            {
+                PlayFabManager.Instance.displayName = result.AccountInfo.TitleInfo.DisplayName;
+                if (!string.IsNullOrEmpty(result.AccountInfo.TitleInfo.DisplayName))
+                {
+                    data.user.name = result.AccountInfo.TitleInfo.DisplayName;
+                }
+
+                LoadingManager.Instance.LoadScene(SceneIndex.Hall, MainScreen.Show);
+            }
+        }
+
+        void OnGetAccountInfoFailed(PlayFabError error)
+        {
+            HCDebug.Log("Get account info failed", HcColor.Red);
+            LoadingManager.Instance.LoadScene(SceneIndex.Hall, MainScreen.Show);
+        }
+
+        PlayFabManager.Instance.GetUserRemoteData();
     }
 
     public void AddMoney(int value)

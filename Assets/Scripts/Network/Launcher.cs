@@ -14,16 +14,22 @@ public class Launcher : MonoBehaviourPunCallbacks
     {
         //PhotonNetwork.NickName = MasterManager.GameSettings.NickName;
         //PhotonNetwork.GameVersion = MasterManager.GameSettings.GameVerion;
-
-        string nickName = $"{GameManager.Instance.data.user.name}#{Random.Range(1000, 9999).ToString()}";
-        PhotonNetwork.GameVersion = "0.0.0";
-        ConnectToPhoton(nickName);
+        ConnectToPhoton();
     }
+
+
 
     // Update is called once per frame
     void Update()
     {
         
+    }
+
+    public void ConnectToPhoton()
+    {
+        string nickName = $"{GameManager.Instance.data.user.name}#{Random.Range(1000, 9999).ToString()}";
+        PhotonNetwork.GameVersion = "0.0.0";
+        ConnectToPhoton(nickName);
     }
 
     public override void OnConnectedToMaster()

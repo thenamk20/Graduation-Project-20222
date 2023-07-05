@@ -1,5 +1,7 @@
+using Photon.Pun;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class PopupProfile : UIPanel
@@ -48,9 +50,9 @@ public class PopupProfile : UIPanel
         userNameText.text = Gm.data.user.name;
         UpdateAvatar(Gm.data.user.userRemoteData.avatarID);
 
-        //matchCountText.text = Gm.data.user.userRemoteData.matchCount.ToFormatString();
-        //winCountText.text = Gm.data.user.userRemoteData.winCount.ToFormatString();
-        //startPointText.text = Gm.data.user.userRemoteData.rewardPoint.ToFormatString();
+        matchCountText.text = Gm.data.user.userRemoteData.matchCount.ToFormatString();
+        winCountText.text = Gm.data.user.userRemoteData.winCount.ToFormatString();
+        startPointText.text = Gm.data.user.userRemoteData.rewardPoint.ToFormatString();
     }
 
     protected override void RegisterEvent()
@@ -93,5 +95,13 @@ public class PopupProfile : UIPanel
     public void OpenPopupAvatar()
     {
         PopupAvatars.Show();
+    }
+
+    public void Logout()
+    {
+        PhotonNetwork.Disconnect();
+        SceneManager.LoadSceneAsync((int)SceneIndex.Login);
+        Close();
+        GUIManager.Instance.ClearGui();
     }
 }

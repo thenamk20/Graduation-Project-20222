@@ -5,6 +5,7 @@ using Sirenix.OdinInspector;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Drawing;
 using UnityEngine;
 using static GameData;
 
@@ -14,10 +15,8 @@ public class PlayFabManager : Singleton<PlayFabManager>
 
     private void Start()
     {
-        GetPlayFabDisplayName();
         CheckInitRemoteData();
     }
-
 
     public void GetPlayFabDisplayName()
     {
@@ -36,6 +35,25 @@ public class PlayFabManager : Singleton<PlayFabManager>
         {
             HCDebug.Log("Get account info failed", HcColor.Red);
         }
+    }
+
+    public void GetUserRemoteData()
+    {
+        PlayFabClientAPI.GetUserData(new GetUserDataRequest(), OnGetDataSucceed, OnGetDataFailed);
+    }
+
+    void OnGetDataSucceed(GetUserDataResult result)
+    {
+        if (result.Data != null && result.Data.ContainsKey("RemoteData"))
+        {
+            UserRemoteData userRemoteData = JsonConvert.DeserializeObject<UserRemoteData>(result.Data["RemoteData"].Value);
+            GameManager.Instance.data.user.userRemoteData = userRemoteData;
+        }
+    }
+
+    void OnGetDataFailed(PlayFabError error)
+    {
+
     }
 
     public void SaveUserRemoteData(UserRemoteData remoteData)

@@ -6,7 +6,7 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.SceneManagement;
 
-public class PlayfabLogIn : MonoBehaviour
+public class PlayFabLogIn : MonoBehaviour
 {
     [SerializeField] private GameObject logInPanel;
 
@@ -98,13 +98,14 @@ public class PlayfabLogIn : MonoBehaviour
     public void SetEmail(string _email)
     {
         userEmail = _email;
+        CheckHideError();
     }
 
     public void SetPassword(string _password)
     {
         password = _password;
+        CheckHideError();
     }
-
 
     public void Login()
     {
@@ -125,6 +126,7 @@ public class PlayfabLogIn : MonoBehaviour
     {
         logInPanel.SetActive(false);
         registerPanel.SetActive(true);
+        errorMessage.gameObject.SetActive(false);
     }
 
     public void UpdateRemember()
@@ -133,7 +135,16 @@ public class PlayfabLogIn : MonoBehaviour
         rememberMeCheckMark.SetActive(PreloadData.Instance.gameData.user.isRememberMe);
     }
 
+    void CheckHideError()
+    {
+        if (errorMessage.gameObject.activeInHierarchy)
+        {
+            errorMessage.gameObject.SetActive(false);
+        }
+    }
+
     #endregion
+
     #region Playfab Callbacks
 
     //login email
