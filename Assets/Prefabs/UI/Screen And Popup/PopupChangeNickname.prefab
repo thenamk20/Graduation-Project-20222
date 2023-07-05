@@ -331,6 +331,7 @@ MonoBehaviour:
   panelAnimator: {fileID: 6455503254331708359}
   warningText: {fileID: 6006981784470862009}
   waiting: {fileID: 5837684573127069358}
+  closeBtn: {fileID: 1487036639647040305}
 --- !u!1 &1358205791241120934
 GameObject:
   m_ObjectHideFlags: 0
@@ -2483,11 +2484,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: CloseBtn
       objectReference: {fileID: 0}
+    - target: {fileID: 4810688925682085235, guid: 25dcb34dc349f0249910c1c3d6187644,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 25dcb34dc349f0249910c1c3d6187644, type: 3}
 --- !u!224 &9209948010577965059 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 3003985666940345921, guid: 25dcb34dc349f0249910c1c3d6187644,
+    type: 3}
+  m_PrefabInstance: {fileID: 6223978975933804098}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1487036639647040305 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4810688925682085235, guid: 25dcb34dc349f0249910c1c3d6187644,
     type: 3}
   m_PrefabInstance: {fileID: 6223978975933804098}
   m_PrefabAsset: {fileID: 0}

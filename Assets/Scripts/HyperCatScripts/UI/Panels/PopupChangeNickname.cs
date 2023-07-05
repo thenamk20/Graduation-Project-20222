@@ -11,6 +11,9 @@ public class PopupChangeNickname : UIPanel
     [SerializeField]
     private GameObject waiting;
 
+    [SerializeField]
+    private GameObject closeBtn;
+
     private string newNickName;
 
     public static PopupChangeNickname Instance { get; private set; }
@@ -41,6 +44,7 @@ public class PopupChangeNickname : UIPanel
     {
         warningText.SetActive(false);
         waiting.SetActive(false);
+        closeBtn.gameObject.SetActive(true);
     }
 
     protected override void RegisterEvent()
@@ -103,5 +107,10 @@ public class PopupChangeNickname : UIPanel
         AudioAssistant.Shot(TypeSound.ClickError);
         HCDebug.Log("Update name failed", HcColor.Red);
         warningText.SetActive(true);
+    }
+
+    public void HideCloseButton()
+    {
+        closeBtn.gameObject.SetActive(false);
     }
 }

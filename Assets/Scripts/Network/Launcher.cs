@@ -17,8 +17,6 @@ public class Launcher : MonoBehaviourPunCallbacks
         ConnectToPhoton();
     }
 
-
-
     // Update is called once per frame
     void Update()
     {

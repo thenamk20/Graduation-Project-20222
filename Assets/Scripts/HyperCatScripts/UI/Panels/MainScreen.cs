@@ -46,6 +46,7 @@ public class MainScreen : UIPanel
         if (string.IsNullOrEmpty(Gm.data.user.name))
         {
             PopupChangeNickname.Show();
+            PopupChangeNickname.Instance.HideCloseButton();
             currentNickname.text = "";
         }
         else

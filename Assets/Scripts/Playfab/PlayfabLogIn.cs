@@ -161,6 +161,7 @@ public class PlayFabLogIn : MonoBehaviour
         }
 
         SceneManager.LoadScene((int)SceneIndex.Splash);
+      
     }
 
     private void OnLoginEmailFailure(PlayFabError error)
