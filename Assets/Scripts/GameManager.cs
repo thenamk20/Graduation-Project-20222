@@ -6,11 +6,9 @@ using Unity.Advertisement.IosSupport;
 using System;
 using UnityEngine;
 using Sirenix.OdinInspector;
-#if UNITY_EDITOR
 using UnityEditor;
 using PlayFab.ClientModels;
 using PlayFab;
-#endif
 
 #endregion
 

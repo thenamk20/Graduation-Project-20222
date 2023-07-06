@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   extraFeatureConfig: {fileID: 0}
   maxOfflineRemindMinute: 720
-  numberOfPlayerRequire: 1
+  numberOfPlayerRequire: 2
   avatars:
   - {fileID: 11400000, guid: 70107103cf1d92345871ad038d4cd33d, type: 2}
   - {fileID: 11400000, guid: 3f9b1660cbf6354428a520461d7e123a, type: 2}
