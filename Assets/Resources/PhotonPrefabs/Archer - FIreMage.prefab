@@ -1436,7 +1436,6 @@ MonoBehaviour:
   skillRange: 12
   explodeItemPrefab: {fileID: 8633456981975597245, guid: 309178622d280d34185d98b3d98f73d9,
     type: 3}
-  explodeSound: 16
 --- !u!1001 &1493111666784697778
 PrefabInstance:
   m_ObjectHideFlags: 0

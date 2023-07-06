@@ -29,11 +29,15 @@ public class SkillItemUI : HCMonoBehaviour, IPointerUpHandler, IPointerDownHandl
     [SerializeField]
     private GameObject upgradeSkillBtn;
 
+    [SerializeField]
+    private GameObject skillBase;
+
     private SkillConfig skillConfig;
 
     public void Init()
     {
         upgradeSkillBtn.SetActive(false);
+        skillBase.SetActive(false);
     }
 
     private void Start()
@@ -80,11 +84,13 @@ public class SkillItemUI : HCMonoBehaviour, IPointerUpHandler, IPointerDownHandl
     public void OnPointerUp(PointerEventData eventData)
     {
         PlayerCtrl.SkillsManager.TryUseSkill(skillIndex);
+        skillBase.SetActive(false);
     }
 
     public void OnPointerDown(PointerEventData eventData)
     {
         PlayerCtrl.SkillsManager.Skills[skillIndex].PrepareSkillDirection();
+        skillBase.SetActive(true);
     }
 
     

@@ -54,7 +54,7 @@ public class BuffSpeedSkill : SkillItemController
 
     IEnumerator ResetSpeed()
     {
-        yield return new WaitForSeconds(4f);
+        yield return new WaitForSeconds(3f);
         PlayerCtrl.stats.moveSpeed = cachedSpeed;
         buffVFx = null;
     }
