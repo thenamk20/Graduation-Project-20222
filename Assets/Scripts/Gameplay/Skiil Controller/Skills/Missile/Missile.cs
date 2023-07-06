@@ -23,6 +23,9 @@ public class Missile : MonoBehaviour
     [SerializeField]
     private GameObject explodeFx;
 
+    [SerializeField]
+    private TypeSound explodeSound;
+
     void Start()
     {
         rigidBody.AddForce(transform.forward * force);
@@ -43,6 +46,7 @@ public class Missile : MonoBehaviour
                 damageableObject.ReceiveDamage((int)(damage * MyPlayer.Instance.Controller.stats.damMultiply));
                 NetworkManager.Instance.InstantiateObject(explodeFx, transform.position, Quaternion.identity);
                 PhotonNetwork.Destroy(gameObject);
+                AudioAssistant.Shot(explodeSound);
             }
         }
     }

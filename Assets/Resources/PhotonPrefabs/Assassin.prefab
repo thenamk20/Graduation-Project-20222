@@ -864,6 +864,7 @@ MonoBehaviour:
   skillTime: 0.5
   lockMoving: 1
   lockRotating: 1
+  skillSound: 18
 --- !u!1 &7681907713535115526
 GameObject:
   m_ObjectHideFlags: 0
@@ -1690,6 +1691,7 @@ MonoBehaviour:
   networkVfx: {fileID: 4136564190702623270, guid: 02d08612b756e1d43b7720e546d76519,
     type: 3}
   delayForFx: 0.2
+  skillSound: 17
 --- !u!64 &8410350527258724411
 MeshCollider:
   m_ObjectHideFlags: 0

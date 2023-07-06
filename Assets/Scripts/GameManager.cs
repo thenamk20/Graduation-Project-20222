@@ -89,6 +89,8 @@ public class GameManager : Singleton<GameManager>
                 }
 
                 LoadingManager.Instance.LoadScene(SceneIndex.Hall, MainScreen.Show);
+
+                NetworkManager.Instance.Launcher.ConnectToPhoton();
             }
         }
 

@@ -33,7 +33,13 @@ public enum TypeSound
     Defeat,
     Claim,
     Toat,
-    Tick
+    Tick,
+    FiroMissileExplode,
+    FiroSkill2,
+    FiroUltiExplode,
+    HaamuSkill1,
+    HammuSkill2,
+    HammuSkill3
 }
 
 public enum Pool

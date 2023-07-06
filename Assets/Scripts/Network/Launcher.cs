@@ -14,7 +14,6 @@ public class Launcher : MonoBehaviourPunCallbacks
     {
         //PhotonNetwork.NickName = MasterManager.GameSettings.NickName;
         //PhotonNetwork.GameVersion = MasterManager.GameSettings.GameVerion;
-        ConnectToPhoton();
     }
 
     // Update is called once per frame
@@ -25,7 +24,7 @@ public class Launcher : MonoBehaviourPunCallbacks
 
     public void ConnectToPhoton()
     {
-        string nickName = $"{GameManager.Instance.data.user.name}#{Random.Range(1000, 9999)}";
+        string nickName = GameManager.Instance.data.user.name;
         PhotonNetwork.GameVersion = "0.0.0";
         ConnectToPhoton(nickName);
     }

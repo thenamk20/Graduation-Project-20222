@@ -835,6 +835,7 @@ MonoBehaviour:
   IsReady: 0
   buffFxObject: {fileID: 1175518471683423317, guid: fa760d66e4c16cb478b7475d0d627547,
     type: 3}
+  skillSound: 15
 --- !u!1 &6712902354186869192
 GameObject:
   m_ObjectHideFlags: 0
@@ -1435,6 +1436,7 @@ MonoBehaviour:
   skillRange: 12
   explodeItemPrefab: {fileID: 8633456981975597245, guid: 309178622d280d34185d98b3d98f73d9,
     type: 3}
+  explodeSound: 16
 --- !u!1001 &1493111666784697778
 PrefabInstance:
   m_ObjectHideFlags: 0

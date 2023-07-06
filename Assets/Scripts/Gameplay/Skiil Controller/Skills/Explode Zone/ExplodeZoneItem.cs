@@ -38,6 +38,9 @@ public class ExplodeZoneItem : MonoBehaviour
     [SerializeField]
     private int damage = 100;
 
+    [SerializeField]
+    private TypeSound explodeSound;
+
     private int ownerViewID;
 
     private List<IDamageable> currentTarget;
@@ -68,6 +71,11 @@ public class ExplodeZoneItem : MonoBehaviour
         yield return new WaitForSeconds(delayTime);
         hitboxCollider.enabled = true;
         Collider[] targets = Physics.OverlapSphere(transform.position, hitboxCollider.radius * transform.lossyScale.x, layerMask);
+
+        if (PV.IsMine)
+        {
+            AudioAssistant.Shot(explodeSound);
+        }
 
         foreach(var item in targets)
         {

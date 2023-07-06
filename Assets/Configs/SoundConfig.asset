@@ -55,6 +55,18 @@ MonoBehaviour:
     typeSound: 12
   - audioClip: {fileID: 8300000, guid: c4e15b7852f70f8459bc0e89a65e6655, type: 3}
     typeSound: 13
+  - audioClip: {fileID: 8300000, guid: 8a3d49d3709b08a459643da637094793, type: 3}
+    typeSound: 14
+  - audioClip: {fileID: 8300000, guid: eae969dac6cbc2142863f09b4e11e12c, type: 3}
+    typeSound: 15
+  - audioClip: {fileID: 8300000, guid: 7ef3bd8a36959824c9f269d2395a8265, type: 3}
+    typeSound: 16
+  - audioClip: {fileID: 8300000, guid: 20ecde4de9244104283ef8e8feb5618e, type: 3}
+    typeSound: 17
+  - audioClip: {fileID: 8300000, guid: 49f7bc2fe032c5a419eee56fa364dc7e, type: 3}
+    typeSound: 18
+  - audioClip: {fileID: 8300000, guid: e8d5e0cbb41b1e84ba8b8b4d8fea5a65, type: 3}
+    typeSound: 19
   volumeBgm: 0.5
   volumeSfx: 1
   path: Assets/Sounds

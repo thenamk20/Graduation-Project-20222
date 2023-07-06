@@ -154,6 +154,7 @@ MonoBehaviour:
   meVisual: {fileID: 7278366881028458940}
   enemyVisual: {fileID: 7278366881028458940}
   damage: 120
+  explodeSound: 19
 --- !u!114 &7862002698128404020
 MonoBehaviour:
   m_ObjectHideFlags: 0

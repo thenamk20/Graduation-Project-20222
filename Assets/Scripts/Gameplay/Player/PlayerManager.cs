@@ -94,6 +94,7 @@ public class PlayerManager : MonoBehaviour
             EventGlobalManager.Instance.OnDoneFighting.Dispatch();
             AudioAssistant.Instance.Pause();
             PopupVictory.Show();
+            PlayFabManager.Instance.UpdateWinCount();
         }
     }
 

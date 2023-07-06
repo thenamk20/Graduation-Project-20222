@@ -33,6 +33,9 @@ public class SlashAttack : SkillItemController
     [SerializeField]
     private float delayForFx;
 
+    [SerializeField]
+    private TypeSound skillSound;
+
     private IDamageable owner;
 
     private Vector3 skillAimDir;
@@ -91,6 +94,7 @@ public class SlashAttack : SkillItemController
     {
         yield return new WaitForSecondsRealtime(delayAttack);
         hitBoxCollider.enabled = true;
+        AudioAssistant.Shot(skillSound);
 
         yield return new WaitForSecondsRealtime(attackTime);
         hitBoxCollider.enabled = false;

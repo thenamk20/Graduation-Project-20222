@@ -10,6 +10,9 @@ public class BuffSpeedSkill : SkillItemController
     [SerializeField]
     private GameObject buffFxObject;
 
+    [SerializeField]
+    private TypeSound skillSound;
+
     private GameObject buffVFx;
 
     public override void Execute()
@@ -22,6 +25,8 @@ public class BuffSpeedSkill : SkillItemController
 
         StartCoroutine(ResetSpeed());
         buffVFx = NetworkManager.Instance.InstantiateObject(buffFxObject, transform.position, Quaternion.identity);
+
+        AudioAssistant.Shot(skillSound);
     }
 
     public override void PrepareSkillDirection()

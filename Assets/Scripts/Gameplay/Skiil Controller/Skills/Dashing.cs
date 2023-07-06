@@ -15,6 +15,9 @@ public class Dashing : SkillItemController
     [SerializeField]
     private bool lockRotating = true;
 
+    [SerializeField]
+    private TypeSound skillSound;
+
     private Vector3 skillAimDir;
 
     private void Update()
@@ -48,6 +51,7 @@ public class Dashing : SkillItemController
         PlayerCtrl.transform.rotation = Quaternion.Euler(0, rot.y, 0);
 
         HCDebug.Log("Skill aim dir: " + skillAimDir);
+        AudioAssistant.Shot(skillSound);
 
         StartCoroutine(DashSequence());
     }
