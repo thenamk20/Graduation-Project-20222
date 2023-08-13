@@ -119,11 +119,11 @@ public class SkillItemUI : HCMonoBehaviour, IPointerUpHandler, IPointerDownHandl
         cooldownFill.fillAmount = 1;
         timeCoolDownText.text = skillConfig.cooldownTime.ToString();
 
-        DOTween.To(() => cooldownFill.fillAmount, x => cooldownFill.fillAmount = x, 0, skillConfig.cooldownTime);
+        DOTween.To(() => cooldownFill.fillAmount, x => cooldownFill.fillAmount = x, 0, skillConfig.cooldownTime).SetEase(Ease.Linear);
         DOTween.To(() => cooldownFill.fillAmount, 
                 x => timeCoolDownText.text = (Mathf.Floor((x * skillConfig.cooldownTime) * 100) / 100f).ToString() , 
                 0, 
-                skillConfig.cooldownTime);
+                skillConfig.cooldownTime).SetEase(Ease.Linear);
     }
 
     void HandleSkillDoneCoolDown(int _skillIndex)

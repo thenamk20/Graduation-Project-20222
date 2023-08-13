@@ -55,6 +55,7 @@ public class Chest : MonoBehaviour, IDamageable
 
         if (currentHealth <= 0)
         {
+            gameObject.SetActive(false);
             if (chestPV.IsMine)
                 Explode();
         }

@@ -51,7 +51,7 @@ MonoBehaviour:
   initRange: 100
   minRange: 10
   PV: {fileID: 3415273982087315378}
-  reduceSpeed: 0.6
+  reduceSpeed: 1
   maskTransform: {fileID: 7473449145002328885}
 --- !u!114 &3415273982087315378
 MonoBehaviour:

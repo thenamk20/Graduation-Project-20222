@@ -2,6 +2,7 @@ using CnControls;
 using HighlightPlus;
 using JetBrains.Annotations;
 using Photon.Pun;
+using Photon.Realtime;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -172,6 +173,7 @@ public class PlayerController : MonoBehaviour, IDamageable, IHideable
     {
         buffEffect.ShowBuffEffectUIItem(ItemBuff.Damage, (int)(gain * 100));
         PV.RPC(nameof(RPC_IncreaseDam), RpcTarget.All, gain);
+        if (PV.IsMine) AudioAssistant.Shot(TypeSound.GetBuff);
     }
 
     [PunRPC]
@@ -184,6 +186,7 @@ public class PlayerController : MonoBehaviour, IDamageable, IHideable
     {
         buffEffect.ShowBuffEffectUIItem(ItemBuff.Health, (int)(gainPercent * 100));
         PV.RPC(nameof(RPC_IncreaseHealth), RpcTarget.All, gainPercent);
+        if (PV.IsMine) AudioAssistant.Shot(TypeSound.GetBuff);
     }
 
     [PunRPC]
@@ -201,6 +204,7 @@ public class PlayerController : MonoBehaviour, IDamageable, IHideable
     {
         buffEffect.ShowBuffEffectUIItem(ItemBuff.Restore, amount);
         PV.RPC(nameof(RPC_RestoreHealth), RpcTarget.All, amount);
+        if (PV.IsMine) AudioAssistant.Shot(TypeSound.GetBuff);
     }
 
     [PunRPC]
@@ -232,6 +236,7 @@ public class PlayerController : MonoBehaviour, IDamageable, IHideable
     {
         buffEffect.ShowBuffEffectUIItem(ItemBuff.MoveSpeed, (int)(gainPercent * 100));
         PV.RPC(nameof(RPC_IncreaseMoveSpeed), RpcTarget.All, gainPercent);
+        if (PV.IsMine) AudioAssistant.Shot(TypeSound.GetBuff);
     }
 
     [PunRPC]
@@ -244,6 +249,7 @@ public class PlayerController : MonoBehaviour, IDamageable, IHideable
     {
         buffEffect.ShowBuffEffectUIItem(ItemBuff.AttackSpeed, (int)(gainPercent * 100));
         PV.RPC(nameof(RPC_IncreaseChakraRestore), RpcTarget.All, gainPercent);
+        if (PV.IsMine) AudioAssistant.Shot(TypeSound.GetBuff);
     }
 
     [PunRPC]
@@ -263,8 +269,6 @@ public class PlayerController : MonoBehaviour, IDamageable, IHideable
     {
         stats.upgradePoint -= 1;
     }
-
-
 
     #endregion
 

@@ -39,7 +39,8 @@ public enum TypeSound
     FiroUltiExplode,
     HaamuSkill1,
     HammuSkill2,
-    HammuSkill3
+    HammuSkill3,
+    GetBuff
 }
 
 public enum Pool

@@ -67,6 +67,8 @@ MonoBehaviour:
     typeSound: 18
   - audioClip: {fileID: 8300000, guid: e8d5e0cbb41b1e84ba8b8b4d8fea5a65, type: 3}
     typeSound: 19
+  - audioClip: {fileID: 8300000, guid: e479114b154c4314db283f8328e246ff, type: 3}
+    typeSound: 20
   volumeBgm: 0.5
   volumeSfx: 1
   path: Assets/Sounds
